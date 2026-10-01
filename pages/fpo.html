@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FPO | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/fpo.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/fpo.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div style="display: flex; flex-direction: column; min-height: 100vh; width: 100%; background-color: #f8fafc;">
+        <div id="site-navbar"></div>
+        <div class="fpo-dashboard">
+
+          <!-- 1. LEFT SIDEBAR -->
+          <aside class="fpo-sidebar">
+            <nav class="fpo-nav">
+              <div class="fpo-nav-item" data-tab="home"><div class="fpo-icon-wrap"><i data-icon="grid" data-size="18"></i></div><span class="fpo-nav-title">Home</span></div>
+              <div class="fpo-nav-item" data-tab="about"><div class="fpo-icon-wrap"><i data-icon="help-circle" data-size="18"></i></div><span class="fpo-nav-title">About FPC</span></div>
+              <div class="fpo-nav-item" data-tab="account"><div class="fpo-icon-wrap"><i data-icon="users" data-size="18"></i></div><span class="fpo-nav-title">FPC Account</span></div>
+              <div class="fpo-nav-item" data-tab="business"><div class="fpo-icon-wrap"><i data-icon="landmark" data-size="18"></i></div><span class="fpo-nav-title">Business Plan</span></div>
+              <div class="fpo-nav-item" data-tab="capacity"><div class="fpo-icon-wrap"><i data-icon="users" data-size="18"></i></div><span class="fpo-nav-title">Capacity Building</span></div>
+              <div class="fpo-nav-item" data-tab="compliance"><div class="fpo-icon-wrap"><i data-icon="check-circle" data-size="18"></i></div><span class="fpo-nav-title">Compliances</span></div>
+              <div class="fpo-nav-item" data-tab="meetings"><div class="fpo-icon-wrap"><i data-icon="users" data-size="18"></i></div><span class="fpo-nav-title">AGM &amp; Board</span></div>
+              <div class="fpo-nav-item" data-tab="loans"><div class="fpo-icon-wrap"><i data-icon="banknote" data-size="18"></i></div><span class="fpo-nav-title">Loans</span></div>
+              <div class="fpo-nav-item" data-tab="reports"><div class="fpo-icon-wrap"><i data-icon="bar-chart-2" data-size="18"></i></div><span class="fpo-nav-title">Reports</span></div>
+              <div class="fpo-nav-item" data-tab="connect"><div class="fpo-icon-wrap"><i data-icon="network" data-size="18"></i></div><span class="fpo-nav-title">Connect</span></div>
+            </nav>
+          </aside>
+
+          <!-- 2. CENTER MAIN DASHBOARD -->
+          <main class="fpo-main-content">
+
+            <!-- Top Navigation -->
+            <header class="fpo-top-nav anim-fly-in-top" style="animation-delay: 0.1s;">
+              <div class="fpo-top-left">
+                <button class="fpo-back-btn" data-nav="home"><i data-icon="arrow-left" data-size="20"></i></button>
+                <div class="fpo-page-titles">
+                  <h2>Dashboard</h2>
+                  <span>Overview &amp; Analytics</span>
+                </div>
+              </div>
+
+              <div class="fpo-top-right">
+                <div class="fpo-search-box"><i data-icon="search" data-size="16" class="search-icon"></i><input type="text" placeholder="Search FPO services..." /></div>
+                <button class="fpo-icon-btn"><i data-icon="grid" data-size="18"></i></button>
+                <button class="fpo-icon-btn with-dot"><i data-icon="bell" data-size="18"></i><span class="fpo-dot"></span></button>
+                <div class="fpo-avatar"><img src="https://i.pravatar.cc/100?img=12" alt="User" /></div>
+              </div>
+            </header>
+
+            <!-- Hero Banner -->
+            <section class="fpo-hero-section anim-scale-in" style="animation-delay: 0.2s;">
+              <div class="fpo-hero-bg" style="background-image: url(../assets/images/fpo_hero_bg.avif);">
+                <div class="fpo-hero-overlay"></div>
+              </div>
+              <div class="fpo-hero-content">
+                <h1 class="fpo-hero-title">Empowering FPOs<br />Building Stronger Communities</h1>
+                <p class="fpo-hero-desc">
+                  Uniting farmers with global markets, providing end-to-end digital agriculture support and scaling local businesses internationally.
+                </p>
+                <div class="fpo-hero-stats">
+                  <div class="hero-stat">
+                    <h3>1.2K+</h3>
+                    <span>Active FPOs</span>
+                  </div>
+                  <div class="hero-stat">
+                    <h3>50+</h3>
+                    <span>Schemes</span>
+                  </div>
+                  <div class="hero-stat">
+                    <h3>100%</h3>
+                    <span>Compliance</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fpo-hero-slider">
+                <button><i data-icon="arrow-left" data-size="16"></i></button>
+                <button><i data-icon="arrow-right" data-size="16"></i></button>
+              </div>
+            </section>
+
+            <!-- Quick Access -->
+            <section class="fpo-quick-access">
+              <div class="fpo-section-header anim-fly-in-left" style="animation-delay: 0.3s;">
+                <h3>Quick Access</h3>
+                <p>Access all FPC services in one place</p>
+              </div>
+              <div class="fpo-cards-grid">
+                <div class="fpo-glass-card anim-fly-in-left" style="animation-delay: 0.3s;">
+                  <div class="fpo-card-icon-area bg-blue"><img src="../assets/images/icon_1.avif" alt="About FPO" /></div>
+                  <div class="fpo-card-info">
+                    <h4>About FPO</h4>
+                    <p>Farmer profiles &amp; documents</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+                <div class="fpo-glass-card anim-fly-in-bottom" style="animation-delay: 0.35s;">
+                  <div class="fpo-card-icon-area bg-teal"><img src="../assets/images/icon_2.avif" alt="FPO Account" /></div>
+                  <div class="fpo-card-info">
+                    <h4>FPO Account</h4>
+                    <p>Wallet, Identity, KYC</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+                <div class="fpo-glass-card anim-fly-in-right" style="animation-delay: 0.4s;">
+                  <div class="fpo-card-icon-area bg-green"><img src="../assets/images/icon_3.avif" alt="Business Plan" /></div>
+                  <div class="fpo-card-info">
+                    <h4>Business Plan</h4>
+                    <p>Targets &amp; Checklists</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+                <div class="fpo-glass-card anim-fly-in-top" style="animation-delay: 0.45s;">
+                  <div class="fpo-card-icon-area bg-orange"><img src="../assets/images/icon_4.avif" alt="Capacity Building" /></div>
+                  <div class="fpo-card-info">
+                    <h4>Capacity Building</h4>
+                    <p>Learning &amp; Growth</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+                <div class="fpo-glass-card anim-fly-in-left" style="animation-delay: 0.5s;">
+                  <div class="fpo-card-icon-area bg-purple"><img src="../assets/images/icon_5.avif" alt="Compliances" /></div>
+                  <div class="fpo-card-info">
+                    <h4>Compliances</h4>
+                    <p>Security &amp; Certifications</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+                <div class="fpo-glass-card anim-fly-in-bottom" style="animation-delay: 0.55s;">
+                  <div class="fpo-card-icon-area bg-blue"><img src="../assets/icons/icon-trade-updates.avif" alt="AGM &amp; Board" /></div>
+                  <div class="fpo-card-info">
+                    <h4>AGM &amp; Board</h4>
+                    <p>Meetings &amp; Discussions</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+                <div class="fpo-glass-card anim-fly-in-right" style="animation-delay: 0.6s;">
+                  <div class="fpo-card-icon-area bg-green"><img src="../assets/icons/icon-finance.avif" alt="Loans &amp; Schemes" /></div>
+                  <div class="fpo-card-info">
+                    <h4>Loans &amp; Schemes</h4>
+                    <p>Financial support</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+                <div class="fpo-glass-card anim-fly-in-top" style="animation-delay: 0.65s;">
+                  <div class="fpo-card-icon-area bg-teal"><img src="../assets/icons/icon-tariffs.avif" alt="Reports" /></div>
+                  <div class="fpo-card-info">
+                    <h4>Reports</h4>
+                    <p>Analytics &amp; Dashboards</p>
+                  </div>
+                  <button class="fpo-card-arrow"><i data-icon="arrow-right" data-size="16"></i></button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="fpo-stats-section">
+              <div class="fpo-section-header anim-fly-in-left" style="animation-delay: 0.5s;">
+                <h3>At a Glance</h3>
+              </div>
+              <div class="fpo-stats-grid">
+                <div class="fpo-stat-box anim-fly-in-bottom" style="animation-delay: 0.5s;">
+                  <div class="fpo-stat-icon text-blue" style="background: transparent;"><img src="../assets/icons/icon-krushi.avif" alt="Total FPOs" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" /></div>
+                  <div class="fpo-stat-details">
+                    <span class="fpo-stat-label">Total FPOs</span>
+                    <span class="fpo-stat-value">1,245</span>
+                  </div>
+                </div>
+                <div class="fpo-stat-box anim-fly-in-bottom" style="animation-delay: 0.6s;">
+                  <div class="fpo-stat-icon text-teal" style="background: transparent;"><img src="../assets/icons/icon-policies.avif" alt="Active Schemes" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" /></div>
+                  <div class="fpo-stat-details">
+                    <span class="fpo-stat-label">Active Schemes</span>
+                    <span class="fpo-stat-value">84</span>
+                  </div>
+                </div>
+                <div class="fpo-stat-box anim-fly-in-bottom" style="animation-delay: 0.7s;">
+                  <div class="fpo-stat-icon text-green" style="background: transparent;"><img src="../assets/icons/icon-finance.avif" alt="Loans Disbursed" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" /></div>
+                  <div class="fpo-stat-details">
+                    <span class="fpo-stat-label">Loans Disbursed</span>
+                    <span class="fpo-stat-value">$2.4M</span>
+                  </div>
+                </div>
+                <div class="fpo-stat-box anim-fly-in-bottom" style="animation-delay: 0.8s;">
+                  <div class="fpo-stat-icon text-purple" style="background: transparent;"><img src="../assets/icons/icon-buyers-connection.avif" alt="Members Connected" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" /></div>
+                  <div class="fpo-stat-details">
+                    <span class="fpo-stat-label">Members Connected</span>
+                    <span class="fpo-stat-value">45.2K</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+
+          <!-- 3. RIGHT SIDEBAR (UPDATES PANEL) -->
+          <aside class="fpo-updates-panel">
+            <div class="fpo-updates-header anim-fly-in-right" style="animation-delay: 0.2s;">
+              <h3>FEED Updates</h3>
+              <button class="fpo-view-all">View All</button>
+            </div>
+            <div class="fpo-updates-list">
+              <div class="fpo-update-card anim-fly-in-right" style="animation-delay: 0.3s;">
+                <img src="../assets/images/rsb_1.avif" alt="My Products" class="fpo-update-img" />
+                <div class="fpo-update-info">
+                  <h4>My Products</h4>
+                  <p>Manage your fresh produce</p>
+                </div>
+                <button class="fpo-update-arrow"><i data-icon="chevron-right" data-size="16"></i></button>
+              </div>
+              <div class="fpo-update-card anim-fly-in-right" style="animation-delay: 0.4s;">
+                <img src="../assets/images/rsb_2.avif" alt="My Business" class="fpo-update-img" />
+                <div class="fpo-update-info">
+                  <h4>My Business</h4>
+                  <p>B2B networks &amp; handshakes</p>
+                </div>
+                <button class="fpo-update-arrow"><i data-icon="chevron-right" data-size="16"></i></button>
+              </div>
+              <div class="fpo-update-card anim-fly-in-right" style="animation-delay: 0.5s;">
+                <img src="../assets/images/rsb_3.avif" alt="My Export" class="fpo-update-img" />
+                <div class="fpo-update-info">
+                  <h4>My Export</h4>
+                  <p>Global shipping &amp; containers</p>
+                </div>
+                <button class="fpo-update-arrow"><i data-icon="chevron-right" data-size="16"></i></button>
+              </div>
+              <div class="fpo-update-card anim-fly-in-right" style="animation-delay: 0.6s;">
+                <img src="../assets/images/rsb_4.avif" alt="My Market" class="fpo-update-img" />
+                <div class="fpo-update-info">
+                  <h4>My Market</h4>
+                  <p>Growth graphs &amp; analytics</p>
+                </div>
+                <button class="fpo-update-arrow"><i data-icon="chevron-right" data-size="16"></i></button>
+              </div>
+            </div>
+
+            <div class="fpo-newsletter-card anim-fly-in-bottom" style="animation-delay: 0.7s;">
+              <div class="fpo-news-icon"><i data-icon="mail" data-size="24"></i></div>
+              <h4>Stay Updated</h4>
+              <p>Subscribe to our newsletter for the latest schemes and policies.</p>
+              <button class="fpo-subscribe-btn">Subscribe</button>
+            </div>
+          </aside>
+
+        </div>
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

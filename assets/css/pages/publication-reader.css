@@ -1,0 +1,327 @@
+/* ===== Publication reader (one issue in its own tab) ===== */
+
+.pub-reader {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  background: #1e293b;
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+/* --- Top bar --- */
+.pub-reader-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+  position: relative;
+  z-index: 2;
+}
+
+.pub-reader-bar::before {
+  /* the brand's green-to-orange rule, as on the navbar */
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, #16a34a, #eab308 55%, #ea580c);
+}
+
+.pub-reader-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 4px 4px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.pub-reader-brand:hover {
+  background: #f0fdf4;
+}
+
+.pub-reader-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #eef2e6;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.pub-reader-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pub-reader-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.pub-reader-brand-text strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: #064e3b;
+  letter-spacing: 0.2px;
+}
+
+.pub-reader-brand-text small {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5b7a5f;
+  margin-top: 2px;
+}
+
+.pub-reader-heading {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.pub-reader-heading h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.pub-reader-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.pub-reader-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pub-reader-lang {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: 700;
+}
+
+.pub-reader-heading-skeleton {
+  width: min(280px, 60%);
+  height: 18px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: pubReaderShimmer 1.2s ease-in-out infinite;
+}
+
+.pub-reader-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pub-reader-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #1e293b;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pub-reader-btn:hover {
+  border-color: #16a34a;
+  color: #15803d;
+  background: #f0fdf4;
+}
+
+.pub-reader-btn.is-primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+.pub-reader-btn.is-primary:hover {
+  background: linear-gradient(135deg, #15803d, #166534);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.pub-reader-btn:focus-visible,
+.pub-reader-brand:focus-visible {
+  outline: 3px solid rgba(22, 163, 74, 0.45);
+  outline-offset: 2px;
+}
+
+/* --- Stage: the viewer fills whatever the bar leaves --- */
+.pub-reader-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pub-reader-stage .pdf-viewer {
+  flex: 1;
+  min-height: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.pub-reader-stage .react-pdf__Document {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pub-reader-stage .pdf-canvas-area {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+}
+
+/* --- Status panels (login, loading, errors) --- */
+.pub-reader-panel {
+  margin: auto;
+  width: min(460px, calc(100% - 32px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 40px 28px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+}
+
+.pub-reader-panel.is-quiet {
+  background: transparent;
+  box-shadow: none;
+  color: #cbd5e1;
+}
+
+.pub-reader-panel h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #064e3b;
+}
+
+.pub-reader-panel p {
+  margin: 0 0 8px;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.pub-reader-panel.is-quiet p {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.pub-reader-panel-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.pub-reader-panel-icon.is-error {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.pub-reader-panel-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pub-reader-spin {
+  animation: pubReaderSpin 0.9s linear infinite;
+}
+
+@keyframes pubReaderSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pubReaderShimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@media (max-width: 720px) {
+  .pub-reader-bar {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+  .pub-reader-brand {
+    padding: 0;
+  }
+  .pub-reader-brand-text {
+    display: none;
+  }
+  /* zero basis: the title shrinks (and ellipsizes) so the action buttons always stay on screen */
+  .pub-reader-heading {
+    flex-basis: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .pub-reader-btn span {
+    display: none;
+  }
+  .pub-reader-btn {
+    padding: 0 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pub-reader-spin,
+  .pub-reader-heading-skeleton {
+    animation: none;
+  }
+}

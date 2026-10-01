@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Plan | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/my-business.css" />
+  <link rel="stylesheet" href="../assets/css/pages/business-plan.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/business-plan.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div id="site-navbar"></div>
+      <div class="mb-layout">
+        <!-- Sidebar (rendered by assets/js/components/my-business-layout.js) -->
+        <aside class="mb-sidebar" id="mb-sidebar"></aside>
+
+        <!-- Main Content -->
+        <div style="flex: 1;">
+          <div class="bp-container">
+            <!-- Page Header -->
+            <div class="bp-header">
+              <h1 class="bp-title">Business Plan</h1>
+              <p class="bp-subtitle">Build a clear strategy for sustainable business growth.</p>
+            </div>
+
+            <!-- Two-Column Workspace -->
+            <div class="bp-workspace">
+
+              <!-- LEFT: Business Enquiry Form -->
+              <div class="bp-enquiry-section">
+                <div class="bp-form-card">
+                  <div class="bp-form-header">
+                    <div class="bp-form-icon-wrap">
+                      <i data-icon="headset" data-size="24" data-color="#4f46e5"></i>
+                    </div>
+                    <div>
+                      <h2 class="bp-form-title">Business Enquiry</h2>
+                      <p class="bp-form-subtitle">We're here to help you grow your business</p>
+                    </div>
+                  </div>
+
+                  <!-- Introduction Benefits -->
+                  <div class="bp-benefits-list">
+                    <div class="bp-benefit-item">
+                      <i data-icon="check-circle-2" data-size="18" class="bp-benefit-icon"></i>
+                      <span>Create customized plans as per the requirement of the business</span>
+                    </div>
+                    <div class="bp-benefit-item">
+                      <i data-icon="check-circle-2" data-size="18" class="bp-benefit-icon"></i>
+                      <span>Promotes operational &amp; financial sustainability</span>
+                    </div>
+                    <div class="bp-benefit-item">
+                      <i data-icon="check-circle-2" data-size="18" class="bp-benefit-icon"></i>
+                      <span>Expert advice on Trading, Production &amp; Service categories</span>
+                    </div>
+                  </div>
+
+                  <div class="bp-divider"></div>
+
+                  <!-- Form Fields -->
+                  <div class="bp-form-fields">
+                    <div class="bp-field-group">
+                      <label>Contact Number</label>
+                      <input type="tel" placeholder="Enter your contact number" class="bp-input" />
+                    </div>
+
+                    <div class="bp-field-group">
+                      <label>Solution</label>
+                      <select class="bp-input bp-select" id="bp-solution">
+                        <option value="" disabled selected>Select a solution</option>
+                        <option value="trading">Trading</option>
+                        <option value="production">Production</option>
+                        <option value="strategy">Strategy</option>
+                        <option value="consultancy">Consultancy</option>
+                        <option value="distribution">Distribution</option>
+                        <option value="retail">Retail Sales</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="support">Support Services</option>
+                        <option value="logistics">Logistics</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="promotion">Promotion</option>
+                        <option value="events">Events</option>
+                      </select>
+                    </div>
+
+                    <div class="bp-field-group">
+                      <label>Message</label>
+                      <textarea placeholder="Tell us about your business requirements..." class="bp-textarea" maxlength="500" id="bp-message"></textarea>
+                      <div class="bp-char-counter" id="bp-char-counter">0 / 500</div>
+                    </div>
+
+                    <button type="button" class="bp-submit-btn">
+                      <i data-icon="send" data-size="18"></i>
+                      <span>Send Enquiry Now</span>
+                    </button>
+
+                    <div class="bp-secure-text">
+                      <i data-icon="lock" data-size="14"></i>
+                      <span>Your information is secure and confidential</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Business Solutions Grid -->
+              <div class="bp-solutions-section">
+                <div class="bp-solutions-header">
+                  <h2 class="bp-solutions-title">How We Can <span>Help You</span></h2>
+                </div>
+
+                <div class="bp-image-slider-wrapper">
+                  <button type="button" class="bp-carousel-btn bp-prev" data-action="toggle-slide">
+                    <i data-icon="chevron-left" data-size="24"></i>
+                  </button>
+
+                  <div class="bp-slider-container">
+                    <div class="bp-slider-track" id="bp-slider-track" style="transform: translateX(-0%);">
+                      <div class="bp-slide">
+                        <img src="../assets/images/my-business/business_plan_icon.avif" alt="Business Planning" class="bp-slide-image" />
+                        <div class="bp-slide-caption">
+                          <h4>Strategic Planning</h4>
+                          <p>Expert guidance across trading, production, and service sectors.</p>
+                        </div>
+                      </div>
+                      <div class="bp-slide">
+                        <img src="../assets/images/my-business/capacity_building_icon.avif" alt="Capacity Building" class="bp-slide-image" />
+                        <div class="bp-slide-caption">
+                          <h4>Capacity Building</h4>
+                          <p>Customized business plans to promote financial sustainability.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="button" class="bp-carousel-btn bp-next" data-action="toggle-slide">
+                    <i data-icon="chevron-right" data-size="24"></i>
+                  </button>
+                </div>
+
+                <div class="bp-carousel-dots" id="bp-carousel-dots">
+                  <div class="bp-dot active" data-slide="0"></div>
+                  <div class="bp-dot" data-slide="1"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Talk To Our Experts Banner -->
+            <div class="bp-expert-banner">
+              <div class="bp-expert-content">
+                <div class="bp-expert-icon-wrap">
+                  <i data-icon="headset" data-size="32" data-color="#ffffff"></i>
+                </div>
+                <div class="bp-expert-text">
+                  <h3 class="bp-expert-title">Talk to Our Experts</h3>
+                  <p class="bp-expert-subtitle">Our team is ready to understand your requirements and provide the best solution for your business.</p>
+                </div>
+              </div>
+
+              <div class="bp-expert-contact">
+                <div class="bp-contact-info">
+                  <div class="bp-phone-icon-circle">
+                    <i data-icon="phone-call" data-size="20" data-color="#4f46e5"></i>
+                  </div>
+                  <div>
+                    <div class="bp-phone-number">+91 98765 43210</div>
+                    <div class="bp-working-hours">Mon - Sat (10:00 AM - 6:00 PM)</div>
+                  </div>
+                </div>
+                <button type="button" class="bp-callback-btn">
+                  <i data-icon="phone-call" data-size="18"></i>
+                  <span>Request a Callback</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div id="site-footer"></div>
+    </div>
+  </div>
+</body>
+</html>

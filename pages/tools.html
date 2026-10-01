@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Tools | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <!-- the workspace hubs opened from the tool cards -->
+  <link rel="stylesheet" href="../assets/css/components/my-fpo-service-hub.css" />
+  <link rel="stylesheet" href="../assets/css/components/farmer-hub.css" />
+  <link rel="stylesheet" href="../assets/css/components/msme-service-hub.css" />
+  <link rel="stylesheet" href="../assets/css/components/exports-hub.css" />
+  <link rel="stylesheet" href="../assets/css/pages/tools.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/tools.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="tools-page-container">
+        <!-- Background Image with Overlays -->
+        <div class="tools-bg-layer"></div>
+        <div class="tools-bg-overlay-gradient"></div>
+
+        <!-- Main Content Area -->
+        <div class="tools-content-wrapper">
+          <div id="site-navbar"></div>
+
+          <!-- Selecting a workspace (My FPO, Farmer, MSME, Exports) replaces this section's content
+               with that hub - see assets/js/pages/tools.js -->
+          <div class="tools-main-section">
+
+            <!-- Welcome Header -->
+            <div class="tools-welcome-section">
+              <h2 class="tools-welcome-sub">Welcome back,</h2>
+              <h1 class="tools-welcome-name">Valued Guest<span class="tools-leaf-decoration">🌿</span></h1>
+
+              <div class="tools-divider">
+                <span class="tools-divider-dot"></span>
+              </div>
+
+              <p class="tools-welcome-desc">
+                Explore powerful tools and services designed<br />to empower growth and success.
+              </p>
+            </div>
+
+            <!-- Tools Cards Grid -->
+            <div class="tools-cards-container">
+              <div class="tool-card" data-tool="fpo" style="--accent-color: #16a34a;">
+                <div class="tool-card-image-area">
+                  <img src="../assets/images/tool_fpo_farmers.avif" alt="My FPO" class="tool-card-image" />
+                </div>
+                <div class="tool-card-content">
+                  <div class="tool-card-icon-circle" style="background-color: #16a34a;">
+                    <i data-icon="users" data-size="24" data-stroke-width="2" data-color="white"></i>
+                  </div>
+                  <h3 class="tool-card-title" style="color: #16a34a;">My FPO</h3>
+                  <p class="tool-card-desc">Manage Farmer Producer Organizations efficiently</p>
+                  <button class="tool-card-arrow" style="background-color: #16a34a15; color: #16a34a;">
+                    <i data-icon="arrow-right" data-size="20" data-stroke-width="2.5"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="tool-card" data-tool="farmer" style="--accent-color: #65a30d;">
+                <div class="tool-card-image-area">
+                  <img src="../assets/images/tool_farmer_portrait.avif" alt="Farmer" class="tool-card-image" />
+                </div>
+                <div class="tool-card-content">
+                  <div class="tool-card-icon-circle" style="background-color: #65a30d;">
+                    <i data-icon="user" data-size="24" data-stroke-width="2" data-color="white"></i>
+                  </div>
+                  <h3 class="tool-card-title" style="color: #65a30d;">Farmer</h3>
+                  <p class="tool-card-desc">Access resources and support for farmers</p>
+                  <button class="tool-card-arrow" style="background-color: #65a30d15; color: #65a30d;">
+                    <i data-icon="arrow-right" data-size="20" data-stroke-width="2.5"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="tool-card" data-tool="msme" style="--accent-color: #f59e0b;">
+                <div class="tool-card-image-area">
+                  <img src="../assets/images/tool_msme_shop.avif" alt="MSME" class="tool-card-image" />
+                </div>
+                <div class="tool-card-content">
+                  <div class="tool-card-icon-circle" style="background-color: #f59e0b;">
+                    <i data-icon="store" data-size="24" data-stroke-width="2" data-color="white"></i>
+                  </div>
+                  <h3 class="tool-card-title" style="color: #f59e0b;">MSME</h3>
+                  <p class="tool-card-desc">Empowering MSMEs for sustainable growth</p>
+                  <button class="tool-card-arrow" style="background-color: #f59e0b15; color: #f59e0b;">
+                    <i data-icon="arrow-right" data-size="20" data-stroke-width="2.5"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Student has no workspace yet - it goes to the home page -->
+              <div class="tool-card" data-nav="home" style="--accent-color: #3b82f6;">
+                <div class="tool-card-image-area">
+                  <img src="../assets/images/tool_student_campus.avif" alt="Student" class="tool-card-image" />
+                </div>
+                <div class="tool-card-content">
+                  <div class="tool-card-icon-circle" style="background-color: #3b82f6;">
+                    <i data-icon="graduation-cap" data-size="24" data-stroke-width="2" data-color="white"></i>
+                  </div>
+                  <h3 class="tool-card-title" style="color: #3b82f6;">Student</h3>
+                  <p class="tool-card-desc">Learning resources and opportunities</p>
+                  <button class="tool-card-arrow" style="background-color: #3b82f615; color: #3b82f6;">
+                    <i data-icon="arrow-right" data-size="20" data-stroke-width="2.5"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="tool-card" data-tool="exports" style="--accent-color: #0ea5e9;">
+                <div class="tool-card-image-area">
+                  <img src="../assets/images/tool_export_cargoship.avif" alt="Exports" class="tool-card-image" />
+                </div>
+                <div class="tool-card-content">
+                  <div class="tool-card-icon-circle" style="background-color: #0ea5e9;">
+                    <i data-icon="ship" data-size="24" data-stroke-width="2" data-color="white"></i>
+                  </div>
+                  <h3 class="tool-card-title" style="color: #0ea5e9;">Exports</h3>
+                  <p class="tool-card-desc">Explore export services and global markets</p>
+                  <button class="tool-card-arrow" style="background-color: #0ea5e915; color: #0ea5e9;">
+                    <i data-icon="arrow-right" data-size="20" data-stroke-width="2.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="site-footer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

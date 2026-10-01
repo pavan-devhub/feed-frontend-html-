@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/contact.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/contact.js"></script>
+</head>
+<body>
+  <div class="contact-page-container">
+    <div id="site-navbar"></div>
+
+    <div class="contact-background" aria-hidden="true">
+      <div class="bg-radial-glow"></div>
+
+      <div class="bg-dots bg-dots-left"></div>
+      <div class="bg-dots bg-dots-right"></div>
+
+      <svg class="bg-waves" viewBox="0 0 1440 600" preserveAspectRatio="none">
+        <path fill="rgba(56, 189, 248, 0.04)" d="M0,256L48,229.3C96,203,192,149,288,149.3C384,149,480,203,576,234.7C672,267,768,277,864,245.3C960,213,1056,139,1152,117.3C1248,96,1344,128,1392,144L1440,160L1440,600L1392,600C1344,600,1248,600,1152,600C1056,600,960,600,864,600C768,600,672,600,576,600C480,600,384,600,288,600C192,600,96,600,48,600L0,600Z"></path>
+        <path fill="rgba(187, 247, 208, 0.08)" d="M0,96L60,117.3C120,139,240,181,360,186.7C480,192,600,160,720,149.3C840,139,960,149,1080,160C1200,171,1320,181,1380,186.7L1440,192L1440,600L1380,600C1320,600,1200,600,1080,600C960,600,840,600,720,600C600,600,480,600,360,600C240,600,120,600,60,600L0,600Z"></path>
+      </svg>
+
+      <svg class="bg-ribbons" viewBox="0 0 1440 400" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="ribbon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+            <stop offset="50%" stop-color="#4ade80" stop-opacity="0.4" />
+            <stop offset="100%" stop-color="#16a34a" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M-100,250 C300,-50 900,450 1540,100" fill="none" stroke="url(#ribbon-grad)" stroke-width="8" />
+        <path d="M-100,150 C400,-150 800,550 1540,50" fill="none" stroke="url(#ribbon-grad)" stroke-width="4" opacity="0.6" />
+      </svg>
+
+      <svg class="bg-globe" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="95" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.2" />
+        <ellipse cx="100" cy="100" rx="40" ry="95" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.2" />
+        <ellipse cx="100" cy="100" rx="75" ry="95" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.2" />
+        <path d="M5,100 L195,100 M100,5 L100,195" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.2" />
+        <path d="M25,160 Q100,120 175,160 M25,40 Q100,80 175,40" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.2" />
+      </svg>
+
+      <svg class="bg-leaves" viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="leaf1" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#16a34a" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#bbf7d0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="leaf2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4ade80" stop-opacity="0.25" />
+            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M180,200 C180,100 100,80 20,120 C70,180 130,200 180,200 Z" fill="url(#leaf1)" />
+        <path d="M200,170 C150,110 80,110 40,160 C90,190 140,190 200,170 Z" fill="url(#leaf2)" />
+      </svg>
+
+      <div class="bg-plane-container">
+        <svg class="bg-plane-trail" viewBox="0 0 400 150" preserveAspectRatio="none">
+          <path d="M0,130 Q150,150 250,80 T400,20" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-dasharray="6,6" opacity="0.5" />
+        </svg>
+        <div class="bg-plane"><i data-icon="send" data-size="22" data-color="#f97316"></i></div>
+      </div>
+
+      <div class="bg-icon bg-envelope"><i data-icon="mail" data-size="24" data-color="#38bdf8"></i></div>
+      <div class="bg-icon bg-bubble"><i data-icon="message-square" data-size="24" data-color="#4ade80"></i></div>
+
+      <div class="bg-bokeh bokeh-1"></div>
+      <div class="bg-bokeh bokeh-2"></div>
+      <div class="bg-bokeh bokeh-3"></div>
+      <div class="bg-sparkle sparkle-1"></div>
+      <div class="bg-sparkle sparkle-2"></div>
+      <div class="bg-sparkle sparkle-3"></div>
+
+      <div class="bg-card-glow glow-1"></div>
+      <div class="bg-card-glow glow-2"></div>
+    </div>
+
+    <section class="contact-hero">
+      <div class="contact-hero-copy">
+        <h1>Let's Connect, Let's <span class="accent">Grow Together</span></h1>
+        <p>We're here to help you with any questions, feedback, or partnership opportunities.</p>
+      </div>
+    </section>
+
+    <div class="contact-main">
+      <article class="contact-card branch-card">
+        <div class="branch-header">
+          <div class="branch-icon"><i data-icon="building-2" data-size="22"></i></div>
+          <div>
+            <span class="label">Branch Office</span>
+            <span class="city">Vijayawada</span>
+          </div>
+        </div>
+
+        <div class="branch-address">
+          <i data-icon="map-pin" data-size="18"></i>
+          <p id="contact-address">Fetching live address from map coordinates...</p>
+        </div>
+
+        <div class="branch-map">
+          <iframe title="FEED branch office location" src="https://www.google.com/maps?q=16.5388453,80.634379&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <a class="maps-open-btn" href="https://maps.app.goo.gl/Go2hsc82AL3rFNW59" target="_blank" rel="noopener noreferrer">Open in Google Maps<i data-icon="external-link" data-size="14"></i></a>
+        </div>
+
+        <div class="contact-details">
+          <h3>Contact Details</h3>
+          <a class="detail-row" href="tel:+919293858689"><i data-icon="phone" data-size="16"></i>+91 9293858689</a>
+          <a class="detail-row" href="mailto:info@feedorg.com"><i data-icon="mail" data-size="16"></i>info@feedorg.com</a>
+          <a class="detail-row" href="https://www.feedorg.com" target="_blank" rel="noopener noreferrer"><i data-icon="globe" data-size="16"></i>www.feedorg.com</a>
+        </div>
+
+        <div class="response-badge">
+          <div class="badge-icon"><i data-icon="headphones" data-size="16"></i></div>
+          <p>We usually respond <span>within 24 hours!</span></p>
+        </div>
+      </article>
+
+      <article class="contact-card form-card">
+        <h2>Get in Touch</h2>
+        <div class="form-accent"></div>
+
+        <form class="contact-form" id="contact-form">
+          <label class="field">
+            <span class="field-icon name"><i data-icon="user" data-size="16"></i></span>
+            <input type="text" name="name" placeholder="Your Name" required />
+          </label>
+
+          <label class="field">
+            <span class="field-icon mobile"><i data-icon="phone" data-size="16"></i></span>
+            <input type="tel" name="mobile" placeholder="Mobile Number" required />
+          </label>
+
+          <label class="field">
+            <span class="field-icon email"><i data-icon="mail" data-size="16"></i></span>
+            <input type="email" name="email" placeholder="Email Address" required />
+          </label>
+
+          <label class="field textarea-field">
+            <span class="field-icon message"><i data-icon="message-square" data-size="16"></i></span>
+            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+          </label>
+
+          <button type="submit" class="send-btn"><i data-icon="send" data-size="16"></i>Send Message</button>
+        </form>
+
+        <p class="privacy-note"><i data-icon="lock" data-size="13"></i>Your information is safe with us. We respect your privacy.</p>
+        <!-- "Thanks!" message (p.form-success) is added here by assets/js/pages/contact.js after sending -->
+      </article>
+
+      <aside class="contact-card social-rail">
+        <h3>Connect with us</h3>
+        <div class="social-rail-line"></div>
+        <div class="social-links">
+          <a class="social-link facebook" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H6v4h3v8h4v-8h3.2L17 11h-4V9c0-.6.4-1 1-1z" /></svg>
+          </a>
+          <a class="social-link instagram" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6.8a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z" /></svg>
+          </a>
+          <a class="social-link twitter" href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.2 2H21l-6.6 7.5L22 22h-6.2l-4.9-6.4L5.6 22H3l7.1-8.1L2 2h6.3l4.4 5.8L18.2 2zm-1.1 18h1.7L7 3.9H5.2L17.1 20z" /></svg>
+          </a>
+          <a class="social-link linkedin" href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.3 9.3H2.9V21h3.4V9.3zM4.6 3A2 2 0 1 0 4.6 7a2 2 0 0 0 0-4zM21 21h-3.4v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.8H10V9.3h3.3v1.6h.1c.5-.9 1.6-1.9 3.3-1.9 3.5 0 4.2 2.3 4.2 5.3V21z" /></svg>
+          </a>
+          <a class="social-link youtube" href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.5 12 4.5 12 4.5s-7.5 0-9.4.6A3 3 0 0 0 .5 7.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-4.8zM9.8 15.5v-7l6.3 3.5-6.3 3.5z" /></svg>
+          </a>
+        </div>
+        <div class="social-footer">
+          <div class="social-footer-icon"><i data-icon="users" data-size="20"></i></div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="contact-info-bar">
+      <div class="info-item">
+        <div class="info-icon hours"><i data-icon="clock" data-size="18"></i></div>
+        <div class="info-copy">
+          <strong>Office Hours</strong>
+          <p>Mon - Sat: 9:30 AM - 6:30 PM</p>
+          <p>Sunday: Closed</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon support"><i data-icon="headphones" data-size="18"></i></div>
+        <div class="info-copy">
+          <strong>Quick Support</strong>
+          <p>Call or email us anytime, we're happy to help.</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon partner"><i data-icon="heart-handshake" data-size="18"></i></div>
+        <div class="info-copy">
+          <strong>Partnerships</strong>
+          <p>Let's collaborate for a stronger tomorrow.</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon presence"><i data-icon="map-pin" data-size="18"></i></div>
+        <div class="info-copy">
+          <strong>Pan India Presence</strong>
+          <p>Working across states to empower every stakeholder.</p>
+        </div>
+      </div>
+    </section>
+    <div id="site-footer"></div>
+  </div>
+</body>
+</html>

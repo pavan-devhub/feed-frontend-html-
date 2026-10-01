@@ -1,0 +1,233 @@
+/* Art-directed photo grid (EditorialGrid.jsx). Tokens come from .epg in epmGallery.css. */
+.epg-mosaic {
+  --epg-mosaic-gap: clamp(8px, 1.1vw, 16px);
+  --epg-feature-h: clamp(340px, 40vw, 580px);
+  --epg-duo-h: clamp(250px, 29vw, 440px);
+  display: grid;
+  gap: var(--epg-mosaic-gap);
+}
+
+.epg-mosaic-row {
+  display: grid;
+  gap: var(--epg-mosaic-gap);
+}
+
+/* the row itself stays put - its tiles stagger in instead (below) */
+.epg-mosaic-row.epg-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* one large photo with two stacked beside it */
+.epg-mosaic-row.is-feature-left,
+.epg-mosaic-row.is-feature-right {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  height: var(--epg-feature-h);
+}
+
+.epg-mosaic-row.is-feature-left > :first-child {
+  grid-row: 1 / span 2;
+}
+
+.epg-mosaic-row.is-feature-right {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
+.epg-mosaic-row.is-feature-right > :first-child {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.epg-mosaic-row.is-feature-right > :nth-child(2) { grid-column: 1; grid-row: 1; }
+.epg-mosaic-row.is-feature-right > :nth-child(3) { grid-column: 1; grid-row: 2; }
+
+.epg-mosaic-row.is-trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.epg-mosaic-row.is-trio > * {
+  aspect-ratio: 4 / 3;
+}
+
+/* two photos, one wider than the other */
+.epg-mosaic-row.is-duo-left,
+.epg-mosaic-row.is-duo-right {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  height: var(--epg-duo-h);
+}
+
+.epg-mosaic-row.is-duo-right {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+
+/* a one-photo album: shown whole, at its own proportions */
+.epg-mosaic-row.is-single {
+  justify-items: center;
+}
+
+.epg-mosaic-row.is-single > * {
+  width: min(100%, calc(76vh * var(--epg-ratio, 1.5)));
+  aspect-ratio: var(--epg-ratio, 1.5);
+}
+
+/* ---------- Tile ---------- */
+.epg-tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--epg-radius, 16px);
+  overflow: hidden;
+  isolation: isolate;
+  cursor: zoom-in;
+  background: var(--epg-sunken, #eceee6);
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s var(--epg-ease),
+    transform 0.9s var(--epg-ease);
+}
+
+.epg-mosaic-row.is-shown > .epg-tile,
+.epg-tile.epg-skeleton {
+  opacity: 1;
+  transform: none;
+}
+
+.epg-tile.epg-skeleton {
+  cursor: default;
+}
+
+.epg-mosaic-row.is-shown > .epg-tile:nth-child(2) { transition-delay: 0.09s; }
+.epg-mosaic-row.is-shown > .epg-tile:nth-child(3) { transition-delay: 0.18s; }
+
+.epg-tile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--epg-ease);
+}
+
+.epg-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(0deg, rgba(5, 20, 13, 0.58) 0%, rgba(5, 20, 13, 0) 46%);
+  box-shadow: inset 0 0 0 1px rgba(16, 32, 26, 0.06);
+  opacity: 0;
+  transition: opacity 0.45s var(--epg-ease);
+  pointer-events: none;
+}
+
+.epg-tile-meta {
+  position: absolute;
+  left: 18px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s var(--epg-ease), transform 0.5s var(--epg-ease);
+}
+
+.epg-tile-num {
+  font-family: var(--epg-font-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  font-variant-numeric: tabular-nums;
+}
+
+.epg-tile-zoom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (hover: hover) {
+  .epg-tile:hover .epg-tile-img { transform: scale(1.045); }
+  .epg-tile:hover::after { opacity: 1; }
+  .epg-tile:hover .epg-tile-meta { opacity: 1; transform: none; }
+}
+
+.epg-tile:focus-visible {
+  outline: 3px solid var(--epg-saffron, #f5a900);
+  outline-offset: 3px;
+}
+
+.epg-tile:focus-visible::after,
+.epg-tile:focus-visible .epg-tile-meta {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Small screens: lead photo full width, the rest in pairs ---------- */
+@media (max-width: 720px) {
+  .epg-mosaic-row.is-feature-left,
+  .epg-mosaic-row.is-feature-right,
+  .epg-mosaic-row.is-trio,
+  .epg-mosaic-row.is-duo-left,
+  .epg-mosaic-row.is-duo-right {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    height: auto;
+  }
+
+  .epg-mosaic-row.is-feature-left > *,
+  .epg-mosaic-row.is-feature-right > *,
+  .epg-mosaic-row.is-trio > *,
+  .epg-mosaic-row.is-duo-left > *,
+  .epg-mosaic-row.is-duo-right > * {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* undo the mirrored row's fixed placement (same specificity as the desktop rules above) */
+  .epg-mosaic-row.is-feature-right > :nth-child(2),
+  .epg-mosaic-row.is-feature-right > :nth-child(3) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .epg-mosaic-row.is-feature-left > :first-child,
+  .epg-mosaic-row.is-feature-right > :first-child,
+  .epg-mosaic-row.is-trio > :first-child {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+  .epg-tile { border-radius: var(--epg-radius-sm, 12px); }
+  .epg-tile-meta { left: 12px; right: 10px; bottom: 10px; }
+  .epg-tile-zoom { width: 32px; height: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .epg-tile,
+  .epg-tile-img,
+  .epg-tile::after,
+  .epg-tile-meta {
+    transition: none;
+  }
+  .epg-tile { opacity: 1; transform: none; }
+}

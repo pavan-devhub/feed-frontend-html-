@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Business | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/my-business.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/my-business.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div id="site-navbar"></div>
+      <div class="mb-layout">
+        <!-- Sidebar (rendered by assets/js/components/my-business-layout.js) -->
+        <aside class="mb-sidebar" id="mb-sidebar"></aside>
+
+        <!-- Main Content -->
+        <div style="flex: 1;">
+          <main class="mb-main-content">
+            <!-- Topbar -->
+            <header class="mb-header">
+              <div class="mb-greeting">
+                <h1>Hello 👋</h1>
+                <p>Manage and grow your business with smart tools and insights.</p>
+              </div>
+            </header>
+
+            <!-- Services Grid -->
+            <div class="mb-services-container">
+              <!-- Row 1: 5 cards -->
+              <div class="mb-cards-row-5">
+                <div class="mb-service-card mb-card-animated" style="border-top: 6px solid #2563eb; animation: mbFlyInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/about_business_icon.avif" alt="About Business" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #2563eb;">About Business</h3>
+                    <p>Know more about your business profile</p>
+                    <button type="button" class="mb-card-arrow" style="color: #2563eb; border-color: #2563eb40;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mb-service-card mb-card-animated" data-nav="business-account" style="border-top: 6px solid #16a34a; animation: mbFlyInTop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/business_account_icon.avif" alt="Business Account" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #16a34a;">Business Account</h3>
+                    <p>Manage your accounts and transactions</p>
+                    <button type="button" class="mb-card-arrow" style="color: #16a34a; border-color: #16a34a40;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mb-service-card mb-card-animated" data-nav="business-plan" style="border-top: 6px solid #9333ea; animation: mbFlyInBottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/business_plan_icon.avif" alt="Business Plan" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #9333ea;">Business Plan</h3>
+                    <p>Plan, analyze and achieve your goals</p>
+                    <button type="button" class="mb-card-arrow" style="color: #9333ea; border-color: #9333ea40;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mb-service-card mb-card-animated" style="border-top: 6px solid #d97706; animation: mbFlyInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/capacity_building_icon.avif" alt="Capacity Building" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #d97706;">Capacity Building</h3>
+                    <p>Upskill and grow your business capabilities</p>
+                    <button type="button" class="mb-card-arrow" style="color: #d97706; border-color: #d9770640;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mb-service-card mb-card-animated" style="border-top: 6px solid #e11d48; animation: mbFlyInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/compliances_icon.avif" alt="Compliances" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #e11d48;">Compliances</h3>
+                    <p>Stay compliant and meet requirements</p>
+                    <button type="button" class="mb-card-arrow" style="color: #e11d48; border-color: #e11d4840;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 2: 3 cards -->
+              <div class="mb-cards-row-3">
+                <div class="mb-service-card wide-card mb-card-animated" data-nav="agm-board" style="border-top: 6px solid #0d9488; animation: mbFlyInBottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/agm_board_icon.avif" alt="Agm &amp; Board" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #0d9488;">Agm &amp; Board</h3>
+                    <p>Manage meetings and board activities</p>
+                    <button type="button" class="mb-card-arrow" style="color: #0d9488; border-color: #0d948840;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mb-service-card wide-card mb-card-animated" style="border-top: 6px solid #ea580c; animation: mbFlyInTop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/loans_schemes_icon.avif" alt="Loans &amp; Schemes" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #ea580c;">Loans &amp; Schemes</h3>
+                    <p>Discover loans and government schemes</p>
+                    <button type="button" class="mb-card-arrow" style="color: #ea580c; border-color: #ea580c40;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mb-service-card wide-card mb-card-animated" style="border-top: 6px solid #0284c7; animation: mbFlyInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s forwards;">
+                  <div class="mb-card-img-wrap">
+                    <img src="../assets/images/my-business/reports_icon.avif" alt="Reports" />
+                  </div>
+                  <div class="mb-card-content">
+                    <h3 style="color: #0284c7;">Reports</h3>
+                    <p>View analytics and download reports</p>
+                    <button type="button" class="mb-card-arrow" style="color: #0284c7; border-color: #0284c740;">
+                      <i data-icon="arrow-right" data-size="16"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div id="site-footer"></div>
+    </div>
+  </div>
+</body>
+</html>

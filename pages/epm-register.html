@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register for EPM | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <!-- epm.css also styles .epm-hero-title / .epm-hero-subtitle / .epm-event-details; epm-forms.css refines them -->
+  <link rel="stylesheet" href="../assets/css/pages/epm.css" />
+  <link rel="stylesheet" href="../assets/css/pages/epm-forms.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/epm-register.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="epm-premium-container">
+        <div id="site-navbar"></div>
+        <div class="epm-premium-nav">
+          <button class="epm-back-link" data-nav="epm"><i data-icon="arrow-left" data-size="18"></i> Back to EPM</button>
+        </div>
+
+        <!-- Step 1: pick an EPM (the form and success steps below are swapped in by epm-register.js) -->
+        <div class="epm-hero-split">
+          <div class="epm-hero-content">
+            <span class="epm-badge">EXPORT PROMOTIONAL MEETINGS</span>
+            <h1 class="epm-hero-title">Register for EPM</h1>
+            <p class="epm-hero-subtitle">Your journey from the farm to the global market begins here.</p>
+          </div>
+          <div class="epm-hero-visual">
+            <img src="../assets/images/epm_register_hero.avif" alt="EPM Global Market Journey" class="epm-hero-image" />
+          </div>
+        </div>
+
+        <div class="epm-events-section">
+          <h2 class="epm-section-heading">Upcoming EPM Locations</h2>
+          <p style="color: #64748b;">Loading upcoming EPMs…</p>
+        </div>
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: the registration form for the chosen EPM -->
+  <template id="epm-form-view">
+    <div class="epm-form-layout">
+      <div class="epm-form-sidebar">
+        <button class="epm-change-location-btn" data-action="change-location"><i data-icon="arrow-left" data-size="16"></i> Change Location</button>
+        <div class="epm-selected-event-info">
+          <span class="epm-info-label">Registering for</span>
+          <h2 class="epm-info-city" data-slot="city"></h2>
+          <p class="epm-info-state" data-slot="state"></p>
+
+          <div class="epm-info-meta-list">
+            <div class="epm-info-meta-item">
+              <i data-icon="calendar" data-size="18"></i>
+              <span data-slot="date"></span>
+            </div>
+            <div class="epm-info-meta-item">
+              <i data-icon="map-pin" data-size="18"></i>
+              <span data-slot="venue"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="epm-form-main">
+        <h3 class="epm-form-title">Your Details</h3>
+        <form>
+          <div class="epm-grid-2">
+            <div class="epm-form-group">
+              <label class="epm-form-label">Full Name <span class="required">*</span></label>
+              <input type="text" name="fullName" class="epm-form-input" placeholder="Enter your full name" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">Mobile Number <span class="required">*</span></label>
+              <input type="tel" name="mobileNumber" class="epm-form-input" placeholder="10-digit mobile number" maxlength="10" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">State <span class="required">*</span></label>
+              <input type="text" name="state" class="epm-form-input" placeholder="e.g. Maharashtra" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">District <span class="required">*</span></label>
+              <input type="text" name="district" class="epm-form-input" placeholder="e.g. Nashik" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">Participant Type <span class="required">*</span></label>
+              <select name="participantType" class="epm-form-select">
+                <option value="">Select type</option>
+                <option value="Farmer">Farmer</option>
+                <option value="FPO">FPO</option>
+                <option value="PACS">PACS</option>
+                <option value="SHG">SHG</option>
+                <option value="MSME">MSME</option>
+                <option value="Exporter">Exporter</option>
+                <option value="Entrepreneur">Entrepreneur</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">Email Address <span class="optional">(Optional)</span></label>
+              <input type="email" name="email" class="epm-form-input" placeholder="your@email.com" />
+            </div>
+          </div>
+
+          <div class="epm-checkbox-group">
+            <input type="checkbox" id="consent" name="consent" />
+            <label for="consent" class="epm-checkbox-label">I agree to receive EPM-related updates via SMS/Email.</label>
+          </div>
+
+          <button type="submit" class="epm-submit-btn">Register for EPM <i data-icon="arrow-right" data-size="20"></i></button>
+        </form>
+      </div>
+    </div>
+  </template>
+
+  <!-- Step 3: confirmation -->
+  <template id="epm-success-view">
+    <div class="epm-success-state">
+      <div class="epm-success-icon-wrap">
+        <i data-icon="check-circle-2" data-size="48" data-stroke-width="2.5"></i>
+      </div>
+      <h2 class="epm-success-title">You're Registered</h2>
+      <div class="epm-success-meta" data-slot="meta"></div>
+      <p class="epm-success-text">Your registration has been received successfully. We look forward to seeing you there and will share further details shortly.</p>
+      <button class="epm-back-btn" data-nav="epm"><i data-icon="arrow-left" data-size="18"></i> Back to EPM</button>
+    </div>
+  </template>
+</body>
+</html>

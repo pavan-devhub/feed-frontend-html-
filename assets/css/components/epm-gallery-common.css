@@ -1,0 +1,763 @@
+/* ==========================================================================
+   EPM Gallery - shared design system
+   One visual language for the gallery journey: EpmGallery (states) ->
+   EpmGalleryState (districts) -> EpmGalleryDistrict (photographs).
+   Every page root carries `.epg`, which defines the tokens below.
+   ========================================================================== */
+
+.epg {
+  /* colour - FEED forest green, a saffron accent used sparingly, warm paper neutrals */
+  --epg-ink: #10201a;
+  --epg-ink-soft: #34453d;
+  --epg-muted: #5c6b63;
+  --epg-line: rgba(16, 32, 26, 0.1);
+  --epg-line-strong: rgba(16, 32, 26, 0.18);
+  --epg-paper: #f6f6f1;
+  --epg-surface: #ffffff;
+  --epg-sunken: #e9ece4;
+  --epg-forest: #0b5d3b;
+  --epg-forest-hover: #084a2f;
+  --epg-forest-deep: #062a1c;
+  --epg-forest-tint: #e5efe8;
+  --epg-saffron: #f5a900;
+
+  /* type */
+  --epg-font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+  --epg-font-text: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* shape, depth, motion */
+  --epg-radius-xl: 28px;
+  --epg-radius-lg: 22px;
+  --epg-radius: 16px;
+  --epg-radius-sm: 12px;
+  --epg-shadow-sm: 0 1px 2px rgba(16, 32, 26, 0.04), 0 6px 18px -6px rgba(16, 32, 26, 0.08);
+  --epg-shadow-lg: 0 2px 6px rgba(16, 32, 26, 0.05), 0 28px 50px -20px rgba(16, 32, 26, 0.28);
+  --epg-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* layout */
+  --epg-max: 1320px;
+  --epg-gutter: clamp(16px, 4vw, 40px);
+  --epg-section: clamp(64px, 8.5vw, 120px);
+
+  min-height: 100vh;
+  padding-top: 80px; /* clears the fixed navbar, like the other EPM pages */
+  background: var(--epg-paper);
+  color: var(--epg-ink);
+  overflow-x: clip;
+}
+
+.epg-main {
+  animation: epg-fade 0.5s ease both;
+}
+
+.epg-container {
+  width: 100%;
+  max-width: calc(var(--epg-max) + 2 * var(--epg-gutter));
+  margin-inline: auto;
+  padding-inline: var(--epg-gutter);
+}
+
+.epg-section {
+  padding-block: var(--epg-section);
+}
+
+/* the first section under a hero sits closer, so its content starts near the fold */
+.epg-section.epg-section-lead {
+  padding-top: clamp(44px, 5.5vw, 80px);
+}
+
+/* a white band that sets a section apart from the paper background */
+.epg-band {
+  background: var(--epg-surface);
+  border-block: 1px solid var(--epg-line);
+}
+
+.epg-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Type ---------- */
+.epg-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--epg-font-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--epg-forest);
+}
+
+.epg-eyebrow::before {
+  content: '';
+  flex-shrink: 0;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--epg-saffron);
+}
+
+.epg-eyebrow.is-light {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.epg-h2 {
+  margin-top: 14px;
+  font-family: var(--epg-font-display);
+  font-size: clamp(1.875rem, 1.25rem + 2.3vw, 2.875rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  color: var(--epg-ink);
+  text-wrap: balance;
+}
+
+.epg-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 48px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.epg-section-head-main {
+  max-width: 720px;
+}
+
+.epg-section-head-side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.epg-section-head-main .epg-section-desc {
+  margin-top: 12px;
+}
+
+.epg-section-desc {
+  max-width: 46ch;
+  font-family: var(--epg-font-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--epg-muted);
+}
+
+/* ---------- Buttons & links ---------- */
+.epg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--epg-font-text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.25s,
+    border-color 0.25s,
+    color 0.25s,
+    box-shadow 0.25s,
+    transform 0.3s var(--epg-ease);
+}
+
+.epg-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.35s var(--epg-ease);
+}
+
+.epg-btn:active {
+  transform: scale(0.98);
+}
+
+.epg-btn-sm {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 0.875rem;
+}
+
+.epg-btn-primary {
+  background: var(--epg-forest);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(6, 42, 28, 0.2), 0 10px 22px -10px rgba(11, 93, 59, 0.6);
+}
+
+.epg-btn-primary:hover {
+  background: var(--epg-forest-hover);
+}
+
+.epg-btn-secondary {
+  background: var(--epg-surface);
+  border-color: var(--epg-line-strong);
+  color: var(--epg-ink);
+}
+
+.epg-btn-secondary:hover {
+  border-color: var(--epg-forest);
+  color: var(--epg-forest);
+}
+
+/* arrow nudges on hover */
+.epg-btn:hover .epg-nudge-right { transform: translateX(3px); }
+.epg-btn:hover .epg-nudge-left { transform: translateX(-3px); }
+.epg-btn:hover .epg-nudge-down { transform: translateY(2px); }
+
+.epg-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  font-family: var(--epg-font-text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--epg-forest);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: text-decoration-color 0.25s, color 0.25s;
+}
+
+.epg-link svg {
+  transition: transform 0.35s var(--epg-ease);
+}
+
+.epg-link:hover {
+  color: var(--epg-forest-hover);
+  text-decoration-color: currentColor;
+}
+
+.epg-link:hover svg {
+  transform: translateX(3px);
+}
+
+.epg-btn:focus-visible,
+.epg-link:focus-visible,
+.epg-crumbs button:focus-visible,
+.epg-next:focus-visible {
+  outline: 3px solid var(--epg-saffron);
+  outline-offset: 3px;
+}
+
+/* ---------- Breadcrumbs ---------- */
+.epg-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--epg-font-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--epg-muted);
+}
+
+.epg-crumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* index.css gives every element Outfit directly (`*`), so inheritance alone won't reach these */
+.epg-crumbs li,
+.epg-crumbs span {
+  font-family: var(--epg-font-text);
+}
+
+.epg-crumbs li + li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.55;
+}
+
+.epg-crumbs button {
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.epg-crumbs button:hover {
+  color: var(--epg-forest);
+}
+
+.epg-crumbs [aria-current='page'] {
+  color: var(--epg-ink);
+  font-weight: 600;
+}
+
+.epg-crumbs.is-light ol {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.epg-crumbs.is-light button:hover,
+.epg-crumbs.is-light [aria-current='page'] {
+  color: #fff;
+}
+
+/* ---------- Stats ---------- */
+.epg-stats {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.epg-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-inline: clamp(18px, 2.6vw, 34px);
+  border-left: 1px solid var(--epg-line-strong);
+}
+
+.epg-stat:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.epg-stat dd {
+  margin: 0;
+  font-family: var(--epg-font-display);
+  font-size: clamp(1.75rem, 1.35rem + 1.3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  color: var(--epg-ink);
+}
+
+.epg-stat dt {
+  font-family: var(--epg-font-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--epg-muted);
+}
+
+.epg-stats.is-light .epg-stat { border-left-color: rgba(255, 255, 255, 0.22); }
+.epg-stats.is-light .epg-stat:first-child { border-left: 0; }
+.epg-stats.is-light dd { color: #fff; }
+.epg-stats.is-light dt { color: rgba(255, 255, 255, 0.68); }
+
+/* ---------- Photographic hero (state + district pages) ---------- */
+.epg-hero {
+  padding-top: 16px;
+}
+
+.epg-hero-frame {
+  position: relative;
+  display: flex;
+  min-height: clamp(460px, 58vh, 560px);
+  border-radius: var(--epg-radius-xl);
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--epg-forest-deep);
+  color: #fff;
+}
+
+.epg-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.epg-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  transition: transform 2.4s var(--epg-ease);
+}
+
+.epg-hero-img.is-loaded {
+  transform: none;
+}
+
+/* scrim: strong where the copy sits (left, bottom), clear over the rest of the photo */
+.epg-hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(4, 20, 13, 0.84) 0%, rgba(4, 20, 13, 0.58) 36%, rgba(4, 20, 13, 0.12) 72%, rgba(4, 20, 13, 0.04) 100%),
+    linear-gradient(0deg, rgba(4, 20, 13, 0.82) 0%, rgba(4, 20, 13, 0) 50%),
+    linear-gradient(180deg, rgba(4, 20, 13, 0.42) 0%, rgba(4, 20, 13, 0) 24%);
+}
+
+.epg-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  padding: clamp(22px, 3.2vw, 40px) clamp(22px, 4vw, 56px) clamp(24px, 3.4vw, 44px);
+}
+
+.epg-hero-inner > * {
+  animation: epg-rise 0.9s var(--epg-ease) both;
+}
+
+.epg-hero-inner > :nth-child(2) { animation-delay: 0.08s; }
+.epg-hero-inner > :nth-child(3) { animation-delay: 0.18s; }
+
+.epg-hero-copy {
+  max-width: 660px;
+  margin-top: auto;
+}
+
+.epg-hero-title {
+  margin-top: 18px;
+  font-family: var(--epg-font-display);
+  font-size: clamp(2.75rem, 1.5rem + 4.6vw, 5.25rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+}
+
+.epg-hero-lead {
+  max-width: 52ch;
+  margin-top: 20px;
+  font-family: var(--epg-font-text);
+  font-size: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.epg-hero-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 40px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Next EPM card (sits in the hero foot) ---------- */
+.epg-next {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 420px);
+  padding: 12px 14px 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.epg-next:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.epg-next-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 62px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--epg-forest);
+}
+
+.epg-next-date span {
+  font-family: var(--epg-font-text);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.epg-next-date strong {
+  font-family: var(--epg-font-display);
+  font-size: 1.625rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--epg-ink);
+}
+
+.epg-next-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.epg-next-label {
+  font-family: var(--epg-font-text);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--epg-saffron);
+}
+
+.epg-next-title {
+  overflow: hidden;
+  font-family: var(--epg-font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.epg-next-meta {
+  overflow: hidden;
+  font-family: var(--epg-font-text);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.epg-next-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.epg-next-go svg {
+  transition: transform 0.35s var(--epg-ease);
+}
+
+.epg-next:hover .epg-next-go svg {
+  transform: translateX(3px);
+}
+
+/* ---------- Search field ---------- */
+.epg-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: min(100%, 320px);
+  height: 48px;
+  padding: 0 16px 0 44px;
+  border: 1px solid var(--epg-line-strong);
+  border-radius: 999px;
+  background: var(--epg-surface);
+  color: var(--epg-muted);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.epg-search svg {
+  position: absolute;
+  left: 16px;
+  pointer-events: none;
+}
+
+.epg-search:focus-within {
+  border-color: var(--epg-forest);
+  box-shadow: 0 0 0 4px rgba(11, 93, 59, 0.12);
+}
+
+.epg-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: var(--epg-font-text);
+  font-size: 0.9375rem;
+  color: var(--epg-ink);
+}
+
+.epg-search input::placeholder {
+  color: var(--epg-muted);
+}
+
+/* ---------- Loading / empty / error ---------- */
+.epg-skeleton {
+  background: linear-gradient(100deg, var(--epg-sunken) 30%, #f1f3ee 50%, var(--epg-sunken) 70%);
+  background-size: 240% 100%;
+  animation: epg-shimmer 1.5s linear infinite;
+}
+
+.epg-skeleton-line {
+  display: block;
+  height: 14px;
+  border-radius: 7px;
+  background: var(--epg-sunken);
+}
+
+.epg-skeleton-line.is-thin {
+  height: 10px;
+}
+
+.epg-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: clamp(72px, 12vw, 128px) 24px;
+  text-align: center;
+}
+
+.epg-message-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: var(--epg-forest-tint);
+  color: var(--epg-forest);
+}
+
+.epg-message-title {
+  font-family: var(--epg-font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--epg-ink);
+}
+
+.epg-message-text {
+  margin-top: 10px;
+  font-family: var(--epg-font-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--epg-muted);
+}
+
+.epg-message-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* ---------- Scroll reveal (Reveal.jsx) ---------- */
+.epg-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.8s var(--epg-ease) var(--epg-reveal-delay, 0ms),
+    transform 1s var(--epg-ease) var(--epg-reveal-delay, 0ms);
+}
+
+.epg-reveal.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Motion ---------- */
+@keyframes epg-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes epg-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes epg-shimmer {
+  from { background-position: 120% 0; }
+  to { background-position: -120% 0; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .epg-hero-frame {
+    min-height: 0;
+    border-radius: var(--epg-radius-lg);
+  }
+  .epg-hero-inner { gap: 26px; }
+  .epg-hero-copy { padding-top: 96px; }
+  .epg-hero-media::after {
+    background:
+      linear-gradient(0deg, rgba(4, 20, 13, 0.92) 0%, rgba(4, 20, 13, 0.62) 55%, rgba(4, 20, 13, 0.25) 100%),
+      linear-gradient(180deg, rgba(4, 20, 13, 0.45) 0%, rgba(4, 20, 13, 0) 30%);
+  }
+  .epg-hero-foot { align-items: stretch; }
+  .epg-next { width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .epg-hero { padding-top: 10px; }
+  .epg-hero-copy { padding-top: 64px; }
+
+  /* stats become a tidy two-column block */
+  .epg-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 0;
+    width: 100%;
+  }
+  .epg-stat { padding-inline: 16px; }
+  .epg-stat:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .epg-stats.is-light .epg-stat:nth-child(odd) { border-left: 0; }
+
+  .epg-section-head-side,
+  .epg-search { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .epg-main,
+  .epg-hero-inner > *,
+  .epg-skeleton {
+    animation: none;
+  }
+  .epg-hero-img,
+  .epg-reveal,
+  .epg-btn,
+  .epg-btn svg,
+  .epg-link svg,
+  .epg-next-go svg {
+    transition: none;
+  }
+  .epg-hero-img { transform: none; }
+  .epg-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

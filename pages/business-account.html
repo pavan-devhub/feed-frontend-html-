@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Account | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/my-business.css" />
+  <link rel="stylesheet" href="../assets/css/pages/business-account.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/business-account.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div id="site-navbar"></div>
+      <div class="mb-layout">
+        <!-- Sidebar (rendered by assets/js/components/my-business-layout.js) -->
+        <aside class="mb-sidebar" id="mb-sidebar"></aside>
+
+        <!-- Main Content -->
+        <div style="flex: 1;">
+          <div class="ba-dashboard-container">
+
+            <!-- Business Setup Section -->
+            <section class="ba-main-section">
+              <header class="ba-section-header">
+                <div class="ba-section-title-wrap">
+                  <img src="../assets/images/my-business/business_setup.svg" alt="Business Setup" class="ba-section-icon" />
+                  <div class="ba-section-texts">
+                    <h2>Business Setup</h2>
+                    <p>Setup and manage your core business entities</p>
+                  </div>
+                </div>
+                <div class="ba-badge purple-badge">3 Modules</div>
+              </header>
+
+              <div class="ba-modules-grid cols-3">
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/create_vendor.svg" alt="Create Vendor" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Create Vendor</h3>
+                      <p>Add and manage your business vendors</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/create_product.svg" alt="Create Product" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Create Product</h3>
+                      <p>Add and manage your products &amp; services</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/share_capital.svg" alt="Share Capital Registry" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Share Capital Registry</h3>
+                      <p>Manage share capital and investors</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Finance & Accounting Section -->
+            <section class="ba-main-section">
+              <header class="ba-section-header">
+                <div class="ba-section-title-wrap">
+                  <img src="../assets/images/my-business/finance_accounting.svg" alt="Finance &amp; Accounting" class="ba-section-icon" />
+                  <div class="ba-section-texts">
+                    <h2>Finance &amp; Accounting</h2>
+                    <p>Manage all your financial transactions and records</p>
+                  </div>
+                </div>
+                <div class="ba-badge blue-badge">5 Modules</div>
+              </header>
+
+              <div class="ba-modules-grid cols-4">
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/purchase_registry.svg" alt="Purchase Registry" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Purchase Registry</h3>
+                      <p>Track and manage purchase transactions</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/sales_registry.svg" alt="Sales Registry" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Sales Registry</h3>
+                      <p>Track and manage sales transactions</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/bank_registry.svg" alt="Bank Registry" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Bank Registry</h3>
+                      <p>Manage your bank accounts</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/cashbook_registry.svg" alt="Cashbook Registry" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Cashbook Registry</h3>
+                      <p>Manage cash in hand transactions</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+
+                <div class="ba-module-card">
+                  <div class="ba-module-content">
+                    <img src="../assets/images/my-business/ledger_registry.svg" alt="Ledger Registry" class="ba-module-icon" />
+                    <div class="ba-module-texts">
+                      <h3>Ledger Registry</h3>
+                      <p>View and manage ledger accounts</p>
+                    </div>
+                  </div>
+                  <button type="button" class="ba-module-arrow">
+                    <i data-icon="chevron-right" data-size="18"></i>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Bottom Split Sections -->
+            <div class="ba-split-sections">
+              <!-- Inventory Section -->
+              <section class="ba-main-section half-width">
+                <header class="ba-section-header">
+                  <div class="ba-section-title-wrap">
+                    <img src="../assets/images/my-business/inventory.svg" alt="Inventory" class="ba-section-icon" />
+                    <div class="ba-section-texts">
+                      <h2>Inventory</h2>
+                      <p>Manage your stock and inventory</p>
+                    </div>
+                  </div>
+                  <div class="ba-badge green-badge">1 Module</div>
+                </header>
+
+                <div class="ba-modules-grid cols-1">
+                  <div class="ba-module-card">
+                    <div class="ba-module-content">
+                      <img src="../assets/images/my-business/stock_registry.svg" alt="Stock Registry" class="ba-module-icon" />
+                      <div class="ba-module-texts">
+                        <h3>Stock Registry</h3>
+                        <p>Track and manage stock items</p>
+                      </div>
+                    </div>
+                    <button type="button" class="ba-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Insights & Reporting Section -->
+              <section class="ba-main-section half-width">
+                <header class="ba-section-header">
+                  <div class="ba-section-title-wrap">
+                    <img src="../assets/images/my-business/insights_reporting.svg" alt="Insights &amp; Reporting" class="ba-section-icon" />
+                    <div class="ba-section-texts">
+                      <h2>Insights &amp; Reporting</h2>
+                      <p>Analyze and export business insights</p>
+                    </div>
+                  </div>
+                  <div class="ba-badge purple-badge">1 Module</div>
+                </header>
+
+                <div class="ba-modules-grid cols-1">
+                  <div class="ba-module-card">
+                    <div class="ba-module-content">
+                      <img src="../assets/images/my-business/reports.svg" alt="Reports" class="ba-module-icon" />
+                      <div class="ba-module-texts">
+                        <h3>Reports</h3>
+                        <p>View insightful reports and analytics</p>
+                      </div>
+                    </div>
+                    <button type="button" class="ba-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div id="site-footer"></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/pages/register.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/register.js"></script>
+</head>
+<body>
+  <div class="fullscreen-register-wrapper" style="background-image: url(../assets/images/reg.avif); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #f4f4f9; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: flex-end; box-sizing: border-box; padding-right: 6%; margin: 0; position: fixed; top: 0; left: 0; font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <div class="register-panel" id="register-panel" style="background: #faf9f6; border-radius: 24px; padding: 32px 32px 24px 32px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.15); display: flex; flex-direction: column; box-sizing: border-box; scrollbar-width: none; -ms-overflow-style: none;">
+
+      <!-- Header -->
+      <div id="register-header" style="position: relative; display: flex; flex-direction: column; align-items: center; margin-bottom: 32px; margin-top: 8px;">
+        <button type="button" data-nav="login" style="position: absolute; left: 0; top: 0; background: none; border: none; cursor: pointer; color: #6b7280; display: flex; padding: 4px; margin-left: -4px;">
+          <i data-icon="arrow-left" data-size="24"></i>
+        </button>
+        <img src="../assets/images/logo.avif" alt="Logo" style="height: 96px; margin-bottom: 16px; object-fit: contain;" />
+        <h2 style="margin: 0; font-size: 24px; color: #1a1a1a; font-weight: 700; text-align: center;">Create an Account</h2>
+      </div>
+
+      <!-- Notification popup is inserted here (between the header and the form) by register.js -->
+
+      <!-- Form -->
+      <form id="register-form" style="display: flex; flex-direction: column; gap: 16px;">
+
+        <div style="display: flex; gap: 12px;">
+          <div style="flex: 1;">
+            <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">First Name</label>
+            <input type="text" name="firstName" placeholder="Enter First Name" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+          </div>
+          <div style="flex: 1;">
+            <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Middle Name</label>
+            <input type="text" name="middleName" placeholder="Enter Middle Name" style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Last Name</label>
+          <input type="text" name="lastName" placeholder="Enter Last Name" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+        </div>
+
+        <div>
+          <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Gender</label>
+          <div style="display: flex; gap: 24px; align-items: center; height: 40px;">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #1a1a1a; cursor: pointer;">
+              <input type="radio" name="gender" value="Male" class="gender-radio" required />
+              Male
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #1a1a1a; cursor: pointer;">
+              <input type="radio" name="gender" value="Female" class="gender-radio" required />
+              Female
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #1a1a1a; cursor: pointer;">
+              <input type="radio" name="gender" value="Others" class="gender-radio" required />
+              Others
+            </label>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px;">
+          <div style="flex: 1;">
+            <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Phone</label>
+            <div style="display: flex; position: relative;">
+              <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: #1a1a1a; font-weight: 500;">+91</span>
+              <input type="tel" name="phone" placeholder="00000 00000" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s; padding-left: 48px;" />
+            </div>
+          </div>
+          <div style="flex: 1;">
+            <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Date of Birth</label>
+            <input type="date" name="dob" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #9ca3af; transition: border-color 0.2s;" />
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Email</label>
+          <input type="email" name="email" placeholder="Enter Email" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+        </div>
+
+        <div>
+          <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Education</label>
+          <input type="text" name="education" placeholder="Enter Education" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+        </div>
+
+        <div style="display: flex; gap: 12px;">
+          <div style="flex: 1;">
+            <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Enter Password</label>
+            <input type="password" name="password" placeholder="••••••••" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+          </div>
+          <div style="flex: 1;">
+            <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">Confirm Password</label>
+            <input type="password" name="confirmPassword" placeholder="••••••••" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+          </div>
+        </div>
+
+        <div style="margin-top: 8px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+          <h3 style="margin: 0 0 16px 0; font-size: 18px; color: #1a1a1a; font-weight: 700;">Membership Details</h3>
+
+          <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+            <div style="flex: 1;">
+              <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">State</label>
+              <select name="state" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s; cursor: pointer;">
+                <option value="" disabled selected>Select State</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Telangana">Telangana</option>
+              </select>
+            </div>
+            <div style="flex: 1;">
+              <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">District</label>
+              <select name="district" required disabled style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s; cursor: not-allowed; background-color: #f9fafb;">
+                <option value="" disabled selected>Select District</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px;">
+            <div style="flex: 1;">
+              <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">City/Village</label>
+              <input type="text" name="city" placeholder="Enter City or Village" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s;" />
+            </div>
+            <div style="flex: 1;">
+              <label style="font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block;">User Type</label>
+              <select name="userType" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #e5e7eb; background: #ffffff; font-size: 14px; outline: none; box-sizing: border-box; color: #1a1a1a; transition: border-color 0.2s; cursor: pointer;">
+                <option value="" disabled selected>Loading user types…</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" style="width: 100%; padding: 14px 20px; border-radius: 8px; border: none; background: #3e6b36; color: white; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; box-shadow: 0 4px 12px rgba(62, 107, 54, 0.2); opacity: 1;"><i data-icon="check" data-size="20"></i>Register</button>
+      </form>
+
+    </div>
+  </div>
+</body>
+</html>

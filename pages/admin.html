@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <!-- the Feed World section's PDF viewer -->
+  <link rel="stylesheet" href="../assets/css/vendor/pdf-annotation-layer.css" />
+  <link rel="stylesheet" href="../assets/css/vendor/pdf-text-layer.css" />
+  <link rel="stylesheet" href="../assets/css/components/pdf-viewer.css" />
+  <!-- admin-publications.css: Feed World publications + the shared admin-pub-* tables, forms, modals;
+       admin.css: the panel shell, sidebar and EPM sections -->
+  <link rel="stylesheet" href="../assets/css/pages/admin-publications.css" />
+  <link rel="stylesheet" href="../assets/css/pages/admin.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/admin.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <!-- The one admin panel for the whole site (Feed World publications + every EPM screen).
+           Hidden until the backend has confirmed the ADMIN login - see assets/js/pages/admin.js. -->
+      <div class="admin-pub-page adm-page" style="display: none;">
+        <div id="site-navbar"></div>
+        <div style="height: 86px; flex-shrink: 0;"></div>
+
+        <div class="adm-shell">
+          <aside class="adm-sidebar" aria-label="Admin sections">
+            <div class="adm-sidebar-title"><i data-icon="shield-check" data-size="16"></i> Admin panel</div>
+            <nav>
+              <div class="adm-nav-group">
+                <button type="button" class="adm-nav-item" data-section="overview"><i data-icon="layout-dashboard" data-size="16"></i> <span>Overview</span></button>
+              </div>
+              <div class="adm-nav-group">
+                <div class="adm-nav-group-label">Feed World</div>
+                <button type="button" class="adm-nav-item" data-section="feedworld"><i data-icon="book-open" data-size="16"></i> <span>Publications</span></button>
+              </div>
+              <div class="adm-nav-group">
+                <div class="adm-nav-group-label">EPM</div>
+                <button type="button" class="adm-nav-item" data-section="epm-events"><i data-icon="calendar-days" data-size="16"></i> <span>EPM Events</span></button>
+                <button type="button" class="adm-nav-item" data-section="epm-registrations"><i data-icon="users" data-size="16"></i> <span>Registrations</span></button>
+                <button type="button" class="adm-nav-item" data-section="epm-volunteers"><i data-icon="heart-handshake" data-size="16"></i> <span>Volunteers</span></button>
+                <button type="button" class="adm-nav-item" data-section="epm-categories"><i data-icon="tags" data-size="16"></i> <span>Categories</span></button>
+                <button type="button" class="adm-nav-item" data-section="epm-venues"><i data-icon="map-pin" data-size="16"></i> <span>Venues</span></button>
+                <button type="button" class="adm-nav-item" data-section="epm-images"><i data-icon="images" data-size="16"></i> <span>Page &amp; Gallery Images</span></button>
+                <button type="button" class="adm-nav-item" data-section="epm-reviews"><i data-icon="quote" data-size="16"></i> <span>Reviews</span></button>
+              </div>
+            </nav>
+          </aside>
+
+          <main class="adm-main"></main>
+        </div>
+
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

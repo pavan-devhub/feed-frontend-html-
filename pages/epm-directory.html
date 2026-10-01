@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPM Directory | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/epm-directory.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/epm-directory.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="epm-dir-page">
+        <div id="site-navbar"></div>
+
+        <div class="epm-dir-topbar">
+          <button class="epm-dir-back-btn" data-nav="epm"><i data-icon="arrow-left" data-size="16"></i> Back to EPM</button>
+        </div>
+
+        <div class="epm-dir-hero-wrap">
+          <div class="epm-dir-hero">
+            <div class="epm-dir-hero-content">
+              <h1 class="epm-dir-title">EPM Directory</h1>
+              <p class="epm-dir-subtitle">Explore Export Promotional Meetings (EPMs) across India.<br />Connect, learn, and expand your export opportunities.</p>
+
+              <div class="epm-dir-hero-stats">
+                <div class="ed-stat-pill">
+                  <i data-icon="calendar-days" data-size="18" class="text-green-600"></i>
+                  <div>
+                    <strong>Discover</strong>
+                    <span>Events Near You</span>
+                  </div>
+                </div>
+                <div class="ed-stat-pill">
+                  <i data-icon="users" data-size="18" class="text-blue-600"></i>
+                  <div>
+                    <strong>Connect</strong>
+                    <span>With Experts</span>
+                  </div>
+                </div>
+                <div class="ed-stat-pill">
+                  <i data-icon="layout-list" data-size="18" class="text-orange-600"></i>
+                  <div>
+                    <strong>Grow</strong>
+                    <span>Your Global Reach</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="epm-dir-hero-img-box">
+              <img src="../assets/images/epm/epm-directory-hero-india.avif" alt="India Agricultural Export Opportunities" class="epm-dir-hero-img" />
+            </div>
+          </div>
+        </div>
+
+        <div class="epm-dir-searchbar">
+          <form class="ed-filters-form" id="ed-filters-form">
+            <div class="ed-filter-col ed-search-col">
+              <label>Search EPMs</label>
+              <div class="ed-input-wrap">
+                <i data-icon="search" data-size="16"></i>
+                <input type="text" name="query" placeholder="Search by title, location or keyword..." value="" />
+              </div>
+            </div>
+
+            <div class="ed-filter-col">
+              <label>Month</label>
+              <div class="ed-select-wrap">
+                <i data-icon="calendar" data-size="16"></i>
+                <select name="month">
+                  <option value="">All Months</option>
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+                <i data-icon="chevron-down" data-size="14" class="ed-chev"></i>
+              </div>
+            </div>
+
+            <div class="ed-filter-col">
+              <label>State</label>
+              <div class="ed-select-wrap">
+                <i data-icon="map-pin" data-size="16"></i>
+                <!-- Options come from the loaded EPMs (see epm-directory.js) -->
+                <select name="state">
+                  <option value="">All States</option>
+                </select>
+                <i data-icon="chevron-down" data-size="14" class="ed-chev"></i>
+              </div>
+            </div>
+
+            <div class="ed-filter-col">
+              <label>District</label>
+              <div class="ed-select-wrap">
+                <i data-icon="building-2" data-size="16"></i>
+                <select name="district">
+                  <option value="">All Districts</option>
+                </select>
+                <i data-icon="chevron-down" data-size="14" class="ed-chev"></i>
+              </div>
+            </div>
+
+            <div class="ed-filter-col">
+              <label>Place</label>
+              <div class="ed-select-wrap">
+                <i data-icon="map" data-size="16"></i>
+                <select name="city">
+                  <option value="">All Places</option>
+                </select>
+                <i data-icon="chevron-down" data-size="14" class="ed-chev"></i>
+              </div>
+            </div>
+
+            <div class="ed-filter-actions">
+              <button type="submit" class="ed-btn-apply"><i data-icon="filter" data-size="14"></i> Apply Filters</button>
+              <button type="button" class="ed-btn-reset" id="ed-reset-filters"><i data-icon="rotate-ccw" data-size="14"></i> Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="epm-dir-layout">
+          <div class="epm-dir-sidebar">
+            <div class="ed-sidebar-section">
+              <h3 class="ed-sb-title">Filter by Category</h3>
+              <!-- Category buttons (with counts) are drawn by epm-directory.js -->
+              <div class="ed-sb-categories" id="ed-categories"></div>
+            </div>
+
+            <div class="ed-sidebar-section">
+              <h3 class="ed-sb-title">Quick Links</h3>
+              <div class="ed-sb-links">
+                <button class="ed-link-btn active"><i data-icon="calendar-days" data-size="14"></i> Upcoming EPMs</button>
+                <button class="ed-link-btn"><i data-icon="clock" data-size="14"></i> Ongoing EPMs</button>
+                <button class="ed-link-btn"><i data-icon="history" data-size="14"></i> Past EPMs</button>
+                <button class="ed-link-btn"><i data-icon="check-circle-2" data-size="14"></i> My Registered EPMs</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="epm-dir-main">
+            <div class="ed-main-toolbar">
+              <div class="ed-toolbar-left">
+                <div class="ed-toolbar-icon"><i data-icon="calendar-days" data-size="20"></i></div>
+                <div>
+                  <h2 id="ed-list-title">Upcoming EPMs</h2>
+                  <p id="ed-list-count">0 events found</p>
+                </div>
+              </div>
+              <div class="ed-toolbar-right">
+                <div class="ed-tabs" id="ed-tabs">
+                  <button class="ed-tab active" data-tab="upcoming"><i data-icon="calendar-days" data-size="14"></i> Upcoming</button>
+                  <button class="ed-tab" data-tab="previous"><i data-icon="history" data-size="14"></i> Previous</button>
+                </div>
+
+                <div class="ed-view-toggle" id="ed-view-toggle">
+                  <button class="ed-view-btn" data-view="grid"><i data-icon="layout-grid" data-size="16"></i></button>
+                  <button class="ed-view-btn active" data-view="list"><i data-icon="list" data-size="16"></i></button>
+                </div>
+
+                <div class="ed-sort">
+                  <span>Sort by: Upcoming First</span>
+                  <i data-icon="chevron-down" data-size="14"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="ed-event-list" id="ed-event-list">
+              <div class="ed-state-msg"><i data-icon="loader-2" data-size="24" class="spin"></i> Loading Events...</div>
+            </div>
+          </div>
+        </div>
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

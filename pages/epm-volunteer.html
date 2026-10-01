@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Become an EPM Volunteer | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <!-- epm.css also styles .epm-hero-title / .epm-hero-subtitle / .epm-event-details; epm-forms.css refines them -->
+  <link rel="stylesheet" href="../assets/css/pages/epm.css" />
+  <link rel="stylesheet" href="../assets/css/pages/epm-forms.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/epm-volunteer.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="epm-premium-container">
+        <div id="site-navbar"></div>
+        <div class="epm-premium-nav">
+          <button class="epm-back-link" data-nav="epm"><i data-icon="arrow-left" data-size="18"></i> Back to EPM</button>
+        </div>
+
+        <!-- Step 1: pick an EPM (the form and success steps below are swapped in by epm-volunteer.js) -->
+        <div class="epm-hero-split">
+          <div class="epm-hero-content">
+            <span class="epm-badge">EPM VOLUNTEER NETWORK</span>
+            <h1 class="epm-hero-title">Become an EPM Volunteer</h1>
+            <p class="epm-hero-subtitle">Help build stronger connections between India's farmers and the global market.</p>
+
+            <div class="epm-story-flow">
+              <div class="epm-story-step">
+                <span class="epm-story-label">Connect</span>
+                <span class="epm-story-value">Farmers</span>
+              </div>
+              <i data-icon="arrow-right" data-size="20" class="epm-story-arrow"></i>
+              <div class="epm-story-step">
+                <span class="epm-story-label">Support</span>
+                <span class="epm-story-value">District EPM</span>
+              </div>
+              <i data-icon="arrow-right" data-size="20" class="epm-story-arrow"></i>
+              <div class="epm-story-step">
+                <span class="epm-story-label">Enable</span>
+                <span class="epm-story-value">Export Options</span>
+              </div>
+            </div>
+          </div>
+          <div class="epm-hero-visual">
+            <img src="../assets/images/epm_volunteer_hero.avif" alt="EPM Volunteer Community" class="epm-hero-image" />
+          </div>
+        </div>
+
+        <div class="epm-events-section">
+          <h2 class="epm-section-heading">Where would you like to volunteer?</h2>
+          <p style="color: #64748b;">Loading upcoming EPMs…</p>
+        </div>
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: the volunteer application for the chosen EPM -->
+  <template id="epm-form-view">
+    <div class="epm-form-layout">
+      <div class="epm-form-sidebar">
+        <button class="epm-change-location-btn" data-action="change-location"><i data-icon="arrow-left" data-size="16"></i> Change Location</button>
+        <div class="epm-selected-event-info">
+          <span class="epm-info-label">Volunteering at</span>
+          <h2 class="epm-info-city" data-slot="city"></h2>
+          <p class="epm-info-state" data-slot="state"></p>
+
+          <div class="epm-info-meta-list">
+            <div class="epm-info-meta-item">
+              <i data-icon="calendar" data-size="18"></i>
+              <span data-slot="date"></span>
+            </div>
+            <div class="epm-info-meta-item">
+              <i data-icon="map-pin" data-size="18"></i>
+              <span data-slot="venue"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="epm-form-main">
+        <h3 class="epm-form-title">Volunteer Application</h3>
+        <form>
+          <div class="epm-grid-2">
+            <div class="epm-form-group">
+              <label class="epm-form-label">Full Name <span class="required">*</span></label>
+              <input type="text" name="fullName" class="epm-form-input" placeholder="Enter your full name" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">Mobile Number <span class="required">*</span></label>
+              <input type="tel" name="mobileNumber" class="epm-form-input" placeholder="10-digit mobile number" maxlength="10" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">Email Address <span class="optional">(Optional)</span></label>
+              <input type="email" name="email" class="epm-form-input" placeholder="your@email.com" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">Experience / Background <span class="required">*</span></label>
+              <select name="experience" class="epm-form-select">
+                <option value="">Select background</option>
+                <option value="Agriculture / Farming">Agriculture / Farming</option>
+                <option value="FPO / Cooperative">FPO / Cooperative</option>
+                <option value="Student">Student</option>
+                <option value="Business / MSME">Business / MSME</option>
+                <option value="Social / Community Work">Social / Community Work</option>
+                <option value="Government / Institutional">Government / Institutional</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">State <span class="required">*</span></label>
+              <input type="text" name="state" class="epm-form-input" placeholder="e.g. Maharashtra" />
+            </div>
+
+            <div class="epm-form-group">
+              <label class="epm-form-label">District / City <span class="required">*</span></label>
+              <input type="text" name="district" class="epm-form-input" placeholder="e.g. Nashik" />
+            </div>
+
+            <div class="epm-form-group full-width">
+              <label class="epm-form-label">Why do you want to volunteer? <span class="optional">(Optional)</span></label>
+              <textarea name="reason" class="epm-form-textarea" placeholder="Tell us briefly how you would like to contribute..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="epm-submit-btn">Apply as Volunteer <i data-icon="arrow-right" data-size="20"></i></button>
+        </form>
+      </div>
+    </div>
+  </template>
+
+  <!-- Step 3: confirmation -->
+  <template id="epm-success-view">
+    <div class="epm-success-state">
+      <div class="epm-success-icon-wrap">
+        <i data-icon="check-circle-2" data-size="48" data-stroke-width="2.5"></i>
+      </div>
+      <h2 class="epm-success-title">Thank You for Volunteering!</h2>
+      <div class="epm-success-meta" data-slot="meta"></div>
+      <p class="epm-success-text">Your interest in supporting the EPM has been received. Our team will contact you with the next steps soon.</p>
+      <button class="epm-back-btn" data-nav="epm"><i data-icon="arrow-left" data-size="18"></i> Back to EPM</button>
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/components/my-details-form.css" />
+  <link rel="stylesheet" href="../assets/css/components/ers-assessment-panel.css" />
+  <link rel="stylesheet" href="../assets/css/components/plans-page.css" />
+  <link rel="stylesheet" href="../assets/css/pages/dashboard.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/dashboard.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div style="display: flex; flex-direction: column; min-height: 100vh; width: 100%; background-color: #f8fafc;">
+        <div id="site-navbar"></div>
+        <div class="db-layout">
+
+          <!-- 1. LEFT SIDEBAR -->
+          <aside class="db-sidebar">
+            <div class="db-sidebar-bg" style="background-image: url('../assets/images/sidebar_bg.avif');">
+              <div class="db-sidebar-overlay"></div>
+            </div>
+
+            <div class="db-sidebar-content">
+              <!-- Logo & Header -->
+              <div class="db-sidebar-header">
+                <div class="db-logo-wrapper">
+                  <img src="../assets/images/dashboard-logo.avif" alt="Logo" class="db-logo" />
+                </div>
+                <div class="db-brand-text">
+                  <h2 class="db-brand-title">FEED MSCS</h2>
+                  <div class="db-brand-subtitle">SAFE MISSION</div>
+                  <div class="db-brand-tagline">Cooperative Dashboard</div>
+                </div>
+              </div>
+
+              <!-- Navigation (menu groups rendered by assets/js/pages/dashboard/sidebar-nav.js) -->
+              <nav class="db-nav" id="db-nav"></nav>
+            </div>
+          </aside>
+
+          <!-- 2. MAIN CONTENT AREA -->
+          <main class="db-main">
+            <!-- Shows the overview below, or - swapped in by the page script - the profile tabs,
+                 the ERS assessment or the plans page. -->
+            <div class="db-content-scroll" id="db-content">
+
+              <!-- Hero Banner -->
+              <section class="db-hero">
+                <div class="db-hero-bg" style="background-image: url('../assets/images/hero_bg.avif');">
+                  <div class="db-hero-overlay"></div>
+                </div>
+
+                <div class="db-hero-content-stage">
+                  <div class="db-hero-content is-active">
+                    <h2>Empowering Farmers,<br />Building a Better Tomorrow</h2>
+                    <p>Manage, Grow, Achieve – All in One Place</p>
+                    <button class="db-btn-primary">Explore Dashboard <i data-icon="arrow-right" data-size="18"></i></button>
+                  </div>
+
+                  <div class="db-hero-services is-hidden">
+                    <span class="db-hero-services-eyebrow">Explore Our Services</span>
+                    <div class="db-hero-services-track-wrap">
+                      <!-- service chips (the navbar's services list, twice for the loop) rendered by JS -->
+                      <div class="db-hero-services-track"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <img src="../assets/images/farmer_illustration.avif" alt="Farmer" class="db-hero-farmer" />
+              </section>
+
+              <!-- Overview Summary Row: ERS / Krishi Coins / Plan -->
+              <section class="db-summary-grid">
+
+                <div class="db-summary-card db-ers-card" role="button" tabindex="0">
+                  <svg class="db-ers-illustration" viewBox="0 0 140 80" aria-hidden="true" focusable="false">
+                    <circle cx="112" cy="18" r="10" fill="#fde68a" />
+                    <path d="M0 62 C 30 46, 60 70, 90 50 C 105 40, 120 46, 140 38 L140 80 L0 80 Z" fill="#a7f3d0" opacity="0.6" />
+                    <path d="M0 70 C 35 58, 70 76, 140 60 L140 80 L0 80 Z" fill="#5eead4" opacity="0.5" />
+                    <rect x="30" y="58" width="3" height="10" fill="#0f766e" opacity="0.75" />
+                    <circle cx="31.5" cy="54" r="7" fill="#34d399" opacity="0.75" />
+                    <rect x="58" y="52" width="20" height="16" rx="1.5" fill="#ffffff" stroke="#0d9488" stroke-width="1.2" opacity="0.85" />
+                    <path d="M55 52 L68 42 L81 52 Z" fill="#0d9488" opacity="0.85" />
+                  </svg>
+
+                  <div class="db-ers-header">
+                    <div class="db-ers-icon">
+                      <i data-icon="sprout" data-size="19" data-stroke-width="2.2"></i>
+                    </div>
+                    <div class="db-ers-heading">
+                      <h4 class="db-ers-title">ERS</h4>
+                      <div class="db-ers-heading-row">
+                        <p class="db-ers-subtitle">Empowerment &amp; Rural Support</p>
+                        <span class="db-ers-badge"><span class="db-ers-badge-dot" aria-hidden="true"></span>Active</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- The ring, encouragement, status panel and button label follow the ERS status
+                       (GET /api/ers/status) - kept up to date by assets/js/pages/dashboard/overview.js. -->
+                  <div class="db-ers-body">
+                    <div class="db-ers-progress-col">
+                      <div class="db-ers-ring">
+                        <svg viewBox="0 0 100 100">
+                          <defs>
+                            <linearGradient id="ersRingGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                              <stop offset="0%" stop-color="#14b8a6" />
+                              <stop offset="100%" stop-color="#2563eb" />
+                            </linearGradient>
+                          </defs>
+                          <circle class="db-ers-ring-track" cx="50" cy="50" r="36" />
+                          <circle class="db-ers-ring-fill" cx="50" cy="50" r="36" style="stroke-dasharray: 226.1946710584651; stroke-dashoffset: 226.1946710584651;" />
+                        </svg>
+                        <div class="db-ers-ring-center"><i data-icon="play" data-size="16" data-fill="currentColor" class="db-ers-ring-play"></i><span class="db-ers-ring-caption">Get Started</span></div>
+                      </div>
+
+                      <div class="db-ers-encourage">
+                        <div class="db-ers-encourage-icon">
+                          <i data-icon="activity" data-size="12" data-stroke-width="2.4"></i>
+                        </div>
+                        <div>
+                          <div class="db-ers-encourage-title">Let's<br />Begin!</div>
+                          <div class="db-ers-encourage-text">Take the test</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="db-ers-status-col">
+                      <div class="db-ers-status-panel db-ers-status-pending">
+                        <div class="db-ers-status-badge" aria-hidden="true"><i data-icon="shield-check" data-size="12"></i></div>
+                        <span class="db-ers-status-eyebrow">Assessment Status</span>
+                        <span class="db-ers-status-value">Not Started</span>
+                        <span class="db-ers-status-sub">Take the assessment to get started</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="db-ers-cta" type="button">
+                    <span class="db-ers-cta-icon"><i data-icon="file-text" data-size="15"></i></span>
+                    <span class="db-ers-cta-text"><strong>Start Assessment</strong><small>Begin your empowerment journey</small></span>
+                    <span class="db-ers-cta-arrow"><i data-icon="arrow-right" data-size="14"></i></span>
+                  </button>
+                </div>
+
+                <div class="db-summary-card db-coins2-card">
+                  <div class="db-premium-glow db-coins2-glow-a" aria-hidden="true"></div>
+                  <div class="db-premium-glow db-coins2-glow-b" aria-hidden="true"></div>
+                  <i data-icon="coins" class="db-premium-watermark"></i>
+                  <div class="db-premium-dots" aria-hidden="true"></div>
+
+                  <div class="db-premium-header">
+                    <div class="db-premium-icon-wrap db-coins2-icon-wrap">
+                      <i data-icon="coins" data-size="19" data-stroke-width="2.3"></i>
+                    </div>
+                    <div class="db-premium-heading">
+                      <h4 class="db-premium-title">Krishi Coins</h4>
+                      <p class="db-premium-subtitle">Your rewards balance</p>
+                    </div>
+                  </div>
+
+                  <div class="db-coins2-body">
+                    <div class="db-coins2-balance-col">
+                      <div class="db-coins2-balance">
+                        <span class="db-coins2-balance-value">0</span>
+                        <span class="db-coins2-balance-label">Krishi Coins</span>
+                      </div>
+                      <div class="db-coins2-growth"><i data-icon="trending-up" data-size="11"></i> +320 this month</div>
+                    </div>
+
+                    <div class="db-coin-stack" aria-hidden="true">
+                      <div class="db-coin-stack-glow"></div>
+                      <i data-icon="leaf" data-size="15" data-stroke-width="1.6" class="db-coin-stack-leaf"></i>
+                      <div class="db-coin-stack-base"></div>
+                      <div class="db-coin-stack-coin db-coin-stack-coin-3"></div>
+                      <div class="db-coin-stack-coin db-coin-stack-coin-2"></div>
+                      <div class="db-coin-stack-coin db-coin-stack-coin-1"></div>
+                      <div class="db-coin-stack-coin db-coin-stack-coin-front">
+                        <span class="db-coin-symbol">&#8377;</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="db-coins2-footer">
+                    <span class="db-premium-hint">Redeem for discounts &amp; inputs</span>
+                    <button class="db-premium-cta db-coins2-cta" type="button">
+                      <span class="db-premium-cta-text"><strong>Redeem Now</strong></span>
+                      <span class="db-premium-cta-circle"><i data-icon="arrow-right" data-size="13"></i></span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Plan name / duration come from assets/js/data/plans-data.js (filled in by JS) -->
+                <div class="db-summary-card db-card-plan">
+                  <div class="db-plan-corner-ribbon"></div>
+                  <div class="db-summary-top">
+                    <div class="db-summary-left">
+                      <div class="db-summary-icon-wrap">
+                        <i data-icon="crown" data-size="19"></i>
+                      </div>
+                      <div>
+                        <h4 class="db-summary-title">Plan</h4>
+                        <p class="db-summary-subtitle"></p>
+                      </div>
+                    </div>
+                    <div class="db-summary-right">
+                      <div class="db-plan-tier-badge"></div>
+                      <button class="db-upgrade-btn">Manage Plan <i data-icon="arrow-right" data-size="14"></i></button>
+                    </div>
+                  </div>
+                  <div class="db-summary-bar-track">
+                    <div class="db-summary-bar-fill"></div>
+                  </div>
+                </div>
+
+              </section>
+
+              <!-- Quick Access - Frequently Used -->
+              <section class="db-quick-actions">
+                <div class="db-section-header">
+                  <div class="db-section-line"></div>
+                  <h3>Quick Access – Frequently Used</h3>
+                </div>
+
+                <div class="db-actions-grid">
+
+                  <div class="db-action-card bg-pastel-green">
+                    <img src="../assets/images/farmer_profile.avif" alt="Profile" class="db-action-img" />
+                    <h4>Update<br />My Profile</h4>
+                    <button class="db-action-btn bg-dark-green"><i data-icon="chevron-right" data-size="18"></i></button>
+                  </div>
+
+                  <div class="db-action-card bg-pastel-blue">
+                    <img src="../assets/images/veg_produce.avif" alt="Product" class="db-action-img" />
+                    <h4>Add<br />Product / Service</h4>
+                    <button class="db-action-btn bg-dark-blue"><i data-icon="chevron-right" data-size="18"></i></button>
+                  </div>
+
+                  <div class="db-action-card bg-pastel-orange">
+                    <img src="../assets/images/people_group.avif" alt="Members" class="db-action-img" />
+                    <h4>View<br />Members</h4>
+                    <button class="db-action-btn bg-dark-orange"><i data-icon="chevron-right" data-size="18"></i></button>
+                  </div>
+
+                  <div class="db-action-card bg-pastel-purple">
+                    <img src="../assets/images/chart_report.avif" alt="Reports" class="db-action-img" />
+                    <h4>View<br />Reports</h4>
+                    <button class="db-action-btn bg-dark-purple"><i data-icon="chevron-right" data-size="18"></i></button>
+                  </div>
+
+                  <div class="db-action-card bg-pastel-pink">
+                    <img src="../assets/images/megaphone.avif" alt="Alerts" class="db-action-img" />
+                    <h4>News &amp;<br />Alerts</h4>
+                    <button class="db-action-btn bg-dark-pink"><i data-icon="chevron-right" data-size="18"></i></button>
+                  </div>
+
+                </div>
+              </section>
+
+              <section class="db-widgets-grid">
+
+                <!-- Latest Alerts & Announcements (listed twice for the seamless scroll loop) -->
+                <div class="db-widget-card">
+                  <div class="db-widget-header">
+                    <i data-icon="bell-ring" data-size="20" data-color="#db2777"></i>
+                    <h3>Latest Alerts &amp; Announcements</h3>
+                  </div>
+                  <div class="db-widget-content">
+                    <div class="db-alert-list">
+                      <div class="db-alert-item">
+                        <div class="db-alert-icon" style="background: #dcfce7; color: #16a34a;"><i data-icon="megaphone" data-size="16"></i></div>
+                        <div class="db-alert-info">
+                          <div class="db-alert-title-row">
+                            <div class="db-alert-title-group"><span class="db-alert-tag">New</span><h4>New Subsidy Scheme Announced</h4></div>
+                            <span class="db-alert-time">2 hours ago</span>
+                          </div>
+                          <p>Get up to 50% subsidy on drip irrigation equipment.</p>
+                        </div>
+                      </div>
+                      <div class="db-alert-item">
+                        <div class="db-alert-icon" style="background: #ffedd5; color: #ea580c;"><i data-icon="megaphone" data-size="16"></i></div>
+                        <div class="db-alert-info">
+                          <div class="db-alert-title-row">
+                            <div class="db-alert-title-group"><h4>Training Program Update</h4></div>
+                            <span class="db-alert-time">5 hours ago</span>
+                          </div>
+                          <p>Farmers Training Program scheduled on 28 May.</p>
+                        </div>
+                      </div>
+                      <div class="db-alert-item">
+                        <div class="db-alert-icon" style="background: #dbeafe; color: #2563eb;"><i data-icon="info" data-size="16"></i></div>
+                        <div class="db-alert-info">
+                          <div class="db-alert-title-row">
+                            <div class="db-alert-title-group"><h4>Market Update</h4></div>
+                            <span class="db-alert-time">1 day ago</span>
+                          </div>
+                          <p>Wheat prices increased by 2.4% in your region.</p>
+                        </div>
+                      </div>
+                      <div class="db-alert-item">
+                        <div class="db-alert-icon" style="background: #dcfce7; color: #16a34a;"><i data-icon="megaphone" data-size="16"></i></div>
+                        <div class="db-alert-info">
+                          <div class="db-alert-title-row">
+                            <div class="db-alert-title-group"><span class="db-alert-tag">New</span><h4>New Subsidy Scheme Announced</h4></div>
+                            <span class="db-alert-time">2 hours ago</span>
+                          </div>
+                          <p>Get up to 50% subsidy on drip irrigation equipment.</p>
+                        </div>
+                      </div>
+                      <div class="db-alert-item">
+                        <div class="db-alert-icon" style="background: #ffedd5; color: #ea580c;"><i data-icon="megaphone" data-size="16"></i></div>
+                        <div class="db-alert-info">
+                          <div class="db-alert-title-row">
+                            <div class="db-alert-title-group"><h4>Training Program Update</h4></div>
+                            <span class="db-alert-time">5 hours ago</span>
+                          </div>
+                          <p>Farmers Training Program scheduled on 28 May.</p>
+                        </div>
+                      </div>
+                      <div class="db-alert-item">
+                        <div class="db-alert-icon" style="background: #dbeafe; color: #2563eb;"><i data-icon="info" data-size="16"></i></div>
+                        <div class="db-alert-info">
+                          <div class="db-alert-title-row">
+                            <div class="db-alert-title-group"><h4>Market Update</h4></div>
+                            <span class="db-alert-time">1 day ago</span>
+                          </div>
+                          <p>Wheat prices increased by 2.4% in your region.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="db-widget-footer">
+                    <button class="db-view-all">View All Alerts</button>
+                  </div>
+                </div>
+
+                <!-- Recent Activity (listed twice for the seamless scroll loop) -->
+                <div class="db-widget-card">
+                  <div class="db-widget-header">
+                    <i data-icon="activity" data-size="20" data-color="#2563eb"></i>
+                    <h3>Recent Activity</h3>
+                  </div>
+                  <div class="db-widget-content">
+                    <div class="db-activity-list">
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #dbeafe; color: #2563eb;"><i data-icon="user" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>Profile Updated</h4><span>2 hours ago</span></div>
+                          <p>You updated your profile information</p>
+                        </div>
+                      </div>
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #dcfce7; color: #16a34a;"><i data-icon="package" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>Product Added</h4><span>5 hours ago</span></div>
+                          <p>You added new product: Organic Wheat</p>
+                        </div>
+                      </div>
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #ffedd5; color: #ea580c;"><i data-icon="users" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>New Member Joined</h4><span>1 day ago</span></div>
+                          <p>Ramesh Kumar joined your organization</p>
+                        </div>
+                      </div>
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #f3e8ff; color: #9333ea;"><i data-icon="file-text" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>Report Generated</h4><span>2 days ago</span></div>
+                          <p>Monthly report for April generated</p>
+                        </div>
+                      </div>
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #dbeafe; color: #2563eb;"><i data-icon="user" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>Profile Updated</h4><span>2 hours ago</span></div>
+                          <p>You updated your profile information</p>
+                        </div>
+                      </div>
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #dcfce7; color: #16a34a;"><i data-icon="package" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>Product Added</h4><span>5 hours ago</span></div>
+                          <p>You added new product: Organic Wheat</p>
+                        </div>
+                      </div>
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #ffedd5; color: #ea580c;"><i data-icon="users" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>New Member Joined</h4><span>1 day ago</span></div>
+                          <p>Ramesh Kumar joined your organization</p>
+                        </div>
+                      </div>
+                      <div class="db-activity-item">
+                        <div class="db-activity-icon" style="background: #f3e8ff; color: #9333ea;"><i data-icon="file-text" data-size="16"></i></div>
+                        <div class="db-activity-info">
+                          <div class="db-activity-top"><h4>Report Generated</h4><span>2 days ago</span></div>
+                          <p>Monthly report for April generated</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="db-widget-footer">
+                    <button class="db-view-all">View All Activity</button>
+                  </div>
+                </div>
+
+                <!-- Market Prices (listed twice for the seamless scroll loop) -->
+                <div class="db-widget-card">
+                  <div class="db-widget-header">
+                    <i data-icon="bar-chart-3" data-size="20" data-color="#ea580c"></i>
+                    <h3>Market Prices</h3>
+                  </div>
+                  <div class="db-market-table">
+                    <div class="db-market-table-head">
+                      <span>Commodity</span>
+                      <span>Price (₹/q)</span>
+                      <span>Change</span>
+                    </div>
+                    <div class="db-market-table-body-wrap">
+                      <div class="db-market-table-body">
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-wheat">W</div><span class="db-market-name">Wheat</span></div>
+                          <div class="db-market-table-price">₹2,200</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +2.4%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-rice">R</div><span class="db-market-name">Rice (Paddy)</span></div>
+                          <div class="db-market-table-price">₹2,100</div>
+                          <div class="db-market-table-change down"><i data-icon="trending-down" data-size="12"></i> -1.2%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-soya">S</div><span class="db-market-name">Soyabean</span></div>
+                          <div class="db-market-table-price">₹4,500</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +3.8%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-maize">M</div><span class="db-market-name">Maize</span></div>
+                          <div class="db-market-table-price">₹2,350</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +0.5%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-sugar">S</div><span class="db-market-name">Sugarcane</span></div>
+                          <div class="db-market-table-price">₹3,150</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +0.5%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-mustard">M</div><span class="db-market-name">Mustard</span></div>
+                          <div class="db-market-table-price">₹5,400</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +4.2%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-wheat">W</div><span class="db-market-name">Wheat</span></div>
+                          <div class="db-market-table-price">₹2,200</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +2.4%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-rice">R</div><span class="db-market-name">Rice (Paddy)</span></div>
+                          <div class="db-market-table-price">₹2,100</div>
+                          <div class="db-market-table-change down"><i data-icon="trending-down" data-size="12"></i> -1.2%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-soya">S</div><span class="db-market-name">Soyabean</span></div>
+                          <div class="db-market-table-price">₹4,500</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +3.8%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-maize">M</div><span class="db-market-name">Maize</span></div>
+                          <div class="db-market-table-price">₹2,350</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +0.5%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-sugar">S</div><span class="db-market-name">Sugarcane</span></div>
+                          <div class="db-market-table-price">₹3,150</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +0.5%</div>
+                        </div>
+                        <div class="db-market-table-row">
+                          <div class="db-market-table-name"><div class="db-market-icon bg-mustard">M</div><span class="db-market-name">Mustard</span></div>
+                          <div class="db-market-table-price">₹5,400</div>
+                          <div class="db-market-table-change up"><i data-icon="trending-up" data-size="12"></i> +4.2%</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="db-widget-footer">
+                    <button class="db-view-full-market">View Full Market</button>
+                  </div>
+                </div>
+
+              </section>
+
+            </div>
+          </main>
+
+        </div>
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

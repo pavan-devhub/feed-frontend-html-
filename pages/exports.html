@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Exports | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/exports.css" />
+  <!-- in-page views (Why Exports, How to Start, Policies, Country Selection, Finance & Insurance) -->
+  <link rel="stylesheet" href="../assets/css/pages/exports-why-exports.css" />
+  <link rel="stylesheet" href="../assets/css/pages/exports-how-to-start.css" />
+  <link rel="stylesheet" href="../assets/css/pages/exports-import-policy.css" />
+  <link rel="stylesheet" href="../assets/css/pages/exports-country-selection.css" />
+  <link rel="stylesheet" href="../assets/css/pages/exports-finance-insurance.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/exports.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div style="display: flex; flex-direction: column; min-height: 100vh; width: 100%; background-color: #f8fafc;">
+        <div id="site-navbar"></div>
+        <div style="height: 86px; flex-shrink: 0;"></div>
+
+        <div class="ep-layout">
+          <!-- LEFT SIDEBAR - the active item picks the view shown next to it -->
+          <aside class="ep-sidebar">
+            <nav class="ep-nav-list">
+              <div class="ep-nav-item active" data-tab="0" style="cursor: pointer;"><i data-icon="home" data-size="18" class="ep-nav-icon"></i><span>My Exports</span><i data-icon="chevron-right" data-size="16" class="ep-nav-arrow"></i></div>
+              <div class="ep-nav-item" data-tab="1" style="cursor: pointer;"><i data-icon="help-circle" data-size="18" class="ep-nav-icon"></i><span>Why Exports</span></div>
+              <div class="ep-nav-item" data-tab="2" style="cursor: pointer;"><i data-icon="flag" data-size="18" class="ep-nav-icon"></i><span>How to Start Exports</span></div>
+              <div class="ep-nav-item" data-tab="3" style="cursor: pointer;"><i data-icon="shopping-basket" data-size="18" class="ep-nav-icon"></i><span>Product Selection</span></div>
+              <div class="ep-nav-item" data-tab="4" style="cursor: pointer;"><i data-icon="network" data-size="18" class="ep-nav-icon"></i><span>Buyers Connection</span></div>
+              <div class="ep-nav-item" data-tab="5" style="cursor: pointer;"><i data-icon="shield-check" data-size="18" class="ep-nav-icon"></i><span>Exports Import Policies and Regulations</span></div>
+              <div class="ep-nav-item" data-tab="6" style="cursor: pointer;"><i data-icon="landmark" data-size="18" class="ep-nav-icon"></i><span>Export Import Finance &amp; Insurance</span></div>
+              <div class="ep-nav-item" data-tab="7" style="cursor: pointer;"><i data-icon="git-commit" data-size="18" class="ep-nav-icon"></i><span>Process &amp; Export Order</span></div>
+              <div class="ep-nav-item" data-tab="8" style="cursor: pointer;"><i data-icon="file-text" data-size="18" class="ep-nav-icon"></i><span>Export Documentation</span></div>
+              <div class="ep-nav-item" data-tab="9" style="cursor: pointer;"><i data-icon="globe-2" data-size="18" class="ep-nav-icon"></i><span>Global Trade Updates &amp; Events</span></div>
+              <div class="ep-nav-item" data-tab="10" style="cursor: pointer;"><i data-icon="map" data-size="18" class="ep-nav-icon"></i><span>Country Selection</span></div>
+              <div class="ep-nav-item" data-tab="11" style="cursor: pointer;"><i data-icon="percent" data-size="18" class="ep-nav-icon"></i><span>Export &amp; Import Tariff and Benefits</span></div>
+              <div class="ep-nav-item" data-tab="12" style="cursor: pointer;"><i data-icon="pen-tool" data-size="18" class="ep-nav-icon"></i><span>Tools &amp; Services</span></div>
+            </nav>
+          </aside>
+
+          <!-- MAIN CONTENT (My Exports hub). The other views are the <template>s at the end of the page. -->
+          <main class="ep-main-content">
+            <header class="ep-header">
+              <div class="ep-header-titles">
+                <h1>My Exports Hub</h1>
+                <p>Everything you need to start, grow and succeed in global markets.</p>
+              </div>
+              <div class="ep-header-actions">
+                <div class="ep-search"><i data-icon="search" data-size="16" class="ep-search-icon"></i><input type="text" placeholder="Search FPO's, Schemes, Policies..." /></div>
+                <button class="ep-quick-menu"><i data-icon="grid" data-size="16"></i>Quick Menu</button>
+                <button class="ep-bell"><i data-icon="bell" data-size="20"></i><span class="ep-bell-dot"></span></button>
+                <div class="ep-avatar"><img src="https://i.pravatar.cc/100?img=11" alt="User avatar" /></div>
+              </div>
+            </header>
+
+            <!-- GRID OF CARDS -->
+            <div class="ep-cards-grid">
+              <div class="ep-card" data-tab="1" style="cursor: pointer; animation: epSlideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+                <div class="ep-card-badge color-green">01</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-green">
+                      <img src="../assets/icons/icon-why-exports.avif" alt="Why Exports" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Why Exports</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="2" style="cursor: pointer; animation: epSlideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+                <div class="ep-card-badge color-blue">02</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-blue">
+                      <img src="../assets/icons/icon-start-exports.avif" alt="How to Start Exports" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>How to Start Exports</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="3" style="cursor: pointer; animation: epSlideInFromBottom 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+                <div class="ep-card-badge color-orange">03</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-orange">
+                      <img src="../assets/icons/icon-product-selection.avif" alt="Product Selection" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Product Selection</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="4" style="cursor: pointer; animation: epSlideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+                <div class="ep-card-badge color-purple">04</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-purple">
+                      <img src="../assets/icons/icon-buyers-connection.avif" alt="Buyers Connection" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Buyers Connection</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="5" style="cursor: pointer; animation: epSlideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+                <div class="ep-card-badge color-pink">05</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-pink">
+                      <img src="../assets/icons/icon-policies.avif" alt="Export - Import Policies &amp; Regulations" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Export - Import Policies &amp; Regulations</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="6" style="cursor: pointer; animation: epSlideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+                <div class="ep-card-badge color-teal">06</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-teal">
+                      <img src="../assets/icons/icon-finance.avif" alt="Export - Import Finance &amp; Insurance" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Export - Import Finance &amp; Insurance</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="7" style="cursor: pointer; animation: epSlideInFromBottom 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+                <div class="ep-card-badge color-yellow">07</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-yellow">
+                      <img src="../assets/icons/icon-process-order.avif" alt="Process &amp; Export Order" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Process &amp; Export Order</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="8" style="cursor: pointer; animation: epSlideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+                <div class="ep-card-badge color-blue-light">08</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-blue-light">
+                      <img src="../assets/icons/icon-documentation.avif" alt="Export - Import Documentation" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Export - Import Documentation</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="9" style="cursor: pointer; animation: epSlideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;">
+                <div class="ep-card-badge color-green-light">09</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-green-light">
+                      <img src="../assets/icons/icon-trade-updates.avif" alt="Global Trade Updates &amp; Events" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Global Trade Updates &amp; Events</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="10" style="cursor: pointer; animation: epSlideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;">
+                <div class="ep-card-badge color-purple-light">10</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-purple-light">
+                      <img src="../assets/icons/icon-country-selection.avif" alt="Country Selection" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Country Selection</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="11" style="cursor: pointer; animation: epSlideInFromBottom 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;">
+                <div class="ep-card-badge color-orange-light">11</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-orange-light">
+                      <img src="../assets/icons/icon-tariffs.avif" alt="Export - Import Tariff &amp; Benefits" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Export - Import Tariff &amp; Benefits</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="ep-card" data-tab="12" style="cursor: pointer; animation: epSlideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;">
+                <div class="ep-card-badge color-blue">12</div>
+                <div class="ep-card-content">
+                  <div class="ep-card-icon-area">
+                    <div class="ep-icon-circle color-blue">
+                      <img src="../assets/icons/icon-tools-services.avif" alt="Tools &amp; Services" class="ep-card-image" />
+                    </div>
+                  </div>
+                  <div class="ep-card-text-area">
+                    <h3>Tools &amp; Services</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== In-page views, cloned into .ep-layout when their sidebar item is chosen ===== -->
+
+  <!-- 1. Why Exports -->
+  <template id="ep-view-1">
+    <main class="we-main-content">
+      <!-- Hero Section -->
+      <section class="we-hero">
+        <div class="we-hero-overlay"></div>
+        <div class="we-hero-left">
+          <h1 class="we-hero-title">Why Exports?</h1>
+          <p class="we-hero-desc">
+            Exports open up a world of opportunities for farmers, traders, MSMEs, and entrepreneurs. By stepping into the global market, you reduce domestic dependency, increase profitability, and build an internationally recognized brand. Embrace the global stage to scale your business sustainably.
+          </p>
+          <div class="we-hero-glass-cards">
+            <div class="we-glass-card"><i data-icon="globe" data-size="20" class="we-icon"></i><span>Global Opportunities</span></div>
+            <div class="we-glass-card"><i data-icon="shield-check" data-size="20" class="we-icon"></i><span>Government Support</span></div>
+            <div class="we-glass-card"><i data-icon="trending-up" data-size="20" class="we-icon"></i><span>Higher Profits</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transition Curve -->
+      <div class="we-curve-transition">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,0 C480,120 960,120 1440,0 L1440,120 L0,120 Z" fill="#ffffff"></path>
+        </svg>
+      </div>
+
+      <!-- Content Section -->
+      <section class="we-content-section">
+        <div class="we-center-heading">
+          <h2>Why Exports?</h2>
+          <p>Unlocking global potential, securing better margins, and driving economic growth for your enterprise.</p>
+        </div>
+
+        <div class="we-info-bar"><div class="we-info-glow"></div><strong>Premium Advantage:</strong> Access global markets with structured government support, leading to sustainable and risk-mitigated business expansion.</div>
+
+        <!-- cards slide in once scrolled into view (animate-in) -->
+        <div class="we-premium-cards">
+          <div class="we-premium-card border-green">
+            <div class="we-card-top">
+              <span class="we-card-badge">01</span>
+              <div class="we-card-icon-wrapper icon-green"><i data-icon="briefcase" data-size="22"></i></div>
+            </div>
+            <h3 class="we-card-title">Benefits of Exporting</h3>
+            <p class="we-card-text">Expand your horizons, diversify your market presence, and significantly increase your revenue streams.</p>
+            <button class="we-card-btn btn-green">Explore <i data-icon="arrow-right" data-size="16"></i></button>
+          </div>
+
+          <div class="we-premium-card border-blue">
+            <div class="we-card-top">
+              <span class="we-card-badge">02</span>
+              <div class="we-card-icon-wrapper icon-blue"><i data-icon="landmark" data-size="22"></i></div>
+            </div>
+            <h3 class="we-card-title">Government Incentives</h3>
+            <p class="we-card-text">Leverage tax benefits, subsidies, and promotional schemes designed exclusively for exporters.</p>
+            <button class="we-card-btn btn-blue">Explore <i data-icon="arrow-right" data-size="16"></i></button>
+          </div>
+
+          <div class="we-premium-card border-purple">
+            <div class="we-card-top">
+              <span class="we-card-badge">03</span>
+              <div class="we-card-icon-wrapper icon-purple"><i data-icon="globe" data-size="22"></i></div>
+            </div>
+            <h3 class="we-card-title">International Market Opportunities</h3>
+            <p class="we-card-text">Identify and target high-demand regions worldwide to establish a robust global footprint.</p>
+            <button class="we-card-btn btn-purple">Explore <i data-icon="arrow-right" data-size="16"></i></button>
+          </div>
+
+          <div class="we-premium-card border-teal">
+            <div class="we-card-top">
+              <span class="we-card-badge">04</span>
+              <div class="we-card-icon-wrapper icon-teal"><i data-icon="line-chart" data-size="22"></i></div>
+            </div>
+            <h3 class="we-card-title">Export Success Stories</h3>
+            <p class="we-card-text">Learn from top enterprises who transformed their local operations into global success.</p>
+            <button class="we-card-btn btn-teal">Explore <i data-icon="arrow-right" data-size="16"></i></button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </template>
+
+  <!-- 2. How to Start Exports -->
+  <template id="ep-view-2">
+    <div class="htse-container">
+      <!-- Hero Section -->
+      <section class="htse-hero">
+        <div class="htse-hero-overlay"></div>
+        <div class="htse-hero-content">
+          <h1 class="htse-hero-title">How to Start Export</h1>
+          <p class="htse-hero-subtitle">
+            Comprehensive guide on export process starting from registration of company to claiming the export incentives from government
+          </p>
+        </div>
+        <!-- SVG wave transition -->
+        <div class="htse-hero-wave">
+          <svg preserveAspectRatio="none" viewBox="0 0 1440 100">
+            <path d="M0,50 C320,150 420,-50 1440,50 L1440,100 L0,100 Z" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- Introduction Section -->
+      <section class="htse-intro">
+        <h2 class="htse-intro-title">Starting Exports</h2>
+        <p class="htse-intro-text">
+          Export process is a tedious process with numerous documents to be submitted to different authorities at different point of time. We provide step-by-step guidance throughout the export process along with the usage and importance of each and every document used in the export process.
+        </p>
+      </section>
+
+      <!-- Process Options Grid -->
+      <section class="htse-process-section">
+        <h2 class="htse-process-heading">What are the preliminary requirements to start exports?</h2>
+
+        <div class="htse-grid">
+          <div class="htse-card">
+            <div class="htse-icon-wrap icon-blue"><i data-icon="clipboard-list" data-size="32"></i></div>
+            <div class="htse-card-content">
+              <h3>How do I proceed with an export order?</h3>
+              <p>Learn the initial steps, verifications, and compliance requirements to accept and process an international order.</p>
+            </div>
+          </div>
+          <div class="htse-card">
+            <div class="htse-icon-wrap icon-teal"><i data-icon="file-signature" data-size="32"></i></div>
+            <div class="htse-card-content">
+              <h3>What are the documents to be submitted to Customs?</h3>
+              <p>Understand the mandatory shipping bills, commercial invoices, and packing lists required for customs clearance.</p>
+            </div>
+          </div>
+          <div class="htse-card">
+            <div class="htse-icon-wrap icon-purple"><i data-icon="files" data-size="32"></i></div>
+            <div class="htse-card-content">
+              <h3>What are Negotiable set of documents?</h3>
+              <p>Details on Bill of Lading, Letter of Credit, and other financial instruments crucial for secure export trade.</p>
+            </div>
+          </div>
+          <div class="htse-card">
+            <div class="htse-icon-wrap icon-orange"><i data-icon="send" data-size="32"></i></div>
+            <div class="htse-card-content">
+              <h3>How do I send export advice to importer?</h3>
+              <p>Guidelines on communicating shipment dispatch, tracking details, and document handover to your overseas buyer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </template>
+
+  <!-- 5. Export-Import Policies & Regulations -->
+  <template id="ep-view-5">
+    <main class="eip-main-content">
+      <header class="eip-header">
+        <div class="eip-header-titles">
+          <h1>Export-Import Policy &amp; Benefits</h1>
+          <p>Explore comprehensive policies, guidelines, and benefits for your global trade journey.</p>
+        </div>
+      </header>
+
+      <div class="eip-cards-grid">
+        <div class="eip-card" style="animation: eipSlideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-green">
+              <img src="../assets/icons/icon-agri-export.avif" alt="Agri-Export Policy" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Agri-Export Policy</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-blue">
+              <img src="../assets/icons/icon-foreign-trade.avif" alt="Foreign Trade Policy" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Foreign Trade Policy</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromBottom 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-orange">
+              <img src="../assets/icons/icon-export-policy.avif" alt="Export Policy" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Export Policy</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-purple">
+              <img src="../assets/icons/icon-import-policy.avif" alt="Import Policy" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Import Policy</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-pink">
+              <img src="../assets/icons/icon-state-policy.avif" alt="State-wise Policy" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>State-wise Policy</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-teal">
+              <img src="../assets/icons/icon-ecommerce-policy.avif" alt="E-Commerce Policy" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>E-Commerce Policy</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromBottom 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-yellow">
+              <img src="../assets/icons/icon-hs-code.avif" alt="HS Code-wise Policy" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>HS Code-wise Policy</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-blue-light">
+              <img src="../assets/icons/icon-import-regulations.avif" alt="Import Regulations" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Import Regulations</h3>
+          </div>
+        </div>
+      </div>
+    </main>
+  </template>
+
+  <!-- 6. Export-Import Finance & Insurance -->
+  <template id="ep-view-6">
+    <div class="efi-dashboard">
+
+      <!-- 1. HERO SECTION -->
+      <section class="efi-hero-banner">
+        <div class="efi-hero-overlay"></div>
+        <div class="efi-hero-content">
+          <h1>Export-Import Finance &amp; Insurance</h1>
+          <p>Financial solutions and insurance protection supporting secure international trade.</p>
+        </div>
+      </section>
+
+      <div class="efi-dashboard-container">
+
+        <!-- 2. FINANCE & INSURANCE INTRO VISUALS -->
+        <section class="efi-intro-row">
+
+          <div class="efi-intro-card efi-finance-intro">
+            <div class="efi-intro-icon-wrapper blue-glow"><i data-icon="indian-rupee" data-size="36" data-stroke-width="2.5"></i></div>
+            <h2>FINANCE</h2>
+            <div class="efi-intro-text">
+              <p>Finance in any business is necessary to meet working capital needs or to overcome unforeseen contingencies.</p>
+              <p>Even in the export process, finance plays a major role at every stage. For example, a new exporter may require financial support for setting up of his business. An established entrepreneur may need export finance to expand into new global markets or to open new branches. Likewise, an exporter will need export finance to meet the working capital requirements.</p>
+            </div>
+          </div>
+
+          <div class="efi-intro-card efi-insurance-intro">
+            <div class="efi-intro-icon-wrapper green-glow"><i data-icon="shield-check" data-size="36" data-stroke-width="2.5"></i></div>
+            <h2>INSURANCE</h2>
+            <div class="efi-intro-text">
+              <p>ECGC Ltd. (Formerly Export Credit Guarantee Corporation of India Ltd.), wholly owned by Government of India, was set up in 1957 with the objective of promoting exports from the country by providing Credit Risk Insurance and related services for exports.</p>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- 3. EXPORT FINANCE SOLUTIONS -->
+        <section class="efi-section efi-finance-solutions">
+          <div class="efi-section-header">
+            <h2 class="efi-section-title"><i data-icon="trending-up" data-size="28" class="title-icon blue-icon"></i>Export Finance Solutions</h2>
+            <p class="efi-section-subtitle">There are different types of export finance namely:</p>
+          </div>
+
+          <div class="efi-service-grid">
+            <div class="efi-service-tile">
+              <div class="tile-icon-bg"><i data-icon="wallet" data-size="24"></i></div>
+              <h3>Pre-shipment</h3>
+            </div>
+            <div class="efi-service-tile">
+              <div class="tile-icon-bg"><i data-icon="landmark" data-size="24"></i></div>
+              <h3>Post-shipment</h3>
+            </div>
+            <div class="efi-service-tile">
+              <div class="tile-icon-bg"><i data-icon="file-text" data-size="24"></i></div>
+              <h3>Export finance against collection of bills</h3>
+            </div>
+            <div class="efi-service-tile">
+              <div class="tile-icon-bg"><i data-icon="activity" data-size="24"></i></div>
+              <h3>Deferred export finance</h3>
+            </div>
+            <div class="efi-service-tile">
+              <div class="tile-icon-bg"><i data-icon="banknote" data-size="24"></i></div>
+              <h3>Export finance against allowances and subsidies</h3>
+            </div>
+          </div>
+
+          <p class="efi-solutions-text">
+            Which type suits your needs or at what stage you need the finance solely depends on the type of business and its needs.
+          </p>
+
+          <div class="efi-cta-container">
+            <div class="efi-premium-cta">
+              <div class="cta-info">
+                <h3>Explore Export Finance Types</h3>
+                <p>Learn more about export finance and the institutions involved.</p>
+              </div>
+              <a href="https://www.dripcapital.com/en-in/resources/blog/export-finance-types" target="_blank" rel="noopener noreferrer" class="cta-btn">Learn More <i data-icon="arrow-right" data-size="18"></i></a>
+            </div>
+          </div>
+        </section>
+
+        <div class="efi-divider"></div>
+
+        <!-- 4. ECGC / EXPORT CREDIT INSURANCE -->
+        <section class="efi-section efi-insurance-details">
+          <div class="efi-section-header">
+            <h2 class="efi-section-title"><i data-icon="globe" data-size="28" class="title-icon green-icon"></i>ECGC / Export Credit Insurance</h2>
+          </div>
+
+          <div class="efi-insurance-modules">
+
+            <div class="efi-info-module">
+              <h3>What does ECGC do?</h3>
+              <ul class="efi-check-list">
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Provides a range of credit risk insurance covers to exporters against loss in export of goods and services</li>
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Offers Export Credit Insurance covers to banks and financial institutions to enable exporters to obtain better facilities from them</li>
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Provides Overseas Investment Insurance to Indian companies investing in joint ventures abroad in the form of equity or loan</li>
+              </ul>
+            </div>
+
+            <div class="efi-info-module">
+              <h3>How does ECGC help exporters?</h3>
+              <ul class="efi-check-list">
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> ECGC Offers insurance protection to exporters against payment risks.</li>
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Provides guidance in export-related activities.</li>
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Makes available information on different countries with its own credit ratings.</li>
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Makes it easy to obtain export finance from banks/financial institutions.</li>
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Assists exporters in recovering bad debts.</li>
+                <li><i data-icon="check-circle-2" data-size="20" class="check-icon"></i> Provides information on credit-worthiness of overseas buyers.</li>
+              </ul>
+            </div>
+
+            <div class="efi-info-module efi-long-text-module">
+              <h3>Need for export credit insurance</h3>
+              <div class="efi-article-content">
+                <p>
+                  Payments for exports are open to risks even at the best of times. The risks have assumed large proportions today due to the far-reaching political and economic changes that are sweeping the world.
+                </p>
+                <p>
+                  An outbreak of war or civil war may block or delay payment for goods exported. A coup or an insurrection may also bring about the same result. Economic difficulties or balance of payment problems may lead a country to impose restrictions on either import of certain goods or on transfer of payments for goods imported.
+                </p>
+                <p>
+                  In addition, the exporters have to face commercial risks of insolvency or protracted default of buyers. The commercial risks of a foreign buyer going bankrupt or losing his capacity to pay are aggravated due to the political and economic uncertainties.
+                </p>
+                <p class="highlight-paragraph">
+                  Export credit insurance is designed to protect exporters from the consequences of the payment risks, both political and commercial, and to enable them to expand their overseas business without fear of loss.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <div class="efi-divider"></div>
+
+        <!-- 5. ECGC PRODUCTS & SERVICES -->
+        <section class="efi-section efi-products-section">
+          <div class="efi-section-header">
+            <h2 class="efi-section-title"><i data-icon="shield" data-size="28" class="title-icon green-icon"></i>ECGC Products &amp; Services</h2>
+            <p class="efi-section-subtitle">There are 3 types of products &amp; services offered by ECGC namely:</p>
+          </div>
+
+          <div class="efi-product-cards-row">
+
+            <div class="efi-product-card">
+              <div class="card-icon-header"><i data-icon="shield-check" data-size="32"></i></div>
+              <div class="card-body">
+                <h4>ECIE Short Term</h4>
+                <h5>Turnover Based</h5>
+                <div class="card-accent-line"></div>
+              </div>
+            </div>
+
+            <div class="efi-product-card">
+              <div class="card-icon-header"><i data-icon="shield-check" data-size="32"></i></div>
+              <div class="card-body">
+                <h4>ECIE Short Term</h4>
+                <h5>Exposure Based</h5>
+                <div class="card-accent-line"></div>
+              </div>
+            </div>
+
+            <div class="efi-product-card">
+              <div class="card-icon-header"><i data-icon="shield-check" data-size="32"></i></div>
+              <div class="card-body">
+                <h4>ECIE Short Term</h4>
+                <h5>Medium &amp; Long Term</h5>
+                <div class="card-accent-line"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="efi-product-dropdown-section">
+            <fieldset class="efi-dropdown-fieldset">
+              <legend class="efi-dropdown-legend">Product/service</legend>
+              <select class="efi-dropdown-select">
+                <option value="" disabled hidden selected></option>
+                <option value="banana">Banana</option>
+                <option value="apple">Apple</option>
+                <option value="grapes">Grapes</option>
+                <option value="kiwi">Kiwi</option>
+                <option value="orange">Orange</option>
+                <option value="papaya">Papaya</option>
+              </select>
+            </fieldset>
+
+            <button class="efi-policy-btn">import /export policy</button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </template>
+
+  <!-- 10. Country Selection - the country tiles are rendered by assets/js/pages/exports/country-selection.js -->
+  <template id="ep-view-10">
+    <main class="cs-dashboard">
+
+      <!-- 1. HERO SECTION -->
+      <section class="cs-hero">
+        <div class="cs-hero-content">
+          <div class="cs-hero-header"><i data-icon="globe" data-size="42" data-stroke-width="1.5" class="cs-hero-icon"></i><h1>Explore Countries</h1></div>
+          <p class="cs-hero-subtitle">
+            Discover export, import, trade information and opportunities across global markets.
+          </p>
+
+          <!-- 3. SEARCH BAR -->
+          <div class="cs-search-container">
+            <div class="cs-search-wrapper"><i data-icon="search" data-size="22" class="cs-search-icon"></i><input type="text" class="cs-search-input" placeholder="Search by country name..." /></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cs-content-wrapper">
+
+        <!-- 9. CATEGORY / FILTER BAR -->
+        <section class="cs-filters">
+          <div class="cs-filter-scroll"><button class="cs-filter-pill active" data-category="ALL COUNTRIES">ALL COUNTRIES</button><button class="cs-filter-pill" data-category="ASIA">ASIA</button><button class="cs-filter-pill" data-category="EUROPE">EUROPE</button><button class="cs-filter-pill" data-category="AFRICA">AFRICA</button><button class="cs-filter-pill" data-category="NORTH AMERICA">NORTH AMERICA</button><button class="cs-filter-pill" data-category="SOUTH AMERICA">SOUTH AMERICA</button><button class="cs-filter-pill" data-category="OCEANIA">OCEANIA</button></div>
+        </section>
+
+        <!-- 10. COUNTRY COUNT -->
+        <div class="cs-grid-header">
+          <h2 class="cs-section-title">GLOBAL MARKETS</h2>
+          <span class="cs-country-count"></span>
+        </div>
+
+        <!-- 4, 6, 8. COUNTRY PRESENTATION & LAYOUT -->
+        <div class="cs-country-grid"></div>
+
+      </div>
+    </main>
+  </template>
+
+  <!-- 11. Export & Import Tariff and Benefits -->
+  <template id="ep-view-11">
+    <main class="eip-main-content">
+      <header class="eip-header">
+        <div class="eip-header-titles">
+          <h1>Export &amp; Import Tariff and Benefits</h1>
+          <p>Navigate the complex landscape of international trade compliance and procedures.</p>
+        </div>
+      </header>
+
+      <div class="eip-cards-grid">
+        <div class="eip-card" style="animation: eipSlideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-blue">
+              <img src="../assets/icons/icon-documentation.avif" alt="Customs Clearance" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Customs Clearance</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-pink">
+              <img src="../assets/icons/icon-policies.avif" alt="Export Documentation" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Export Documentation</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromBottom 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-yellow">
+              <img src="../assets/icons/icon-process-order.avif" alt="Quality &amp; Compliance" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Quality &amp; Compliance</h3>
+          </div>
+        </div>
+        <div class="eip-card" style="animation: eipSlideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s backwards;">
+          <div class="eip-card-icon-wrapper">
+            <div class="eip-icon-bg color-orange">
+              <img src="../assets/icons/icon-tariffs.avif" alt="Shipping Regulations" class="eip-card-image" />
+            </div>
+          </div>
+          <div class="eip-card-content">
+            <h3>Shipping Regulations</h3>
+          </div>
+        </div>
+      </div>
+    </main>
+  </template>
+</body>
+</html>

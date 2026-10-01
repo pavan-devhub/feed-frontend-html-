@@ -1,0 +1,107 @@
+/* Home page - the two inline <style> blocks of the React Home page, unchanged.
+   Linked last on index.html: in React they sat in the page body, after every stylesheet. */
+
+/* --- Services (ecosystem) block --------------------------------------------------------- */
+@keyframes flyInLeft { from { opacity: 0; transform: translateX(-80px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes flyInRight { from { opacity: 0; transform: translateX(80px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes flyInTop { from { opacity: 0; transform: translateY(-80px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes flyInBottom { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: translateY(0); } }
+
+.service-btn-animated {
+  opacity: 0;
+}
+
+.eco-obj {
+  position: absolute;
+  animation: eco-float infinite ease-in-out alternate;
+  z-index: 1;
+}
+
+.eco-globe-1 { top: 5%; left: 8%; color: #6366f1; animation-duration: 25s; }
+.eco-globe-2 { top: 60%; right: -2%; color: #6366f1; animation-duration: 32s; animation-delay: -10s; }
+
+.eco-ship-1 { top: 20%; right: 10%; color: #0ea5e9; animation-duration: 28s; animation-delay: -5s; transform: rotate(-10deg); }
+.eco-ship-2 { top: 80%; left: 15%; color: #0ea5e9; animation-duration: 22s; animation-delay: -15s; transform: rotate(15deg); }
+
+.eco-pkg-1 { top: 35%; left: 20%; color: #8b5cf6; animation-duration: 18s; animation-delay: -8s; transform: rotate(15deg); }
+.eco-pkg-2 { top: 12%; right: 25%; color: #8b5cf6; animation-duration: 20s; animation-delay: -3s; transform: rotate(-25deg); }
+.eco-pkg-3 { top: 85%; right: 30%; color: #8b5cf6; animation-duration: 25s; animation-delay: -12s; transform: rotate(10deg); }
+
+.eco-store-1 { top: 45%; left: 5%; color: #d946ef; animation-duration: 35s; animation-delay: -20s; }
+
+.eco-trend-1 { top: 10%; left: 45%; color: #10b981; animation-duration: 22s; animation-delay: -7s; }
+
+.eco-coins-1 { top: 75%; left: 5%; color: #f59e0b; animation-duration: 16s; }
+.eco-coins-2 { top: 25%; right: 2%; color: #f59e0b; animation-duration: 14s; animation-delay: -5s; }
+.eco-coins-3 { top: 50%; right: 15%; color: #f59e0b; animation-duration: 18s; animation-delay: -11s; }
+
+@keyframes eco-float {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  33% { transform: translateY(-30px) translateX(20px) rotate(10deg); }
+  66% { transform: translateY(15px) translateX(-15px) rotate(-10deg); }
+  100% { transform: translateY(35px) translateX(10px) rotate(5deg); }
+}
+
+/* --- Events & Updates ------------------------------------------------------------------- */
+.events-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1400px; width: 100%; margin-bottom: 32px; }
+@media (min-width: 1024px) {
+  .events-grid { grid-template-columns: 3.5fr 5.5fr 3.5fr; gap: 32px; }
+}
+
+.marquee-vertical {
+  animation: marquee 20s linear infinite;
+}
+.marquee-vertical:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+.marquee-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.slider-btn {
+  background: rgba(255,255,255,0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.2s;
+  color: #1e3a8a;
+  backdrop-filter: blur(10px);
+}
+.slider-btn:hover {
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Premium List Item Hover Effects */
+.premium-list-item {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  margin: 0 12px;
+}
+.premium-list-item:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08);
+  border-bottom-color: transparent;
+  z-index: 10;
+  position: relative;
+}

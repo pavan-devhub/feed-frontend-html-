@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGM &amp; Board | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/my-business.css" />
+  <link rel="stylesheet" href="../assets/css/pages/agm-board.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/agm-board.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div id="site-navbar"></div>
+      <div class="mb-layout">
+        <!-- Sidebar (rendered by assets/js/components/my-business-layout.js) -->
+        <aside class="mb-sidebar" id="mb-sidebar"></aside>
+
+        <!-- Main Content -->
+        <div style="flex: 1;">
+          <div class="ab-container">
+            <!-- Page Header -->
+            <div class="ab-header-section">
+              <div class="ab-header-content">
+                <h1 class="ab-title">AGM &amp; Board Meetings</h1>
+                <p class="ab-subtitle">Governance made transparent, decisions made accountable.</p>
+              </div>
+              <div class="ab-header-illustration">
+                <img src="../assets/images/my-business/agm_board_icon.avif" alt="Corporate Board Meeting" />
+              </div>
+            </div>
+
+            <!-- Governance Information Panel -->
+            <div class="ab-info-panel">
+              <div class="ab-info-icon-wrapper">
+                <i data-icon="shield-check" data-size="28" class="ab-info-icon"></i>
+              </div>
+              <div class="ab-info-text">
+                <ul>
+                  <li>Helps to improve transparency and promotes better governance of the FPO.</li>
+                  <li>Includes Bye-laws, Notices, Resolutions, Duties of Board and other Rules &amp; Regulations.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Main Content Structure -->
+            <div class="ab-main-grid">
+              <!-- Annual General Meeting Section -->
+              <div class="ab-section-card">
+                <div class="ab-section-header">
+                  <div class="ab-section-title-wrap">
+                    <i data-icon="users" data-size="26" class="ab-section-icon" style="color: #4f46e5;"></i>
+                    <div>
+                      <h2 class="ab-section-title">Annual General Meeting</h2>
+                      <p class="ab-section-subtitle">Manage and access all AGM related documents and policies</p>
+                    </div>
+                  </div>
+                  <div class="ab-section-divider" style="background: #4f46e5;"></div>
+                </div>
+
+                <div class="ab-modules-grid ab-modules-agm">
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #e0e7ff; color: #4f46e5;">
+                      <i data-icon="gavel" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>By Laws or MOA &amp; AOA</h3>
+                      <p>View governing documents</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #dbeafe; color: #2563eb;">
+                      <i data-icon="shield-check" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Member Rights</h3>
+                      <p>View member rights and privileges</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #d1fae5; color: #059669;">
+                      <i data-icon="clipboard-list" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Rules &amp; Acts</h3>
+                      <p>View rules and applicable acts</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #fef3c7; color: #d97706;">
+                      <i data-icon="bell" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Notices</h3>
+                      <p>View all notices and circulars</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #ffe4e6; color: #e11d48;">
+                      <i data-icon="file-badge" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Resolutions</h3>
+                      <p>View all resolutions and decisions</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Board of Directors Meeting Section -->
+              <div class="ab-section-card">
+                <div class="ab-section-header">
+                  <div class="ab-section-title-wrap">
+                    <i data-icon="briefcase" data-size="26" class="ab-section-icon" style="color: #2563eb;"></i>
+                    <div>
+                      <h2 class="ab-section-title">Board of Directors Meeting</h2>
+                      <p class="ab-section-subtitle">Access board related documents and responsibilities</p>
+                    </div>
+                  </div>
+                  <div class="ab-section-divider" style="background: #2563eb;"></div>
+                </div>
+
+                <div class="ab-modules-grid ab-modules-board">
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #dbeafe; color: #2563eb;">
+                      <i data-icon="briefcase" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Duties of Directors</h3>
+                      <p>View duties and responsibilities</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #ccfbf1; color: #0d9488;">
+                      <i data-icon="shield" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Powers of Directors</h3>
+                      <p>View powers and authorities</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #ffedd5; color: #ea580c;">
+                      <i data-icon="users" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>List of Directors</h3>
+                      <p>View all board members</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #fef3c7; color: #d97706;">
+                      <i data-icon="bell" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Notices</h3>
+                      <p>View all notices and circulars</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #d1fae5; color: #059669;">
+                      <i data-icon="clipboard-list" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Rules &amp; Acts</h3>
+                      <p>View rules and applicable acts</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                  <div class="ab-module-card">
+                    <div class="ab-module-icon-container" style="background-color: #ffe4e6; color: #e11d48;">
+                      <i data-icon="file-badge" data-size="24"></i>
+                    </div>
+                    <div class="ab-module-content">
+                      <h3>Resolutions</h3>
+                      <p>View all resolutions and decisions</p>
+                    </div>
+                    <button type="button" class="ab-module-arrow">
+                      <i data-icon="chevron-right" data-size="18"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Information Banner -->
+            <div class="ab-bottom-banner">
+              <div class="ab-banner-content">
+                <div class="ab-banner-icon-wrapper">
+                  <i data-icon="shield-alert" data-size="24" class="ab-banner-shield"></i>
+                </div>
+                <div>
+                  <h3 class="ab-banner-title">Stronger Governance. Better Decisions.</h3>
+                  <p class="ab-banner-subtitle">All documents are organized, secure and easily accessible.</p>
+                </div>
+              </div>
+              <div class="ab-banner-visual">
+                <div class="ab-banner-abstract-shape"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="site-footer"></div>
+    </div>
+  </div>
+</body>
+</html>

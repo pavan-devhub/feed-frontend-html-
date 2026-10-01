@@ -1,0 +1,164 @@
+/* ===== PDF Viewer ===== */
+
+.pdf-viewer {
+  display: flex;
+  flex-direction: column;
+  background: #1e293b;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+}
+
+.pdf-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 18px;
+  background: #0f172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+}
+
+.pdf-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pdf-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+}
+
+.pdf-tool-btn:hover,
+.pdf-tool-btn.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.pdf-zoom-value {
+  min-width: 56px;
+  padding: 0 8px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pdf-zoom-value:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pdf-page-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.pdf-page-indicator input {
+  width: 46px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.pdf-page-total {
+  color: #94a3b8;
+}
+
+.pdf-canvas-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 22px;
+  padding: 24px;
+  min-height: 800px;
+  max-height: 120vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  background: #334155;
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+.pdf-page-frame {
+  display: flex;
+  /* `safe`: a page zoomed wider than the viewer falls back to left-aligned instead of being
+     centred past the left edge, where no amount of scrolling could reach it */
+  justify-content: safe center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.pdf-page-frame .react-pdf__Page {
+  /* No max-width constraint to allow natural zooming */
+}
+
+.pdf-canvas-area canvas {
+  display: block;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+}
+
+.pdf-page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pdf-status {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 60px 20px;
+}
+
+.pdf-status-error {
+  color: #fca5a5;
+}
+
+.pdf-status-detail {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #94a3b8;
+  word-break: break-word;
+}
+
+@media (max-width: 900px) {
+  .pdf-canvas-area {
+    padding: 14px;
+    gap: 16px;
+    min-height: 340px;
+    scroll-padding-top: 14px;
+  }
+}

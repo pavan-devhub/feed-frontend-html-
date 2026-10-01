@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed World Publications | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/components/fade-image.css" />
+  <link rel="stylesheet" href="../assets/css/components/share-dialog.css" />
+  <link rel="stylesheet" href="../assets/css/pages/feed-world.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/feed-world.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="pubs-page">
+        <div id="site-navbar"></div>
+        <div class="pubs-navbar-spacer"></div>
+
+        <div class="pubs-hub-container">
+          <div class="pubs-hero">
+            <div class="pubs-hero-overlay"></div>
+            <div class="pubs-hero-content">
+              <div class="pubs-hero-label">
+                <i data-icon="book-open" data-size="14"></i> PUBLICATIONS
+              </div>
+              <h1 class="pubs-hero-title"><span class="fw-brand-text">Feed World</span><span class="pubs-highlight-text">Publications</span></h1>
+              <p class="pubs-hero-subtitle">Explore insights, reports and updates that<br />empower agriculture and global trade.</p>
+            </div>
+          </div>
+          <!-- Below the hero: the member view or the login gate (templates at the end of <body>),
+               chosen by assets/js/pages/feed-world.js from the login state. -->
+        </div>
+
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logged in: the year/language finder, the archive and one year's shelf. Shown here in its
+       loading state; the script fills in the data. -->
+  <template id="pubs-member-view">
+    <!-- FIND A PUBLICATION -->
+    <section class="pubs-finder-card" aria-label="Find a publication">
+      <div class="pubs-finder-brand">
+        <div class="pubs-finder-icon-wrap"><i data-icon="book-open" data-size="22"></i></div>
+        <span class="pubs-finder-label">Find a Publication</span>
+      </div>
+      <div class="pubs-finder-fields">
+        <div class="pubs-finder-field">
+          <label for="pubs-year">Year</label>
+          <select id="pubs-year" disabled><option value="">Loading…</option></select>
+        </div>
+        <span class="pubs-finder-divider" aria-hidden="true"></span>
+        <div class="pubs-finder-field">
+          <label for="pubs-language">Language</label>
+          <select id="pubs-language">
+            <option value="Telugu" selected>తెలుగు</option>
+            <option value="Hindi">हिन्दी</option>
+            <option value="English">English</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <div class="pubs-main-layout">
+      <!-- PUBLICATION ARCHIVE -->
+      <aside class="pubs-archive-panel" aria-label="Publication archive">
+        <div class="pubs-archive-title">
+          <i data-icon="layers" data-size="18"></i> Publication Archive
+        </div>
+        <div class="pubs-archive-loading" aria-hidden="true">
+          <span class="pubs-skeleton-line"></span>
+          <span class="pubs-skeleton-line"></span>
+          <span class="pubs-skeleton-line"></span>
+        </div>
+      </aside>
+
+      <!-- ONE YEAR'S SHELF -->
+      <section class="pubs-shelf" aria-labelledby="pubs-shelf-title">
+        <header class="pubs-shelf-head">
+          <h2 id="pubs-shelf-title">Telugu Publications</h2>
+        </header>
+        <ul class="pubs-grid" aria-busy="true" aria-label="Loading publications">
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+          <li class="pubs-card is-skeleton" aria-hidden="true"><span class="pubs-skeleton-line"></span><span class="pubs-card-cover"></span></li>
+        </ul>
+      </section>
+    </div>
+  </template>
+
+  <!-- Logged out: publications are for members only. -->
+  <template id="pubs-guest-view">
+    <div class="pubs-login-gate">
+      <div class="pubs-login-gate-icon"><i data-icon="lock" data-size="28"></i></div>
+      <h2>Please log in to use this feature</h2>
+      <p>Feed World publications are available to logged-in members only.</p>
+      <button class="pubs-primary-btn" data-nav="login">Log In</button>
+    </div>
+  </template>
+</body>
+</html>

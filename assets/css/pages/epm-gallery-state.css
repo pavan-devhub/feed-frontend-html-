@@ -1,0 +1,133 @@
+/* EPM Gallery - state page, i.e. one state's districts (EpmGalleryState.jsx).
+   Shared pieces (hero, district cards and their grid, tokens) live in components/epm-gallery. */
+
+/* screen-reader-friendly search summary; takes no space until there's something to say */
+.epg-result-note {
+  margin: -18px 0 18px;
+  font-family: var(--epg-font-text);
+  font-size: 0.875rem;
+  color: var(--epg-muted);
+}
+
+.epg-result-note:empty {
+  display: none;
+}
+
+/* ---------- Other states ---------- */
+.epg-state-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.epg-state-link {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 10px 18px 10px 10px;
+  border: 1px solid var(--epg-line);
+  border-radius: var(--epg-radius-lg);
+  background: var(--epg-paper);
+  color: var(--epg-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.4s var(--epg-ease), transform 0.4s var(--epg-ease);
+}
+
+.epg-state-link-media {
+  display: block;
+  width: 112px;
+  height: 84px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--epg-sunken);
+}
+
+.epg-state-link-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--epg-ease);
+}
+
+.epg-state-link-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.epg-state-link-name {
+  font-family: var(--epg-font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.epg-state-link-meta {
+  font-family: var(--epg-font-text);
+  font-size: 0.875rem;
+  color: var(--epg-muted);
+}
+
+.epg-state-link-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--epg-line-strong);
+  color: var(--epg-forest);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.epg-state-link-go svg {
+  transition: transform 0.35s var(--epg-ease);
+}
+
+@media (hover: hover) {
+  .epg-state-link:hover {
+    border-color: transparent;
+    background: var(--epg-surface);
+    box-shadow: var(--epg-shadow-lg);
+    transform: translateY(-3px);
+  }
+  .epg-state-link:hover .epg-state-link-media img { transform: scale(1.06); }
+  .epg-state-link:hover .epg-state-link-go {
+    background: var(--epg-forest);
+    border-color: var(--epg-forest);
+    color: #fff;
+  }
+  .epg-state-link:hover .epg-state-link-go svg { transform: translateX(2px); }
+}
+
+.epg-state-link:focus-visible {
+  outline: 3px solid var(--epg-saffron);
+  outline-offset: 3px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .epg-result-note { margin: -8px 0 14px; }
+  .epg-state-link { gap: 14px; padding-right: 14px; }
+  .epg-state-link-media { width: 84px; height: 68px; border-radius: 12px; }
+  .epg-state-link-name { font-size: 1.1875rem; }
+  .epg-state-link-go { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .epg-state-link,
+  .epg-state-link-media img,
+  .epg-state-link-go,
+  .epg-state-link-go svg {
+    transition: none;
+  }
+  .epg-state-link:hover { transform: none; }
+}

@@ -1,0 +1,37 @@
+/* Register page - the rules from Register.jsx's inline <style> block. The rest of the page is
+   styled inline (plus global.css). */
+
+.register-panel::-webkit-scrollbar { display: none; }
+
+.gender-radio {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+}
+
+.gender-radio:checked {
+  border-color: #3e6b36;
+}
+
+.gender-radio:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #3e6b36;
+  border-radius: 50%;
+}
+
+@keyframes slideDown {
+  from { transform: translate(-50%, -20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}

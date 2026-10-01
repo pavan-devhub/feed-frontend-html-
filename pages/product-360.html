@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product 360 | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/pages/product-360.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/product-360.js"></script>
+</head>
+<body>
+  <!-- Product 360 is rendered without the app-container wrapper and without the site footer
+       (it has its own p360-footer). Login required. -->
+  <div class="product360-page">
+    <div id="site-navbar"></div>
+    <div style="height: 86px; flex-shrink: 0;"></div>
+
+    <!-- ===== HERO ===== -->
+    <section class="p360-hero">
+      <div class="hero-glow"></div>
+      <div class="hero-glow glow2"></div>
+      <span class="p360-eyebrow">
+        <span class="eye-dot"></span>
+        SAFE Mission · FEED MSCS Ltd · కృషి యేవ జయతే
+      </span>
+      <h1>GENERAL PRODUCT 360</h1>
+      <p class="hero-sub">
+        Farm to Port — 4 segments, 998 Parts, fully traced from source-of-truth spreadsheets.
+        Explore every Category → Division → Part across the entire compliance architecture.
+      </p>
+      <div class="p360-verify">
+        <span class="verify-dot"></span>
+        <b>998 / 998 Parts verified</b>
+        <span class="verify-detail">
+          · FarmGate 337 · Market 77 · ValueAddition 442 · Exports 142 · last verified 2026-08-06
+        </span>
+      </div>
+    </section>
+
+    <!-- ===== JOURNEY PIPELINE ===== (one node per segment, rendered from the Product 360 data) -->
+    <section class="p360-journey">
+      <div class="journey-pipe" id="p360-journey"></div>
+    </section>
+
+    <!-- ===== STATS ===== (rendered from the Product 360 data) -->
+    <section class="p360-stats" id="p360-stats"></section>
+
+    <!-- ===== SEARCH ===== -->
+    <section class="p360-search-wrap">
+      <div class="p360-searchbox">
+        <i data-icon="search" data-size="20" class="search-icon"></i>
+        <input type="text" id="p360-search" value="" placeholder="Search all 998 Parts — try 'Cold Storage', 'MRL', 'P126', 'Phytosanitary'…" />
+      </div>
+      <div class="p360-search-hint">
+        Live search across every segment, layer, category, division and part.
+      </div>
+    </section>
+
+    <!-- While searching, the search status line is inserted here (assets/js/pages/product-360.js) -->
+
+    <!-- ===== SEGMENT TABS ===== -->
+    <div class="p360-tabbar" id="p360-tabbar"></div>
+
+    <!-- ===== LAYER SUB-TABS ===== (inserted here when not searching) -->
+
+    <!-- ===== CONTENT ===== -->
+    <div class="p360-content" id="p360-content"></div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="p360-footer">
+      SAFE Mission · FEED MSCS Ltd · Chairman: K. Raghu Vamsi · Mirror of current source-file
+      reality — icons and tags are auto-assigned for visual scanning only, not part of source
+      data. Overlap-flagged Parts (🔴) reflect open Chairman decisions, not final merges.
+    </footer>
+  </div>
+</body>
+</html>

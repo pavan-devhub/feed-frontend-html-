@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="assets/css/components/footer.css" />
+  <link rel="stylesheet" href="assets/css/pages/about-us.css" />
+  <link rel="stylesheet" href="assets/css/pages/home.css" />
+
+  <script src="assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="assets/js/pages/home.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="home-landing-page" style="font-family: Inter, sans-serif; background-color: #f9fafb; min-height: 100vh;">
+
+        <div id="site-navbar"></div>
+
+        <!-- 2. Hero Slider (Image & Video) -->
+        <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+
+          <!-- Slider Track -->
+          <div id="home-hero-track" style="display: flex; width: 200vw; height: 100%; transform: translateX(-0vw); transition: transform 0.8s ease-in-out;">
+
+            <!-- Slide 1: Image -->
+            <div style="width: 100vw; height: 100%; background-image: url('assets/images/home-header.avif'); background-size: cover; background-position: center bottom;"></div>
+
+            <!-- Slide 2: Video -->
+            <div style="width: 100vw; height: 100%; background-color: #000;">
+              <video id="home-hero-video" src="assets/videos/vid.mp4" muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+            </div>
+
+          </div>
+
+          <!-- OVERLAYS (These sit ON TOP of the slider track and do not move) -->
+
+          <!-- Language Selector (Top Right) -->
+          <div style="position: absolute; top: 100px; right: 4%; z-index: 10;">
+            <div style="display: flex; align-items: center; gap: 5px; padding: 5px 10px; background-color: #ffffff; border-radius: 20px; cursor: pointer; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+              <i data-icon="globe-2" data-size="15" data-color="#ea580c" data-stroke-width="2"></i>
+              <select id="home-language-select" style="background: transparent; color: #111827; border: none; outline: none; font-size: 12px; font-weight: 700; appearance: none; padding-right: 14px; cursor: pointer;">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="te">తెలుగు</option>
+              </select>
+              <i data-icon="chevron-down" data-size="12" data-color="#111827" style="position: absolute; right: 8px; pointer-events: none;"></i>
+            </div>
+          </div>
+
+          <!-- 1. Top Header Bar (Contact & Settings) -->
+          <div class="top-header-bar" style="position: absolute; bottom: 0px; left: 0; right: 0; width: 100%; z-index: 20; display: flex; justify-content: space-between; align-items: center; padding: 10px 40px; background-color: transparent;">
+
+            <!-- Left: Contact Info -->
+            <div style="display: flex; gap: 20px;">
+              <div style="display: flex; align-items: center; gap: 12px; background-color: #ffffff; padding: 6px 16px 6px 6px; border-radius: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(0,0,0,0.05); display: flex; justify-content: center; align-items: center; color: #1f2937;">
+                  <i data-icon="phone-call" data-size="20"></i>
+                </div>
+                <div>
+                  <div style="font-weight: 700; color: #111827; font-size: 15px; line-height: 1.2;">+91 9293858689</div>
+                  <div style="font-size: 12px; color: #6b7280; line-height: 1.2;" data-i18n="call_us">Call us anytime</div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 12px; background-color: #ffffff; padding: 6px 16px 6px 6px; border-radius: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(0,0,0,0.05); display: flex; justify-content: center; align-items: center; color: #1f2937;">
+                  <i data-icon="mail" data-size="20"></i>
+                </div>
+                <div>
+                  <div style="font-weight: 700; color: #111827; font-size: 15px; line-height: 1.2;">info@feedorg.com</div>
+                  <div style="font-size: 12px; color: #6b7280; line-height: 1.2;" data-i18n="mail_us">Mail us today</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Bottom Badge (Aligned with contact buttons) -->
+            <div style="background-color: white; padding: 6px 16px; border-radius: 40px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+              <i data-icon="shield" data-size="24" data-color="#16a34a" data-fill="#dcfce7"></i>
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: #4b5563;">REG.No:</div>
+                <div style="font-size: 14px; font-weight: 800; color: #16a34a;">MSCS/CR/1295/2020</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 6. About Us Section (src/pages/AboutUs.jsx) -->
+        <section class="about-us-container" id="about-us">
+          <!-- Animated Cartoon Background Objects -->
+          <div class="about-animated-bg">
+            <!-- Clouds -->
+            <i data-icon="cloud" class="moving-obj obj-cloud-1" data-size="140" data-stroke-width="2"></i>
+            <i data-icon="cloud" class="moving-obj obj-cloud-2" data-size="90" data-stroke-width="2.5"></i>
+            <i data-icon="cloud" class="moving-obj obj-cloud-3" data-size="110" data-stroke-width="2"></i>
+            <i data-icon="cloud" class="moving-obj obj-cloud-4" data-size="160" data-stroke-width="2"></i>
+            <i data-icon="cloud" class="moving-obj obj-cloud-5" data-size="100" data-stroke-width="2.5"></i>
+
+            <!-- Leaves -->
+            <i data-icon="leaf" class="moving-obj obj-leaf-1" data-size="75" data-stroke-width="2"></i>
+            <i data-icon="leaf" class="moving-obj obj-leaf-2" data-size="55" data-stroke-width="2.5"></i>
+            <i data-icon="leaf" class="moving-obj obj-leaf-3" data-size="65" data-stroke-width="2"></i>
+            <i data-icon="leaf" class="moving-obj obj-leaf-4" data-size="50" data-stroke-width="2"></i>
+            <i data-icon="leaf" class="moving-obj obj-leaf-5" data-size="80" data-stroke-width="2"></i>
+            <i data-icon="leaf" class="moving-obj obj-leaf-6" data-size="40" data-stroke-width="2.5"></i>
+
+            <!-- Sun -->
+            <i data-icon="sun" class="moving-obj obj-sun" data-size="180" data-stroke-width="2"></i>
+
+            <!-- Stars -->
+            <i data-icon="star" class="moving-obj obj-star-1" data-size="50" data-stroke-width="2.5"></i>
+            <i data-icon="star" class="moving-obj obj-star-2" data-size="40" data-stroke-width="2.5"></i>
+            <i data-icon="star" class="moving-obj obj-star-3" data-size="60" data-stroke-width="2"></i>
+            <i data-icon="star" class="moving-obj obj-star-4" data-size="45" data-stroke-width="2"></i>
+            <i data-icon="star" class="moving-obj obj-star-5" data-size="55" data-stroke-width="2"></i>
+            <i data-icon="star" class="moving-obj obj-star-6" data-size="35" data-stroke-width="2.5"></i>
+
+            <!-- Soft Background Color Blobs for depth -->
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+          </div>
+
+          <div class="about-us-header scroll-fade">
+            <h3>About <span>Us</span></h3>
+            <p>Discover the vision and mission driving our ecosystem</p>
+          </div>
+          <div class="about-board">
+
+            <!-- Hero -->
+            <article class="about-hero-card scroll-fade" style="background-image: url(assets/images/about_hero_gen.avif);">
+              <div class="about-hero-veil"></div>
+              <div class="about-hero-content">
+                <span class="about-badge"><i data-icon="check-circle-2" data-size="14" data-stroke-width="2.6"></i>ABOUT FEED STARTUP</span>
+                <h2 class="about-hero-title">From Indian Fields to <span>Global Markets</span></h2>
+                <p class="about-hero-sub">Empowering Farmers, Traders, MSMEs &amp; Rural Entrepreneurs with Technology, Training and Global Opportunities.</p>
+              </div>
+            </article>
+
+            <!-- Vision + Mission -->
+            <div class="about-duo">
+              <article class="about-story-card vision-card scroll-fade" style="background-image: url(assets/images/about_vision_gen.avif);">
+                <div class="story-veil"></div>
+                <div class="story-content">
+                  <div class="story-head">
+                    <span class="story-icon vision-icon"><i data-icon="eye" data-size="20" data-stroke-width="2.3"></i></span>
+                    <h3>Our Vision</h3>
+                  </div>
+                  <p>To spread to all corners of India and emerge as a one-stop solution to farmers, small traders, MSMEs, new entrepreneurs from rural and semi-urban areas for marketing their agricultural commodities in domestic and International markets by means of effective technical interface.</p>
+                </div>
+              </article>
+
+              <article class="about-story-card mission-card scroll-fade" style="background-image: url(assets/images/about_mission_gen.avif);">
+                <div class="story-veil"></div>
+                <div class="story-content">
+                  <div class="story-head">
+                    <span class="story-icon mission-icon"><i data-icon="target" data-size="20" data-stroke-width="2.3"></i></span>
+                    <h3>Our Mission</h3>
+                  </div>
+                  <p>To form product based cooperative societies (FPOs), impart the capacity building to export in the form of training sessions, provide the information on global marketing opportunities through "FEED STARTUP" Technology for their respective agricultural products and render end-to-end support in real-time export process i.e., from selection of buyers to shipment of good.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Main Objective -->
+            <article class="about-story-card objective-card scroll-fade" style="background-image: url(assets/images/about_objective_gen.avif);">
+              <div class="story-veil objective-veil"></div>
+              <div class="story-content objective-content">
+                <div class="story-head">
+                  <span class="story-icon objective-icon"><i data-icon="sprout" data-size="20" data-stroke-width="2.3"></i></span>
+                  <h3>Main Objective</h3>
+                </div>
+                <p>FEED is a multi-state co-operative society working for the uplift of exports from all corners of India, We Provide Crucial technical software and social platform connecting : "Farmers, Traders, MSME industries &amp; new entrepreneurs" in Rural and Semi Urban areas with "International markets, Export Promotional councils, Central and state governments, Banks and Financial institutes, ports" by organizing Exports Promotional meetings, Forming FPO's (product wise) and supporting the FPOs with technical information &amp; support on processing export orders.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Why Choose Section -->
+          <div class="why-choose-section scroll-fade">
+            <div class="why-choose-header">
+              <h3>Why Choose <span>FEED?</span></h3>
+            </div>
+            <p class="why-choose-sub">The definitive ecosystem for agricultural and MSME exports</p>
+
+            <div class="why-choose-grid">
+              <div class="ap-why-item theme-green scroll-fade">
+                <div class="ap-why-num">01</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_1.avif" alt="Reason 01" class="ap-why-img" /></div>
+                <p class="ap-why-text">Registered under the Multi-State Cooperative Societies Act, 2002</p>
+              </div>
+              <div class="ap-why-item theme-pink scroll-fade">
+                <div class="ap-why-num">02</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_2.avif" alt="Reason 02" class="ap-why-img" /></div>
+                <p class="ap-why-text">India's first cooperative society for export promotion</p>
+              </div>
+              <div class="ap-why-item theme-blue scroll-fade">
+                <div class="ap-why-num">03</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_3.avif" alt="Reason 03" class="ap-why-img" /></div>
+                <p class="ap-why-text">Supported by 15+ Government Ministries and Departments</p>
+              </div>
+              <div class="ap-why-item theme-orange scroll-fade">
+                <div class="ap-why-num">04</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_4.avif" alt="Reason 04" class="ap-why-img" /></div>
+                <p class="ap-why-text">MoUs with 11 State Governments and UTs</p>
+              </div>
+              <div class="ap-why-item theme-purple scroll-fade">
+                <div class="ap-why-num">05</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_5.avif" alt="Reason 05" class="ap-why-img" /></div>
+                <p class="ap-why-text">State-level Export Promotional Meetings (SEPMs)</p>
+              </div>
+              <div class="ap-why-item theme-yellow scroll-fade">
+                <div class="ap-why-num">06</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_6.avif" alt="Reason 06" class="ap-why-img" /></div>
+                <p class="ap-why-text">Product-based Export FPOs across the country</p>
+              </div>
+              <div class="ap-why-item theme-red scroll-fade">
+                <div class="ap-why-num">07</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_7.avif" alt="Reason 07" class="ap-why-img" /></div>
+                <p class="ap-why-text">Modern processing and packaging units</p>
+              </div>
+              <div class="ap-why-item theme-cyan scroll-fade">
+                <div class="ap-why-num">08</div>
+                <div class="ap-why-img-wrapper"><img src="assets/images/why_8.avif" alt="Reason 08" class="ap-why-img" /></div>
+                <p class="ap-why-text">End-to-end handholding support for exporters</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services (Ecosystem) Block -->
+        <div id="services-block" style="width: 100%; padding: 60px 20px; background: linear-gradient(135deg, #eef2ff 0%, #ede9fe 50%, #f3e8ff 100%); display: flex; justify-content: center; position: relative; overflow: hidden;">
+
+          <!-- Animated Ecosystem Background Objects -->
+          <div class="about-animated-bg">
+            <i data-icon="globe-2" class="eco-obj eco-globe-1" data-size="140" data-stroke-width="1.5"></i>
+            <i data-icon="globe-2" class="eco-obj eco-globe-2" data-size="90" data-stroke-width="2"></i>
+            <i data-icon="ship" class="eco-obj eco-ship-1" data-size="120" data-stroke-width="1.5"></i>
+            <i data-icon="ship" class="eco-obj eco-ship-2" data-size="80" data-stroke-width="2"></i>
+            <i data-icon="package" class="eco-obj eco-pkg-1" data-size="75" data-stroke-width="2"></i>
+            <i data-icon="package" class="eco-obj eco-pkg-2" data-size="55" data-stroke-width="2"></i>
+            <i data-icon="package" class="eco-obj eco-pkg-3" data-size="65" data-stroke-width="2"></i>
+            <i data-icon="store" class="eco-obj eco-store-1" data-size="100" data-stroke-width="2"></i>
+            <i data-icon="trending-up" class="eco-obj eco-trend-1" data-size="80" data-stroke-width="2"></i>
+            <i data-icon="coins" class="eco-obj eco-coins-1" data-size="60" data-stroke-width="2"></i>
+            <i data-icon="coins" class="eco-obj eco-coins-2" data-size="40" data-stroke-width="2.5"></i>
+            <i data-icon="coins" class="eco-obj eco-coins-3" data-size="50" data-stroke-width="2"></i>
+          </div>
+
+          <div style="width: 100%; max-width: 1300px; min-height: 750px; background-image: url(assets/images/services-bg.avif); background-size: 100% 100%; background-repeat: no-repeat; border-radius: 32px; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4); display: flex; flex-direction: column; position: relative; overflow: hidden; z-index: 2;">
+
+            <!-- Spacer to push grid down into the white block -->
+            <div style="height: 35%; min-height: 260px; width: 100%;"></div>
+
+            <!-- Buttons Grid container positioned tightly in the white space (cards: assets/js/pages/home.js) -->
+            <div id="home-services-grid" style="flex: 1; padding: 0 4% 4% 4%; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: min-content; gap: 16px;"></div>
+          </div>
+        </div>
+
+        <!-- Events & Updates Section -->
+        <div id="events-updates" style="position: relative; width: 100%; padding: 32px 20px 40px; background-color: #fff7ed; background-image: radial-gradient(at 0% 0%, rgba(244, 114, 182, 0.2) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(251, 146, 60, 0.2) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(250, 204, 21, 0.2) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(52, 211, 153, 0.15) 0px, transparent 50%); display: flex; flex-direction: column; align-items: center; overflow: hidden;">
+
+          <!-- Header -->
+          <div style="text-align: center; margin-bottom: 24px; position: relative; z-index: 2;">
+            <h2 style="font-size: 42px; font-weight: 900; color: #0f172a; margin: 0; text-transform: uppercase; letter-spacing: 1px;">EVENTS <span style="color: #ea580c;">&amp;</span> UPDATES</h2>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 12px;">
+              <div style="width: 100px; height: 3px; background: linear-gradient(90deg, transparent, #ea580c);"></div>
+              <i data-icon="leaf" data-size="28" data-color="#16a34a" data-fill="#16a34a"></i>
+              <div style="width: 100px; height: 3px; background: linear-gradient(270deg, transparent, #ea580c);"></div>
+            </div>
+          </div>
+
+          <!-- 3-Column Layout -->
+          <div class="events-grid" style="position: relative; z-index: 2;">
+
+            <!-- Left Column: Central/State Updates -->
+            <div style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.8); border-radius: 28px; box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08); overflow: hidden; display: flex; flex-direction: column; height: 600px;">
+              <div style="background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; border-bottom: 4px solid #3b82f6;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                  <div style="width: 40px; height: 40px; border-radius: 10px; background-color: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+                    <i data-icon="landmark" data-size="22" data-color="#fff"></i>
+                  </div>
+                  <h3 style="color: #fff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: 0.5px;">Central / State Updates</h3>
+                </div>
+                <i data-icon="more-horizontal" data-color="rgba(255,255,255,0.6)"></i>
+              </div>
+              <div class="marquee-container" style="padding: 12px 0; position: relative;">
+                <div class="marquee-vertical">
+                  <!-- The list is rendered twice for a seamless loop -->
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #0ea5e915; border: 1px solid #0ea5e930; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #0ea5e9; font-size: 12px;">FIEO</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #0ea5e9; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">FIEO</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">FIEO MUMBAI : WEB CONFERENCE ON AWARENESS OF CYBER SECURITY ON SEPTEMBER 30, 202</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #16a34a15; border: 1px solid #16a34a30; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #16a34a; font-size: 12px;">Aped</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #16a34a; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">Apeda</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">Report on Development of suitable package &amp; formulation of packaging specification for fresh kiwi from north eastern states.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #eab30815; border: 1px solid #eab30830; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #eab308; font-size: 12px;">IBEF</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #eab308; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">IBEF</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">PM dedicates to the Nation 35 crop varieties with special traits.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #22c55e15; border: 1px solid #22c55e30; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #22c55e; font-size: 12px;">Naba</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #22c55e; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">Nabard</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">WRONG COVERAGE REGARDING NABARD IN VARIOUS PRINT MEDIA ON KISAN CREDIT CARD.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #ef444415; border: 1px solid #ef444430; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #ef4444; font-size: 12px;">Othe</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #ef4444; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">Other Updates</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">Latest notifications, circulars and announcements from various departments.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #0ea5e915; border: 1px solid #0ea5e930; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #0ea5e9; font-size: 12px;">FIEO</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #0ea5e9; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">FIEO</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">FIEO MUMBAI : WEB CONFERENCE ON AWARENESS OF CYBER SECURITY ON SEPTEMBER 30, 202</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #16a34a15; border: 1px solid #16a34a30; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #16a34a; font-size: 12px;">Aped</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #16a34a; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">Apeda</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">Report on Development of suitable package &amp; formulation of packaging specification for fresh kiwi from north eastern states.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #eab30815; border: 1px solid #eab30830; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #eab308; font-size: 12px;">IBEF</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #eab308; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">IBEF</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">PM dedicates to the Nation 35 crop varieties with special traits.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #22c55e15; border: 1px solid #22c55e30; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #22c55e; font-size: 12px;">Naba</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #22c55e; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">Nabard</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">WRONG COVERAGE REGARDING NABARD IN VARIOUS PRINT MEDIA ON KISAN CREDIT CARD.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                  <div class="premium-list-item">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #ef444415; border: 1px solid #ef444430; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 800; color: #ef4444; font-size: 12px;">Othe</div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #ef4444; font-size: 14px; font-weight: 800; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.5px;">Other Updates</h4>
+                      <p style="font-size: 14px; color: #334155; line-height: 1.5; margin: 0 0 12px 0; font-weight: 600;">Latest notifications, circulars and announcements from various departments.</p>
+                      <a href="#" data-role="read-more" style="font-size: 13px; color: #2563eb; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; padding: 4px 12px; border-radius: 20px; transition: background 0.2s;">Read More <i data-icon="chevron-right" data-size="14"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Middle Column: Image Carousel -->
+            <div id="home-events-slider" style="position: relative; border-radius: 28px; overflow: hidden; height: 600px; box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15); border: 4px solid #ffffff;">
+              <div data-role="events-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(assets/images/hero-banner-1.avif); background-size: cover; background-position: center; opacity: 1; transition: opacity 0.8s ease-in-out; z-index: 1;"></div>
+              <div data-role="events-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(assets/images/hero-banner-2.avif); background-size: cover; background-position: center; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 0;"></div>
+              <div data-role="events-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(assets/images/hero-banner-3.avif); background-size: cover; background-position: center; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 0;"></div>
+              <div data-role="events-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(assets/images/hero-banner-4.avif); background-size: cover; background-position: center; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 0;"></div>
+
+              <!-- Arrows -->
+              <div style="position: absolute; top: 50%; transform: translateY(-50%); left: 20px; z-index: 10;">
+                <button type="button" class="slider-btn" data-role="events-prev"><i data-icon="chevron-left" data-size="24"></i></button>
+              </div>
+              <div style="position: absolute; top: 50%; transform: translateY(-50%); right: 20px; z-index: 10;">
+                <button type="button" class="slider-btn" data-role="events-next"><i data-icon="chevron-right" data-size="24"></i></button>
+              </div>
+
+              <!-- Dots -->
+              <div style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+                <div data-role="events-dot" data-index="0" style="width: 24px; height: 8px; border-radius: 4px; background-color: #fff; cursor: pointer; transition: all 0.3s ease;"></div>
+                <div data-role="events-dot" data-index="1" style="width: 8px; height: 8px; border-radius: 4px; background-color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s ease;"></div>
+                <div data-role="events-dot" data-index="2" style="width: 8px; height: 8px; border-radius: 4px; background-color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s ease;"></div>
+                <div data-role="events-dot" data-index="3" style="width: 8px; height: 8px; border-radius: 4px; background-color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s ease;"></div>
+              </div>
+            </div>
+
+            <!-- Right Column: FEED Services -->
+            <div style="background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.8); border-radius: 28px; box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08); overflow: hidden; display: flex; flex-direction: column; height: 600px;">
+              <div style="background: linear-gradient(135deg, #15803d 0%, #16a34a 100%); padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; border-bottom: 4px solid #22c55e;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                  <div style="width: 40px; height: 40px; border-radius: 10px; background-color: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+                    <i data-icon="leaf" data-size="22" data-color="#fff"></i>
+                  </div>
+                  <h3 style="color: #fff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: 0.5px;">FEED Services</h3>
+                </div>
+                <i data-icon="more-horizontal" data-color="rgba(255,255,255,0.6)"></i>
+              </div>
+              <div class="marquee-container" style="padding: 12px 0; position: relative;">
+                <div class="marquee-vertical">
+                  <!-- The list is rendered twice for a seamless loop -->
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #f0f9ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #0ea5e920;">
+                      <i data-icon="users-2" data-size="24" data-color="#0ea5e9"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">FPC</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #f7fee7; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #84cc1620;">
+                      <i data-icon="sprout" data-size="24" data-color="#84cc16"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">Farm</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #eff6ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #3b82f620;">
+                      <i data-icon="heart-handshake" data-size="24" data-color="#3b82f6"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">My Business</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" data-nav="mybusiness" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #eef2ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #6366f120;">
+                      <i data-icon="ship" data-size="24" data-color="#6366f1"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">My Exports</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" data-nav="exports" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #fffbeb; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #f59e0b20;">
+                      <i data-icon="package" data-size="24" data-color="#f59e0b"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">MY Products</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #fef2f2; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #ef444420;">
+                      <i data-icon="store" data-size="24" data-color="#ef4444"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">My Market</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #f0f9ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #0ea5e920;">
+                      <i data-icon="users-2" data-size="24" data-color="#0ea5e9"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">FPC</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #f7fee7; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #84cc1620;">
+                      <i data-icon="sprout" data-size="24" data-color="#84cc16"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">Farm</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #eff6ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #3b82f620;">
+                      <i data-icon="heart-handshake" data-size="24" data-color="#3b82f6"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">My Business</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" data-nav="mybusiness" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #eef2ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #6366f120;">
+                      <i data-icon="ship" data-size="24" data-color="#6366f1"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">My Exports</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" data-nav="exports" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #fffbeb; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #f59e0b20;">
+                      <i data-icon="package" data-size="24" data-color="#f59e0b"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">MY Products</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                  <div class="premium-list-item" style="align-items: center;">
+                    <div style="width: 50px; height: 50px; border-radius: 12px; background: #fef2f2; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #ef444420;">
+                      <i data-icon="store" data-size="24" data-color="#ef4444"></i>
+                    </div>
+                    <div style="flex: 1; padding-right: 10px;">
+                      <h4 style="color: #166534; font-size: 15.5px; font-weight: 800; margin: 0 0 4px 0;">My Market</h4>
+                      <p style="font-size: 13px; color: #475569; line-height: 1.4; margin: 0; font-weight: 500;">FEED is a multi-state co-operative society working for the uplift.</p>
+                    </div>
+                    <button type="button" data-role="feed-service-btn" style="width: 32px; height: 32px; border-radius: 50%; border: none; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: all 0.2s;"><i data-icon="chevron-right" data-size="16" data-color="#166534" data-stroke-width="3" style="transition: color 0.2s;"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

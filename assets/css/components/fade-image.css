@@ -1,0 +1,19 @@
+.fade-img {
+  opacity: 0;
+}
+
+.fade-img.is-loaded {
+  animation: fade-img-in 0.7s ease both;
+}
+
+@keyframes fade-img-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-img.is-loaded {
+    animation: none;
+    opacity: 1;
+  }
+}

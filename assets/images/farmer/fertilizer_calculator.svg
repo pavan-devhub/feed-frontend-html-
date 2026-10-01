@@ -1,0 +1,19 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="60" cy="60" rx="46" ry="44" fill="#F0F8E4"/>
+  <path d="M26 50h34l4 42H22z" fill="#FBBF24"/>
+  <path d="M26 50h34l2 20H24z" fill="#FCD34D"/>
+  <rect x="30" y="42" width="26" height="10" rx="3" fill="#D97706"/>
+  <circle cx="43" cy="74" r="9" fill="#16A34A" opacity="0.85"/>
+  <path d="M43 70v8M39 74h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="70" y="46" width="30" height="42" rx="5" fill="#334155"/>
+  <rect x="75" y="52" width="20" height="10" rx="2" fill="#A7F3D0"/>
+  <circle cx="78" cy="70" r="3" fill="#94A3B8"/>
+  <circle cx="85" cy="70" r="3" fill="#94A3B8"/>
+  <circle cx="92" cy="70" r="3" fill="#94A3B8"/>
+  <circle cx="78" cy="79" r="3" fill="#94A3B8"/>
+  <circle cx="85" cy="79" r="3" fill="#94A3B8"/>
+  <circle cx="92" cy="79" r="3" fill="#22C55E"/>
+  <path d="M62 40v-8" stroke="#15803D" stroke-width="3" stroke-linecap="round"/>
+  <path d="M62 34c-7 0-10-4-10-9 5 0 10 3 10 9z" fill="#22C55E"/>
+  <path d="M62 30c7 0 10-4 10-9-5 0-10 3-10 9z" fill="#4ADE80"/>
+</svg>

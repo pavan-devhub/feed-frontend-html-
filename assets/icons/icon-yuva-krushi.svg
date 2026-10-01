@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Yuva Krushi">
+  <!-- rising sun -->
+  <circle cx="94" cy="32" r="17" fill="#fbbf24"/>
+  <g stroke="#fbbf24" stroke-width="4" stroke-linecap="round">
+    <path d="M94 6v5M120 32h-5M112.4 13.6l-3.5 3.5M75.6 13.6l3.5 3.5"/>
+  </g>
+
+  <!-- young farmer -->
+  <path d="M12 118c0-23 15-37 36-37s36 14 36 37z" fill="#16a34a"/>
+  <path d="M38 82l10 13 10-13z" fill="#f2c29b"/>
+  <circle cx="48" cy="56" r="21" fill="#f2c29b"/>
+  <path d="M26.5 56C25 40 35 30 48 30s23 9 21.5 24C60 54 52 50 47 43c-4 7-11 11-20.5 13z" fill="#3b2a20"/>
+
+  <!-- sprout -->
+  <path d="M100 118V80" fill="none" stroke="#15803d" stroke-width="5" stroke-linecap="round"/>
+  <path d="M100 86c0-13 8-21 22-21 0 13-8 21-22 21z" fill="#22c55e"/>
+  <path d="M100 97c0-11-7-18-20-18 0 11 7 18 20 18z" fill="#84cc16"/>
+  <path d="M84 118h32" fill="none" stroke="#92400e" stroke-width="5" stroke-linecap="round"/>
+</svg>

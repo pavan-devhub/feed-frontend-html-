@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trade Fairs | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- This page has no site navbar/footer. contact.css supplies the shared .info-icon rule. -->
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/pages/contact.css" />
+  <link rel="stylesheet" href="../assets/css/pages/trade-fairs.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/trade-fairs.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <div class="main-content-bg">
+      <div class="trade-page">
+
+        <!-- Decorative greenery -->
+        <div class="leaf leaf-one">🌿</div>
+        <div class="leaf leaf-two">🍃</div>
+        <div class="leaf leaf-three">🌱</div>
+        <div class="leaf leaf-four">🌿</div>
+
+        <!-- Header -->
+        <header class="trade-header">
+          <div class="brand-section">
+            <div class="brand-icon">🌾</div>
+            <div>
+              <h1>Agri Trade Fairs</h1>
+              <p>Discover • Connect • Grow</p>
+            </div>
+          </div>
+          <div class="header-leaves">🌿 🌱 🍃</div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="trade-container">
+
+          <!-- Title -->
+          <section class="hero-section">
+            <div class="hero-icon">🌾</div>
+            <h2>Explore Trade Fairs</h2>
+            <p>Find agricultural and business trade fairs across India and international markets.</p>
+          </section>
+
+          <!-- Domestic / International -->
+          <section class="type-section">
+            <button class="type-button active"><span>🇮🇳</span>India Domestic</button>
+            <button class="type-button" data-action="international"><span>🌍</span>International</button>
+          </section>
+
+          <!-- Filter Card -->
+          <section class="filter-card">
+            <div class="card-heading">
+              <div class="heading-icon">🌱</div>
+              <div>
+                <h3>Find Domestic Trade Fairs</h3>
+                <p>Select the required details to explore trade fairs.</p>
+              </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-grid">
+
+              <!-- State (options from assets/js/data/states-urls.js) -->
+              <div class="filter-group">
+                <label>State</label>
+                <select data-field="state">
+                  <option value="">Select State</option>
+                </select>
+              </div>
+
+              <!-- Ministry -->
+              <div class="filter-group">
+                <label>Ministry / Department</label>
+                <select data-field="ministry">
+                  <option value="">Select Ministry / Department</option>
+                  <option value="MINISTRY OF AGRICULTURE">MINISTRY OF AGRICULTURE</option>
+                  <option value="MINISTRY OF COMMERCE">MINISTRY OF COMMERCE</option>
+                  <option value="MINISTRY OF CONSUMER &amp; PDS">MINISTRY OF CONSUMER &amp; PDS</option>
+                  <option value="MINISTRY OF MSME">MINISTRY OF MSME</option>
+                  <option value="MINISTRY OF CO-OPERATIVE">MINISTRY OF CO-OPERATIVE</option>
+                  <option value="MINISTRY OF AAYUSH">MINISTRY OF AAYUSH</option>
+                  <option value="MINISTRY OF SHIPPING">MINISTRY OF SHIPPING</option>
+                  <option value="MINISTRY OF CHEMICALS &amp; FERTILIZERS">MINISTRY OF CHEMICALS &amp; FERTILIZERS</option>
+                  <option value="MINISTRY OF FOREST">MINISTRY OF FOREST</option>
+                  <option value="MINISTRY OF HEALTH &amp; FAMILY WELFARE">MINISTRY OF HEALTH &amp; FAMILY WELFARE</option>
+                  <option value="MINISTRY OF WOMEN &amp; CHILD DEVELOPMENT">MINISTRY OF WOMEN &amp; CHILD DEVELOPMENT</option>
+                  <option value="MINISTRY OF DEFENCE">MINISTRY OF DEFENCE</option>
+                  <option value="MINISTRY OF TEXTILE">MINISTRY OF TEXTILE</option>
+                  <option value="MINISTRY OF FINANCE">MINISTRY OF FINANCE</option>
+                  <option value="MINISTRY OF HRD">MINISTRY OF HRD</option>
+                  <option value="MINISTRY OF SKILL DEVELOPMENT">MINISTRY OF SKILL DEVELOPMENT</option>
+                  <option value="MINISTRY OF RAILWAYS">MINISTRY OF RAILWAYS</option>
+                  <option value="MINISTRY OF FOOD PROCESSING">MINISTRY OF FOOD PROCESSING</option>
+                  <option value="MINISTRY OF CIVIL AVIATION">MINISTRY OF CIVIL AVIATION</option>
+                  <option value="MINISTRY OF ANIMAL HUSBANDRY">MINISTRY OF ANIMAL HUSBANDRY</option>
+                  <option value="MINISTRY OF EXTERNAL AFFAIRS">MINISTRY OF EXTERNAL AFFAIRS</option>
+                </select>
+              </div>
+
+              <!-- Year -->
+              <div class="filter-group">
+                <label>Year</label>
+                <select data-field="year">
+                  <option value="">Select Year</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
+                </select>
+              </div>
+
+              <!-- Month -->
+              <div class="filter-group">
+                <label>Month</label>
+                <select data-field="month">
+                  <option value="">Select Month</option>
+                  <option value="January">January</option>
+                  <option value="February">February</option>
+                  <option value="March">March</option>
+                  <option value="April">April</option>
+                  <option value="May">May</option>
+                  <option value="June">June</option>
+                  <option value="July">July</option>
+                  <option value="August">August</option>
+                  <option value="September">September</option>
+                  <option value="October">October</option>
+                  <option value="November">November</option>
+                  <option value="December">December</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- View Button -->
+            <button class="view-button" data-action="view-fairs"><span>🔎</span>View Trade Fairs<span>→</span></button>
+
+            <!-- Small information -->
+            <div class="info-box"><span class="info-icon">ℹ️</span><p>Select a state to view the available trade fairs for that location.</p></div>
+
+          </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="trade-footer"><span>🌱</span><p>Connecting Farmers, Businesses &amp; Opportunities</p><span>🌾</span></footer>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

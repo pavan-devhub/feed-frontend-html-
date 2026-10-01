@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPM Gallery | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/components/fade-image.css" />
+  <link rel="stylesheet" href="../assets/css/components/photo-lightbox.css" />
+  <link rel="stylesheet" href="../assets/css/components/editorial-grid.css" />
+  <link rel="stylesheet" href="../assets/css/components/epm-gallery-common.css" />
+  <link rel="stylesheet" href="../assets/css/pages/epm-gallery.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/epm-gallery.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="epg epg-gallery">
+        <div id="site-navbar"></div>
+
+        <main class="epg-main">
+          <!-- ---------- Intro ---------- -->
+          <section class="epg-intro epg-container" aria-labelledby="epg-intro-title">
+            <div class="epg-intro-copy">
+              <nav class="epg-crumbs" aria-label="Breadcrumb">
+                <ol>
+                  <li><button type="button" data-nav="epm">EPM</button></li>
+                  <li><span aria-current="page">Gallery</span></li>
+                </ol>
+              </nav>
+              <span class="epg-eyebrow">EPM Gallery</span>
+              <h1 id="epg-intro-title" class="epg-intro-title">Export Promotional Meetings <span>across India</span></h1>
+              <p class="epg-intro-lead">
+                A photographic record of the meetings FEED organises to connect farmers, FPOs and exporters
+                with new markets. Choose a state to explore its districts and the moments captured there.
+              </p>
+              <div class="epg-intro-actions">
+                <button type="button" class="epg-btn epg-btn-primary" data-action="explore">
+                  Explore by state <i data-icon="arrow-down" data-size="17" class="epg-nudge-down"></i>
+                </button>
+                <button type="button" class="epg-btn epg-btn-secondary" data-nav="epm-details">
+                  Upcoming EPMs <i data-icon="arrow-right" data-size="17" class="epg-nudge-right"></i>
+                </button>
+              </div>
+              <!-- replaced by the programme's numbers once the gallery has loaded -->
+              <div class="epg-intro-stats-placeholder" aria-hidden="true"></div>
+            </div>
+
+            <!-- the first three photos of the "epm-gallery" block, filled in by the page script -->
+            <div class="epg-intro-visual is-count-3" aria-hidden="true">
+              <span class="epg-intro-frame epg-skeleton"></span>
+              <span class="epg-intro-frame epg-skeleton"></span>
+              <span class="epg-intro-frame epg-skeleton"></span>
+            </div>
+          </section>
+
+          <!-- ---------- States ---------- -->
+          <section id="epg-states" class="epg-section epg-states" aria-labelledby="epg-states-title">
+            <div class="epg-container">
+              <header class="epg-section-head">
+                <div class="epg-section-head-main">
+                  <span class="epg-eyebrow">Explore by state</span>
+                  <h2 id="epg-states-title" class="epg-h2">Where the meetings happened</h2>
+                </div>
+                <div class="epg-section-head-side">
+                  <p class="epg-section-desc">Each state opens onto its districts, and each district onto the photographs from its meetings.</p>
+                </div>
+              </header>
+
+              <ul class="epg-state-grid" aria-hidden="true">
+                <li><span class="epg-scard is-skeleton"><span class="epg-scard-media epg-skeleton"></span></span></li>
+                <li><span class="epg-scard is-skeleton"><span class="epg-scard-media epg-skeleton"></span></span></li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ---------- About the programme ---------- -->
+          <section class="epg-section epg-band epg-programme" aria-labelledby="epg-programme-title">
+            <div class="epg-container epg-programme-grid">
+              <div class="epg-reveal epg-programme-copy">
+                <h2 id="epg-programme-title" class="epg-eyebrow">About the programme</h2>
+                <p class="epg-programme-statement">
+                  <strong>FEED</strong> is organising Export Promotional Meetings across India to connect local
+                  exporters with global buyers, create new opportunities, and strengthen India's export ecosystem.
+                </p>
+                <button type="button" class="epg-link" data-nav="epm-objective">
+                  Read about the objectives <i data-icon="arrow-right" data-size="16"></i>
+                </button>
+              </div>
+              <dl class="epg-reveal epg-impact" style="--epg-reveal-delay: 120ms;">
+                <div class="epg-impact-item">
+                  <dt>Exporters connected and empowered</dt>
+                  <dd>2000+</dd>
+                </div>
+                <div class="epg-impact-item">
+                  <dt>Global buyers participated</dt>
+                  <dd>500+</dd>
+                </div>
+                <div class="epg-impact-item">
+                  <dt>Business opportunities generated</dt>
+                  <dd>₹500 Cr+</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+
+          <!-- ---------- Photo themes (rendered by the page script once the photos have loaded) ---------- -->
+        </main>
+
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

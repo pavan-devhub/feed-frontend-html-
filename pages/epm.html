@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPM | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/pages/epm.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/epm.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="epm-page">
+        <div id="site-navbar"></div>
+
+        <!-- Full-width video right under the navbar, with the page's actions over its top-right corner.
+             The <video> is added by epm.js once the admin's upload (or the built-in one) is known. -->
+        <section class="epm-video-hero" id="epm-video-hero">
+          <div class="epm-video-hero-overlay">
+            <div class="epm-hero-actions">
+              <button class="epm-btn-outline" data-nav="epm-register"><i data-icon="user-plus" data-size="16"></i>Register</button>
+              <button class="epm-btn-primary" data-nav="epm-volunteer"><i data-icon="heart-handshake" data-size="16"></i>Become a Volunteer</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="epm-hero-section">
+          <div class="epm-hero-inner">
+
+            <!-- Info cards -->
+            <div class="epm-info-grid">
+              <div class="epm-info-block accent-green epm-reveal dir-left">
+                <div class="epm-info-decor"><i data-icon="target" data-size="96"></i></div>
+                <div class="epm-info-icon"><i data-icon="target" data-size="24"></i></div>
+                <h3 class="epm-info-title">Objective of Export Promotional Meetings (EPMs)</h3>
+                <span class="epm-info-divider"></span>
+                <div class="epm-info-content">
+                  <p>Export Promotional Meetings (EPMs) bring together exporters, buyers, farmers, cooperatives, government bodies, and industry stakeholders to create meaningful business opportunities. These meetings focus on promoting agricultural products, exploring new markets, strengthening partnerships, and addressing challenges in the export ecosystem.</p>
+                </div>
+                <button class="epm-info-btn" data-nav="epm-objective">View Full Details <i data-icon="arrow-right" data-size="14"></i></button>
+              </div>
+              <div class="epm-info-block accent-blue epm-reveal dir-top">
+                <div class="epm-info-decor"><i data-icon="book-open" data-size="96"></i></div>
+                <div class="epm-info-icon"><i data-icon="book-open" data-size="24"></i></div>
+                <h3 class="epm-info-title">Content Coverage</h3>
+                <span class="epm-info-divider"></span>
+                <div class="epm-info-content">
+                  <p>Sessions cover export procedures and documentation, quality and packaging standards, market access requirements, applicable government schemes, logistics planning, and pricing strategies — giving participants practical, ready-to-use knowledge.</p>
+                </div>
+                <button class="epm-info-btn" data-nav="epm-content-coverage">View Full Details <i data-icon="arrow-right" data-size="14"></i></button>
+              </div>
+              <div class="epm-info-block accent-orange epm-reveal dir-bottom">
+                <div class="epm-info-decor"><i data-icon="award" data-size="96"></i></div>
+                <div class="epm-info-icon"><i data-icon="award" data-size="24"></i></div>
+                <h3 class="epm-info-title">Benefits of Participation</h3>
+                <span class="epm-info-divider"></span>
+                <div class="epm-info-content">
+                  <p>Participants gain direct access to buyers, expert guidance on compliance and certification, valuable networking with industry leaders, and support in identifying the right export markets for their products.</p>
+                </div>
+                <button class="epm-info-btn" data-nav="epm-benefits">View Full Details <i data-icon="arrow-right" data-size="14"></i></button>
+              </div>
+              <div class="epm-info-block accent-purple epm-reveal dir-right">
+                <div class="epm-info-decor"><i data-icon="users" data-size="96"></i></div>
+                <div class="epm-info-icon"><i data-icon="users" data-size="24"></i></div>
+                <h3 class="epm-info-title">Invitees</h3>
+                <span class="epm-info-divider"></span>
+                <div class="epm-info-content">
+                  <p>EPMs bring together farmers, FPOs, exporters, importers, trade associations, government officials, and banking and logistics partners from across the agri-export value chain.</p>
+                </div>
+                <button class="epm-info-btn" data-nav="epm-invitees">View Full Details <i data-icon="arrow-right" data-size="14"></i></button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <div class="epm-content-wrap">
+
+          <!-- Stats Section -->
+          <div class="epm-card stats-card redesign-stats epm-reveal dir-left" id="epm-stats-card">
+            <div class="epm-card-header redesign-header">
+              <div class="redesign-header-icon color-green"><i data-icon="trending-up" data-size="24"></i></div>
+              <div>
+                <h2 class="epm-card-title">Overview Statistics</h2>
+                <p class="redesign-subtitle">Highlights from our Export Promotional Meetings</p>
+              </div>
+            </div>
+            <div class="redesign-stats-grid">
+              <div class="redesign-stat-card r-stat-green">
+                <div class="r-stat-bg">
+                  <img src="../assets/images/epm_stat_1.avif" alt="EPMs Conducted" data-stat-image="0" />
+                  <div class="r-stat-fade"></div>
+                </div>
+                <div class="r-stat-content">
+                  <div class="r-stat-icon-wrapper"><i data-icon="users" data-size="20"></i></div>
+                  <div>
+                    <h3 class="r-stat-value" id="epm-stat-conducted">25+</h3>
+                    <h4 class="r-stat-label">EPMs Conducted</h4>
+                    <span class="r-stat-rule"></span>
+                    <p class="r-stat-desc">Successful meetings across regions</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="redesign-stat-card r-stat-blue">
+                <div class="r-stat-bg">
+                  <img src="../assets/images/epm_stat_2.avif" alt="Districts Covered" data-stat-image="1" />
+                  <div class="r-stat-fade"></div>
+                </div>
+                <div class="r-stat-content">
+                  <div class="r-stat-icon-wrapper"><i data-icon="building-2" data-size="20"></i></div>
+                  <div>
+                    <h3 class="r-stat-value" id="epm-stat-districts">10</h3>
+                    <h4 class="r-stat-label">Districts Covered</h4>
+                    <span class="r-stat-rule"></span>
+                    <p class="r-stat-desc">Reaching key agricultural hubs</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="redesign-stat-card r-stat-purple">
+                <div class="r-stat-bg">
+                  <img src="../assets/images/epm_stat_3.avif" alt="Total Attendees" data-stat-image="2" />
+                  <div class="r-stat-fade"></div>
+                </div>
+                <div class="r-stat-content">
+                  <div class="r-stat-icon-wrapper"><i data-icon="users" data-size="20"></i></div>
+                  <div>
+                    <h3 class="r-stat-value" id="epm-stat-participants">500+</h3>
+                    <h4 class="r-stat-label">Total Attendees</h4>
+                    <span class="r-stat-rule"></span>
+                    <p class="r-stat-desc">Connecting stakeholders worldwide</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming EPMs (Full Column) -->
+          <div class="epm-card upcoming-card redesign-events epm-reveal dir-right">
+            <div class="epm-card-header redesign-header">
+              <div class="redesign-header-icon color-green"><i data-icon="calendar" data-size="24"></i></div>
+              <div>
+                <h2 class="epm-card-title">Upcoming EPMs</h2>
+                <p class="redesign-subtitle">Stay updated with our upcoming Export Promotional Meetings</p>
+              </div>
+            </div>
+
+            <div class="redesign-events-layout">
+              <div class="redesign-calendar-side">
+                <div class="epm-calendar-container">
+                  <div class="epm-calendar-header">
+                    <button class="epm-cal-nav" id="epm-cal-prev" aria-label="Previous month"><i data-icon="chevron-left" data-size="16"></i></button>
+                    <h4 id="epm-cal-label"></h4>
+                    <button class="epm-cal-nav" id="epm-cal-next" aria-label="Next month"><i data-icon="chevron-right" data-size="16"></i></button>
+                  </div>
+                  <!-- Day cells after the weekday names are drawn by epm.js for the month on show -->
+                  <div class="epm-calendar-grid" id="epm-cal-grid">
+                    <div class="epm-cal-day-name">Mon</div>
+                    <div class="epm-cal-day-name">Tue</div>
+                    <div class="epm-cal-day-name">Wed</div>
+                    <div class="epm-cal-day-name">Thu</div>
+                    <div class="epm-cal-day-name">Fri</div>
+                    <div class="epm-cal-day-name">Sat</div>
+                    <div class="epm-cal-day-name">Sun</div>
+                  </div>
+                </div>
+                <div class="redesign-calendar-ill">
+                  <img src="../assets/images/epm_calendar.avif" alt="Calendar landscape" id="epm-cal-image" />
+                </div>
+              </div>
+
+              <div class="redesign-events-list" id="epm-upcoming-list">
+                <p style="color: #64748b;">Loading upcoming EPMs…</p>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: center; margin-top: 24px;">
+              <button class="epm-view-all redesign-view-btn" data-nav="epm-details">View All EPMs <i data-icon="arrow-right" data-size="16"></i></button>
+            </div>
+          </div>
+
+          <!-- Gallery Section -->
+          <div class="epm-card gallery-card epm-reveal dir-left">
+            <div class="epm-card-header redesign-header">
+              <div class="epm-header-left">
+                <div class="redesign-header-icon color-purple"><i data-icon="image" data-size="22"></i></div>
+                <div>
+                  <h2 class="epm-card-title">Gallery</h2>
+                  <p class="redesign-subtitle">Moments captured from our Export Promotional Meetings</p>
+                </div>
+              </div>
+              <button class="epm-view-all redesign-view-btn" data-nav="epm-gallery">View All <i data-icon="arrow-right" data-size="16"></i></button>
+            </div>
+            <div class="epm-gallery-container" id="epm-gallery">
+              <div class="epm-gallery-glow"></div>
+              <p style="color: #64748b; text-align: center; width: 100%;">Photos from Export Promotional Meetings will appear here once they're added.</p>
+            </div>
+          </div>
+
+          <!-- Testimonials (inserted here by epm.js once the admin has published at least one) -->
+
+          <!-- Membership & Services Section -->
+          <div class="epm-card membership-card epm-reveal dir-bottom" id="epm-membership-card">
+            <div class="epm-membership-decor">
+              <span class="epm-membership-orb orb-1"></span>
+              <span class="epm-membership-orb orb-2"></span>
+              <span class="epm-membership-orb orb-3"></span>
+            </div>
+            <div class="epm-card-header redesign-header">
+              <div class="epm-header-left">
+                <div class="redesign-header-icon color-onlight"><i data-icon="shield-check" data-size="22"></i></div>
+                <div>
+                  <h2 class="epm-card-title">Membership &amp; Services</h2>
+                  <p class="redesign-subtitle">Join our growing network of exporters, farmers, and trade partners</p>
+                </div>
+              </div>
+            </div>
+            <div class="epm-membership-actions">
+              <button class="epm-btn-primary" id="epm-explore-services"><i data-icon="package" data-size="17"></i>Explore our services</button>
+              <button class="epm-btn-primary epm-btn-accent" data-nav="register"><i data-icon="award" data-size="17"></i>Become a member</button>
+              <button class="epm-btn-outline" data-nav="contact"><i data-icon="user-plus" data-size="17"></i>Contact us</button>
+            </div>
+          </div>
+        </div>
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

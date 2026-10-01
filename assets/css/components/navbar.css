@@ -1,0 +1,821 @@
+/* Navbar.css */
+
+/* ==========================================================================
+   FEED WORLD — Global Navbar
+   ========================================================================== */
+.fw-nav-root {
+  --fw-forest: #0b5d3b;
+  --fw-forest-2: #1b7a46;
+  --fw-forest-dark: #073322;
+  --fw-orange: #ff7a00;
+  --fw-orange-light: #ff9838;
+  --fw-saffron: #f5a900;
+  --fw-bg-warm: #fcfcf8;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fw-nav-root.fw-nav-hidden {
+  transform: translateY(-120px);
+  pointer-events: none;
+}
+
+.fw-navbar {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  max-width: 1320px;
+  height: 68px;
+  border-radius: 20px;
+  /* The tricolor stripe is painted as a background layer (not a separate element) so it is
+     clipped to the navbar's own border-radius and its corners always match exactly. */
+  background:
+    linear-gradient(90deg, var(--fw-orange) 0%, var(--fw-saffron) 50%, var(--fw-forest-2) 100%) top left / 100% 3px no-repeat,
+    var(--fw-bg-warm);
+  box-shadow:
+    0 14px 30px rgba(11, 93, 59, 0.10),
+    0 2px 8px rgba(15, 23, 42, 0.07),
+    0 0 0 1px rgba(255, 122, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.fw-navbar-divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 14px 2px;
+  background: linear-gradient(180deg, transparent, rgba(11, 93, 59, 0.16) 22%, rgba(11, 93, 59, 0.16) 78%, transparent);
+  flex-shrink: 0;
+}
+
+.fw-navbar-logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 14px 0 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.fw-navbar-logo-badge {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 13px;
+  background: #ffffff;
+  border: 1px solid #eef2e6;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+.fw-navbar-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.fw-navbar-logo-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.fw-navbar-logo-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--fw-forest);
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.fw-navbar-logo-tagline {
+  font-size: 9.5px;
+  font-weight: 600;
+  font-style: italic;
+  color: #5b7a5f;
+  letter-spacing: 0.1px;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.fw-navbar-links {
+  position: relative;
+  z-index: 2;
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1px, 0.4vw, 6px);
+}
+
+.fw-nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.fw-nav-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: transparent;
+  border: none;
+  border-radius: 14px;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: var(--fw-forest);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+.fw-nav-btn:hover {
+  background: rgba(11, 93, 59, 0.06);
+}
+.fw-nav-btn:hover .fw-nav-icon {
+  transform: translateY(-2px);
+}
+.fw-nav-btn:focus-visible {
+  outline: 2px solid var(--fw-forest);
+  outline-offset: 2px;
+}
+.fw-nav-item.open .fw-nav-btn {
+  background: rgba(11, 93, 59, 0.07);
+}
+.fw-nav-item.active .fw-nav-btn {
+  background: #fff4e8;
+  color: var(--fw-orange);
+  box-shadow: 0 6px 16px rgba(255, 122, 0, 0.16);
+}
+.fw-nav-item.active .fw-nav-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--fw-orange), var(--fw-saffron));
+}
+
+.fw-nav-icon {
+  transition: transform 0.25s ease;
+  display: block;
+}
+
+.fw-nav-label-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.fw-nav-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05px;
+  white-space: nowrap;
+}
+.fw-nav-chevron {
+  transition: transform 0.25s ease;
+  opacity: 0.7;
+}
+.fw-nav-item.open .fw-nav-chevron {
+  transform: rotate(180deg);
+}
+
+.fw-navbar-actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding-right: 14px;
+  padding-left: 4px;
+  height: 100%;
+}
+
+.fw-search-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #eef2e6;
+  color: var(--fw-forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+.fw-search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.15);
+}
+.fw-search-btn:focus-visible {
+  outline: 2px solid var(--fw-forest);
+  outline-offset: 2px;
+}
+
+.fw-account-wrap {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.fw-account-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px 0 6px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(90deg, var(--fw-orange) 0%, var(--fw-saffron) 40%, var(--fw-forest-2) 78%, var(--fw-forest) 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 12.5px;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(11, 93, 59, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fw-account-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(11, 93, 59, 0.28);
+}
+.fw-account-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.fw-account-icon {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  overflow: hidden;
+}
+
+.fw-account-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.fw-account-label {
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fw-account-avatar-edit {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: #ffedd5;
+  color: #ea580c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fw-account-avatar-edit img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fw-account-avatar-edit-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0b5d3b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+.fw-account-dropdown {
+  position: absolute;
+  top: 100%;
+  margin-top: 12px;
+  right: 0;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
+  min-width: 210px;
+  padding: 12px;
+  z-index: 1002;
+  animation: fwAccountDropIn 0.2s ease;
+}
+@keyframes fwAccountDropIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fw-hamburger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--fw-forest);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.15);
+  transition: transform 0.2s ease;
+}
+.fw-hamburger:hover {
+  transform: translateY(-1px);
+}
+.fw-hamburger:focus-visible {
+  outline: 2px solid var(--fw-forest);
+  outline-offset: 2px;
+}
+
+.fw-services-dropdown {
+  animation: fwDropIn 0.25s ease;
+}
+@keyframes fwDropIn {
+  from { opacity: 0; transform: translate(-50%, -8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ---- Responsive tiers ---- */
+@media (max-width: 1320px) {
+  .fw-navbar-logo-tagline { display: none; }
+}
+
+/* Hand off to the hamburger before the 9 items run out of room, rather than after. */
+@media (max-width: 1200px) {
+  .fw-navbar-links { display: none; }
+  .fw-navbar-divider--actions { display: none; }
+  .fw-hamburger { display: flex; }
+  .fw-navbar { height: 60px; }
+}
+
+@media (max-width: 640px) {
+  .fw-search-btn { display: none; }
+  .fw-account-wrap { display: none; }
+  .fw-navbar-logo { padding: 0 8px 0 14px; gap: 8px; }
+  .fw-navbar-actions { padding-right: 10px; }
+}
+
+/* ---- Admin accounts: brand + profile button only (see Navbar's adminMode) ---- */
+.fw-navbar-logo--static {
+  cursor: default;
+}
+.fw-nav-admin .fw-navbar-actions {
+  margin-left: auto;
+}
+@media (max-width: 640px) {
+  /* The profile button is the admin's only way to log out, so it stays at every width. */
+  .fw-nav-admin .fw-account-wrap { display: flex; }
+}
+
+/* ---- Mobile drawer ---- */
+.fw-mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1001;
+  animation: fwFade 0.25s ease;
+}
+@keyframes fwFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fw-mobile-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(86vw, 360px);
+  background: #ffffff;
+  z-index: 1002;
+  box-shadow: -8px 0 30px rgba(15, 23, 42, 0.25);
+  display: flex;
+  flex-direction: column;
+  animation: fwSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+@keyframes fwSlideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.fw-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  background: linear-gradient(120deg, var(--fw-orange) 0%, var(--fw-saffron) 55%, var(--fw-forest-2) 100%);
+  flex-shrink: 0;
+}
+.fw-mobile-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fw-mobile-logo-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.fw-mobile-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.fw-mobile-header-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.fw-mobile-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.fw-mobile-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.fw-mobile-nav {
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  flex: 1;
+}
+.fw-mobile-nav-item {
+  margin-bottom: 4px;
+}
+.fw-mobile-nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 11px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: #1e293b;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+.fw-mobile-nav-btn:hover {
+  background: #f1f5f2;
+}
+.fw-mobile-nav-item.active .fw-mobile-nav-btn {
+  background: #eef6ee;
+  color: var(--fw-forest);
+}
+.fw-mobile-nav-icon-chip {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fw-mobile-nav-label {
+  flex: 1;
+}
+.fw-mobile-chevron {
+  transition: transform 0.25s ease;
+}
+.fw-mobile-nav-item.open .fw-mobile-chevron {
+  transform: rotate(180deg);
+}
+
+.fw-mobile-submenu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 6px 8px 14px 54px;
+}
+.fw-mobile-submenu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #eef2f0;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  text-align: left;
+}
+.fw-mobile-submenu-item:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.fw-mobile-submenu-item img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.fw-mobile-footer {
+  padding: 16px 18px 22px;
+  border-top: 1px solid #eef2f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.fw-mobile-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f2;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: default;
+}
+.fw-mobile-login {
+  height: 44px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, var(--fw-forest), var(--fw-forest-dark));
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+.fw-mobile-register {
+  height: 44px;
+  border-radius: 14px;
+  border: 1.5px solid var(--fw-forest);
+  background: #fff;
+  color: var(--fw-forest);
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.srv-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.srv-card {
+  background: white;
+  border-radius: 12px;
+  padding: 12px 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+  cursor: pointer;
+}
+.srv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  background-color: #0f172a;
+}
+.srv-card:hover .srv-card-text-area h3 {
+  color: white;
+}
+
+.srv-card-badge {
+  position: absolute;
+  top: 8px; left: 8px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Reusing Exports color themes */
+.srv-card-badge.color-green { background: #dcfce7; color: #16a34a; }
+.srv-card-badge.color-blue { background: #dbeafe; color: #2563eb; }
+.srv-card-badge.color-orange { background: #ffedd5; color: #ea580c; }
+.srv-card-badge.color-purple { background: #f3e8ff; color: #9333ea; }
+.srv-card-badge.color-pink { background: #fce7f3; color: #db2777; }
+.srv-card-badge.color-teal { background: #ccfbf1; color: #0d9488; }
+.srv-card-badge.color-yellow { background: #fef9c3; color: #ca8a04; }
+.srv-card-badge.color-blue-light { background: #e0f2fe; color: #0284c7; }
+.srv-card-badge.color-green-light { background: #ecfccb; color: #65a30d; }
+.srv-card-badge.color-purple-light { background: #fae8ff; color: #c026d3; }
+.srv-card-badge.color-orange-light { background: #fef3c7; color: #d97706; }
+
+.srv-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.srv-icon-circle {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+}
+
+.srv-icon-circle.color-green { background: #f0fdf4; color: #22c55e; }
+.srv-icon-circle.color-blue { background: #eff6ff; color: #3b82f6; }
+.srv-icon-circle.color-orange { background: #fff7ed; color: #f97316; }
+.srv-icon-circle.color-purple { background: #faf5ff; color: #a855f7; }
+.srv-icon-circle.color-pink { background: #fdf2f8; color: #ec4899; }
+.srv-icon-circle.color-teal { background: #f0fdfa; color: #14b8a6; }
+.srv-icon-circle.color-yellow { background: #fefce8; color: #eab308; }
+.srv-icon-circle.color-blue-light { background: #f0f9ff; color: #0ea5e9; }
+.srv-icon-circle.color-green-light { background: #f7fee7; color: #84cc16; }
+.srv-icon-circle.color-purple-light { background: #fdf4ff; color: #d946ef; }
+.srv-icon-circle.color-orange-light { background: #fffbeb; color: #f59e0b; }
+
+.srv-card-image {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  border-radius: 8px;
+}
+
+.srv-card-text-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.srv-card-text-area h3 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.2;
+  transition: color 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---- Compact tile sizing for the Navbar "Services" dropdown only ----
+   Home.jsx's embedded Services Ecosystem section reuses these same .srv-card /
+   .srv-icon-circle / .srv-card-image / .srv-card-text-area classes in a much larger box, so
+   these overrides are scoped under .fw-services-dropdown rather than changing the base rules
+   everyone else uses. */
+.fw-services-dropdown .srv-cards-grid {
+  /* 16 services -> an even 4 x 4, same as Home.jsx's grid (5 columns left one tile on its own row) */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.fw-services-dropdown .srv-card {
+  padding: 8px 6px;
+}
+.fw-services-dropdown .srv-card-content {
+  gap: 5px;
+  margin-top: 2px;
+}
+.fw-services-dropdown .srv-icon-circle {
+  width: 38px;
+  height: 38px;
+}
+.fw-services-dropdown .srv-card-image {
+  width: 28px;
+  height: 28px;
+}
+.fw-services-dropdown .srv-card-text-area h3 {
+  font-size: 9px;
+  letter-spacing: 0.3px;
+}
+.fw-services-dropdown .srv-card-badge {
+  font-size: 9px;
+  padding: 1px 5px;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Services mega menu + its page-blurring overlay (were inline styles in the React Navbar).
+   --------------------------------------------------------------------------------------------- */
+.fw-services-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 40;
+  transition: all 0.3s ease;
+}
+
+.fw-services-dropdown.fw-services-mega {
+  position: fixed;
+  top: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 940px;
+  height: 620px;
+  background-image: url('../../images/services-bg.avif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes flyInLeft { from { opacity: 0; transform: translateX(-80px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes flyInRight { from { opacity: 0; transform: translateX(80px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes flyInTop { from { opacity: 0; transform: translateY(-80px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes flyInBottom { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: translateY(0); } }
+
+.service-btn-animated {
+  opacity: 0;
+}

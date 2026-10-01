@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe Mission | Feed World</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/components/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/components/benefits.css" />
+  <link rel="stylesheet" href="../assets/css/components/journey.css" />
+  <link rel="stylesheet" href="../assets/css/components/safe-mission-testimonials-join.css" />
+  <link rel="stylesheet" href="../assets/css/pages/safe-mission.css" />
+
+  <script src="../assets/js/core/file-protocol-check.js"></script>
+  <script type="module" src="../assets/js/pages/safe-mission.js"></script>
+</head>
+<body>
+  <div class="app-container is-home">
+    <div class="main-content-bg">
+      <div class="safe-mission-page" style="font-family: Inter, sans-serif; background-color: #fcfcfc; min-height: 100vh;">
+        <div id="site-navbar"></div>
+
+        <section class="safe-hero">
+          <video src="../assets/videos/vid1.mp4" autoplay loop muted playsinline class="safe-hero-video"></video>
+        </section>
+
+        <!-- ==================== Benefits ==================== -->
+        <!-- benefits-in-view is added on scroll-in; the carousel track is duplicated and auto-scrolled
+             by assets/js/components/benefits.js -->
+        <section class="benefits-section">
+          <div class="benefits-container">
+
+            <div class="benefits-header">
+              <span class="benefits-eyebrow"><i data-icon="leaf" data-size="11"></i> TOGETHER WE EMPOWER</span>
+              <h2>Benefits</h2>
+              <p class="benefits-subtitle">
+                SafeMission connects farmers with the knowledge, infrastructure, finance and opportunities needed to create greater value.
+              </p>
+
+              <div class="benefits-metrics-row">
+                <div class="metric-item tone-green">
+                  <div class="metric-icon"><i data-icon="users" data-size="15"></i></div>
+                  <div class="metric-text">
+                    <strong>10,000+</strong>
+                    <span>Farmers Empowered</span>
+                  </div>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item tone-orange">
+                  <div class="metric-icon"><i data-icon="map-pin" data-size="15"></i></div>
+                  <div class="metric-text">
+                    <strong>25</strong>
+                    <span>Districts Reached</span>
+                  </div>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item tone-blue">
+                  <div class="metric-icon"><i data-icon="globe" data-size="15"></i></div>
+                  <div class="metric-text">
+                    <strong>EU &amp; Gulf</strong>
+                    <span>Global Markets</span>
+                  </div>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item tone-purple">
+                  <div class="metric-icon"><i data-icon="bar-chart-2" data-size="15"></i></div>
+                  <div class="metric-text">
+                    <strong>5x</strong>
+                    <span>Average Income Growth</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="benefits-carousel-wrapper">
+            <div class="benefits-carousel">
+              <div class="carousel-track">
+                <svg class="benefits-connector hidden-mobile" viewBox="0 0 3096 100" preserveAspectRatio="none">
+                  <path
+                    d="M 172 50 Q 344 10 516 50 T 860 50 T 1204 50 T 1548 50 T 1892 50 T 2236 50 T 2580 50 T 2924 50"
+                    fill="none"
+                    stroke="url(#connector-gradient-1)"
+                    stroke-width="2"
+                  />
+                  <defs>
+                    <linearGradient id="connector-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#16a34a" />
+                      <stop offset="25%" stop-color="#ea580c" />
+                      <stop offset="50%" stop-color="#2563eb" />
+                      <stop offset="75%" stop-color="#8b5cf6" />
+                      <stop offset="100%" stop-color="#16a34a" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <article class="benefit-card tone-green">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">01</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="sprout" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Farming &amp; Production</h3>
+                    <p>Grow more. Grow better.</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/farming_production.avif" alt="Farming &amp; Production" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>3×–5× yield potential</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>GAP/BharatGAP compliance support</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-orange">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">02</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="factory" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Value Addition &amp; Processing</h3>
+                    <p>Turn produce into premium products.</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/value_addition.avif" alt="Value Addition &amp; Processing" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Up to 5× price realization</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>APEDA-certified packhouse access</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-blue">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">03</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="globe" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Market &amp; Export</h3>
+                    <p>Connecting farmers to global opportunities</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/market_export.avif" alt="Market &amp; Export" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>2x–4x export premium</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Direct access to global buyers</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Support for quality &amp; certification</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-purple">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">04</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="warehouse" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Commodity Trading &amp; Warehouse Finance</h3>
+                    <p>Better storage. Better prices. Greater earnings.</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/warehouse_finance.avif" alt="Commodity Trading &amp; Warehouse Finance" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>15–25% trading margin potential</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>eNAM trading &amp; warehouse storage</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Reduced post-harvest losses</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-green">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">05</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="tractor" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Asset Leasing &amp; Equipment</h3>
+                    <p>Modern tools for modern farming.</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/asset_leasing.avif" alt="Asset Leasing &amp; Equipment" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>40–50% SMAM subsidy support</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Access to modern machinery &amp; CHCs</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Improved productivity &amp; efficiency</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-orange">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">06</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="hand-coins" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Finance &amp; Credit</h3>
+                    <p>Capital that helps farmers grow.</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/finance_credit.avif" alt="Finance &amp; Credit" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>₹15–18L FPO equity grant support</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>KCC linkage &amp; working capital</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Financial literacy &amp; handholding</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-blue">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">07</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="piggy-bank" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Cost Reduction</h3>
+                    <p>Lower costs, higher margins.</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/cost_reduction.avif" alt="Cost Reduction" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>15–25% input cost reduction</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Cooperative bulk-purchase depots</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-purple">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">08</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="smartphone" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Technology &amp; Traceability</h3>
+                    <p>Digital farm-to-market visibility.</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/technology_traceability.avif" alt="Technology &amp; Traceability" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Digital farm-to-market visibility</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Farm-to-packhouse digital monitoring</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="benefit-card tone-green">
+                  <div class="benefit-card-top-decor"></div>
+                  <div class="benefit-card-header">
+                    <div class="benefit-card-num-wrapper">
+                      <span class="benefit-card-num">09</span>
+                    </div>
+
+                    <div class="benefit-card-icon-wrapper">
+                      <i data-icon="graduation-cap" data-size="20"></i>
+                    </div>
+                  </div>
+
+                  <div class="benefit-card-title-area">
+                    <h3>Training &amp; Governance</h3>
+                    <p>Learn • Participate • Co-own</p>
+                  </div>
+
+                  <div class="benefit-card-media">
+                    <img src="../assets/images/benefits/training_governance.avif" alt="Training &amp; Governance" loading="lazy" class="benefit-card-image" />
+                  </div>
+
+                  <div class="benefit-card-body">
+                    <ul class="benefit-points">
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Farm-level &amp; export training</span>
+                      </li>
+                      <li>
+                        <span class="benefit-check"><i data-icon="check" data-size="12" data-stroke-width="3"></i></span>
+                        <span>Cooperative leadership programs</span>
+                      </li>
+                    </ul>
+
+                    <div class="benefit-btn-wrapper">
+                      <button class="benefit-btn">Learn More <i data-icon="arrow-right" data-size="16"></i></button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== Journey ==================== -->
+        <!-- steps reveal on scroll - assets/js/components/journey.js -->
+        <section class="journey-section">
+          <div class="journey-decor" aria-hidden="true">
+            <span class="journey-leaf journey-leaf-1"></span>
+            <span class="journey-leaf journey-leaf-2"></span>
+          </div>
+
+          <div class="journey-header">
+            <span class="journey-annotation journey-annotation-left">Stronger Farmers,<br />Brighter Tomorrows</span>
+            <span class="journey-annotation journey-annotation-right"><i data-icon="send" data-size="14" class="journey-annotation-icon"></i> From Our Farms<br />to a Better Tomorrow</span>
+
+            <span class="journey-eyebrow"><i data-icon="leaf" data-size="13"></i> How It Works</span>
+            <h2 class="journey-title">
+              One connected <span class="journey-title-accent">journey</span><svg class="title-leaf" viewBox="0 0 24 24" fill="#16a34a" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.025 2.5C10.45 2.5 4.5 7.5 2.5 14C2.5 14 6 13.5 9 15C9 15 6 16.5 4 21.5C11 21.5 17.5 16 20.5 9C20.5 9 22.5 4 17.025 2.5Z" />
+              </svg>
+            </h2>
+            <p class="journey-desc">SAFE Mission is a guided pathway from membership and farm assessment to production, value addition, markets and scale.</p>
+          </div>
+
+          <div class="journey-container">
+            <div class="journey-steps">
+              <div class="journey-step tone-green">
+                <div class="step-connector">
+                  <svg class="connector-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <path d="M 0,20 Q 50,50 100,20" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3" class="path-line" />
+                    <circle cx="50" cy="35" r="5" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+                    <path d="M 48.5,33 L 51,35 L 48.5,37 M 50.5,33 L 53,35 L 50.5,37" fill="none" stroke="#16a34a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+
+                <span class="journey-num">01</span>
+
+                <div class="journey-image-wrapper">
+                  <img src="../assets/images/journey/01_join.avif" alt="Join" class="journey-image" />
+                  <span class="journey-icon-badge"><i data-icon="users" data-size="17"></i></span>
+                </div>
+
+                <div class="journey-text-content">
+                  <h3 class="journey-step-title">Join</h3>
+                  <p class="journey-step-desc">Enroll as a farmer, FPO, SHG or partner.</p>
+                  <span class="journey-accent-line"></span>
+                </div>
+              </div>
+              <div class="journey-step tone-blue">
+                <div class="step-connector">
+                  <svg class="connector-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <path d="M 0,20 Q 50,-10 100,20" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3" class="path-line" />
+                    <circle cx="50" cy="5" r="5" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+                    <path d="M 48.5,3 L 51,5 L 48.5,7 M 50.5,3 L 53,5 L 50.5,7" fill="none" stroke="#16a34a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+
+                <span class="journey-num">02</span>
+
+                <div class="journey-image-wrapper">
+                  <img src="../assets/images/journey/02_assess.avif" alt="Assess" class="journey-image" />
+                  <span class="journey-icon-badge"><i data-icon="clipboard-check" data-size="17"></i></span>
+                </div>
+
+                <div class="journey-text-content">
+                  <h3 class="journey-step-title">Assess</h3>
+                  <p class="journey-step-desc">Farm, crop and market assessment to understand opportunities.</p>
+                  <span class="journey-accent-line"></span>
+                </div>
+              </div>
+              <div class="journey-step tone-orange">
+                <div class="step-connector">
+                  <svg class="connector-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <path d="M 0,20 Q 50,50 100,20" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3" class="path-line" />
+                    <circle cx="50" cy="35" r="5" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+                    <path d="M 48.5,33 L 51,35 L 48.5,37 M 50.5,33 L 53,35 L 50.5,37" fill="none" stroke="#16a34a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+
+                <span class="journey-num">03</span>
+
+                <div class="journey-image-wrapper">
+                  <img src="../assets/images/journey/03_grow.avif" alt="Grow" class="journey-image" />
+                  <span class="journey-icon-badge"><i data-icon="sprout" data-size="17"></i></span>
+                </div>
+
+                <div class="journey-text-content">
+                  <h3 class="journey-step-title">Grow</h3>
+                  <p class="journey-step-desc">Multi-layer production supported by GAP-oriented and sustainable farming practices.</p>
+                  <span class="journey-accent-line"></span>
+                </div>
+              </div>
+              <div class="journey-step tone-purple">
+                <div class="step-connector">
+                  <svg class="connector-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <path d="M 0,20 Q 50,-10 100,20" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3" class="path-line" />
+                    <circle cx="50" cy="5" r="5" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+                    <path d="M 48.5,3 L 51,5 L 48.5,7 M 50.5,3 L 53,5 L 50.5,7" fill="none" stroke="#16a34a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+
+                <span class="journey-num">04</span>
+
+                <div class="journey-image-wrapper">
+                  <img src="../assets/images/journey/04_add_value.avif" alt="Add Value" class="journey-image" />
+                  <span class="journey-icon-badge"><i data-icon="settings-2" data-size="17"></i></span>
+                </div>
+
+                <div class="journey-text-content">
+                  <h3 class="journey-step-title">Add Value</h3>
+                  <p class="journey-step-desc">Sorting, grading, processing and packaging to create higher-value products.</p>
+                  <span class="journey-accent-line"></span>
+                </div>
+              </div>
+              <div class="journey-step tone-teal">
+                <div class="step-connector">
+                  <svg class="connector-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+                    <path d="M 0,20 Q 50,50 100,20" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3" class="path-line" />
+                    <circle cx="50" cy="35" r="5" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" />
+                    <path d="M 48.5,33 L 51,35 L 48.5,37 M 50.5,33 L 53,35 L 50.5,37" fill="none" stroke="#16a34a" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+
+                <span class="journey-num">05</span>
+
+                <div class="journey-image-wrapper">
+                  <img src="../assets/images/journey/05_go_to_market.avif" alt="Go to Market" class="journey-image" />
+                  <span class="journey-icon-badge"><i data-icon="truck" data-size="17"></i></span>
+                </div>
+
+                <div class="journey-text-content">
+                  <h3 class="journey-step-title">Go to Market</h3>
+                  <p class="journey-step-desc">Connect with buyers, trade opportunities, exports and logistics.</p>
+                  <span class="journey-accent-line"></span>
+                </div>
+              </div>
+              <div class="journey-step tone-coral">
+                <span class="journey-num">06</span>
+
+                <div class="journey-image-wrapper">
+                  <img src="../assets/images/journey/06_scale.avif" alt="Scale" class="journey-image" />
+                  <span class="journey-icon-badge"><i data-icon="trending-up" data-size="17"></i></span>
+                </div>
+
+                <div class="journey-text-content">
+                  <h3 class="journey-step-title">Scale</h3>
+                  <p class="journey-step-desc">Technology, training, assets and enterprise support for long-term growth.</p>
+                  <span class="journey-accent-line"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="journey-impact-strip">
+            <div class="journey-impact-item tone-green">
+              <span class="journey-impact-icon"><i data-icon="leaf" data-size="17"></i></span>
+              <div class="journey-impact-text">
+                <strong>Sustainable Farms</strong>
+                <span>For Today and Tomorrow</span>
+              </div>
+            </div>
+            <div class="journey-impact-item tone-blue">
+              <span class="journey-impact-icon"><i data-icon="users" data-size="17"></i></span>
+              <div class="journey-impact-text">
+                <strong>Prosperous Communities</strong>
+                <span>Stronger Together</span>
+              </div>
+            </div>
+            <div class="journey-impact-item tone-orange">
+              <span class="journey-impact-icon"><i data-icon="globe" data-size="17"></i></span>
+              <div class="journey-impact-text">
+                <strong>Global Markets</strong>
+                <span>Greater Opportunities</span>
+              </div>
+            </div>
+            <div class="journey-impact-item tone-teal">
+              <span class="journey-impact-icon"><i data-icon="trending-up" data-size="17"></i></span>
+              <div class="journey-impact-text">
+                <strong>Lasting Impact</strong>
+                <span>For Generations</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== Testimonials + Join ==================== -->
+        <!-- testimonial rotation and the multi-step join form - assets/js/components/safe-mission-testimonials-join.js -->
+        <section class="sm-combined-section">
+          <div class="sm-container">
+
+            <div class="sm-testimonials-section">
+              <div class="sm-glow sm-glow-left" aria-hidden="true"></div>
+
+              <div class="sm-testimonials-header">
+                <span class="sm-header-eyebrow"><i data-icon="users" data-size="13"></i> Our Farmers, Our Strength</span>
+                <span class="sm-handwritten sm-handwritten-top">Stronger Farmers,<br />Brighter Tomorrows</span>
+                <h2 class="sm-header-title">Real Farmers,<br /><span class="sm-title-accent">Real Impact</span></h2>
+                <p class="sm-header-subtitle">Stories of progress, prosperity and pride — empowered through S.A.F.E. Mission.</p>
+              </div>
+
+              <!-- the testimonial card is rendered here, before the dots -->
+              <div class="sm-testimonial-dots" role="tablist" aria-label="Testimonials"></div>
+
+              <div class="sm-impact-stats">
+                <div class="sm-stat-item sm-tone-green">
+                  <div class="sm-stat-icon"><i data-icon="users" data-size="13"></i></div>
+                  <div class="sm-stat-content">
+                    <strong>10,000+</strong>
+                    <span>Farmers Empowered</span>
+                  </div>
+                </div>
+                <div class="sm-stat-item sm-tone-orange">
+                  <div class="sm-stat-icon"><i data-icon="map-pin" data-size="13"></i></div>
+                  <div class="sm-stat-content">
+                    <strong>25</strong>
+                    <span>Districts</span>
+                  </div>
+                </div>
+                <div class="sm-stat-item sm-tone-blue">
+                  <div class="sm-stat-icon"><i data-icon="trending-up" data-size="13"></i></div>
+                  <div class="sm-stat-content">
+                    <strong>5x</strong>
+                    <span>Avg. Income Growth</span>
+                  </div>
+                </div>
+                <div class="sm-stat-item sm-tone-purple">
+                  <div class="sm-stat-icon"><i data-icon="shield-check" data-size="13"></i></div>
+                  <div class="sm-stat-content">
+                    <strong>Stronger</strong>
+                    <span>Rural Communities</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sm-landscape-strip" style="background-image: url(../assets/images/safe-mission/agri_bg.avif);">
+                <span class="sm-handwritten sm-landscape-caption">Together for a Sustainable Tomorrow</span>
+              </div>
+            </div>
+
+            <div class="sm-join-section">
+              <div class="sm-glow sm-glow-right" aria-hidden="true"></div>
+
+              <div class="sm-join-header">
+                <span class="sm-header-eyebrow sm-eyebrow-orange"><i data-icon="leaf" data-size="13"></i> Be Part of a Brighter Tomorrow</span>
+                <span class="sm-handwritten sm-handwritten-top">Grow Together,<br />Go Further</span>
+                <h2 class="sm-header-title">
+                  Join <span class="sm-title-accent">S.A.F.E.</span> Mission <i data-icon="leaf" data-size="24" class="sm-leaf-icon"></i>
+                </h2>
+                <p class="sm-header-subtitle">Sustainable Agriculture &amp; Farm Export Acceleration Mission</p>
+              </div>
+
+              <div class="sm-mission-benefits">
+                <div class="sm-benefit-item sm-tone-green">
+                  <div class="sm-benefit-icon-wrapper"><i data-icon="indian-rupee" data-size="15"></i></div>
+                  <span>Higher Income</span>
+                </div>
+                <div class="sm-benefit-item sm-tone-orange">
+                  <div class="sm-benefit-icon-wrapper"><i data-icon="briefcase" data-size="15"></i></div>
+                  <span>Tech Access</span>
+                </div>
+                <div class="sm-benefit-item sm-tone-blue">
+                  <div class="sm-benefit-icon-wrapper"><i data-icon="globe" data-size="15"></i></div>
+                  <span>Global Markets</span>
+                </div>
+                <div class="sm-benefit-item sm-tone-purple">
+                  <div class="sm-benefit-icon-wrapper"><i data-icon="users" data-size="15"></i></div>
+                  <span>Cooperatives</span>
+                </div>
+                <div class="sm-benefit-item sm-tone-green">
+                  <div class="sm-benefit-icon-wrapper"><i data-icon="sprout" data-size="15"></i></div>
+                  <span>Greener Future</span>
+                </div>
+              </div>
+
+              <div class="sm-stepper"></div>
+              <p class="sm-stepper-progress-text"></p>
+
+              <form class="sm-join-form"></form>
+
+              <div class="sm-security-badge">
+                <i data-icon="shield-check" data-size="16"></i>
+                <span>Your information is safe and secure with us.</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <div id="site-footer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
