@@ -73,21 +73,21 @@ relative, so the site also works from a sub-path (e.g. `https://example.com/feed
 | Exports | `pages/exports.html` | |
 | FPO | `pages/fpo.html` | |
 | My Tools | `pages/tools.html` | |
-| Product 360 | `pages/product-360.html` | login required |
+| Product 360 | `pages/product-360.html` 
 | Safe Mission | `pages/safe-mission.html` | |
 | Trade Fairs | `pages/trade-fairs.html` | |
-| Dashboard | `pages/dashboard.html` | login required |
+| Dashboard | `pages/dashboard.html` | 
 | My Business | `pages/my-business.html`, `business-account.html`, `agm-board.html`, `business-plan.html` | |
-| My Business (modules in progress) | `pages/coming-soon.html?tab=…` | |
-| Feed World publications | `pages/feed-world.html` | |
-| Publication reader | `pages/publication-reader.html?id=…` | shareable link to one issue |
-| EPM | `pages/epm.html` | |
+| My Business  | `pages/coming-soon.html?tab=…` | |
+| Feed World publications | `pages/feed-world.html` | login required |
+| Publication reader | `pages/publication-reader.html?id=…` | shareable link to one issue|
+| EPM | `pages/epm.html` | login required | 
 | All EPMs | `pages/epm-directory.html` | |
 | EPM event | `pages/epm-event.html?eventId=…` | |
 | EPM register / volunteer | `pages/epm-register.html`, `pages/epm-volunteer.html` | |
 | EPM objective, content coverage, benefits, invitees | `pages/epm-objective.html`, `epm-content-coverage.html`, `epm-benefits.html`, `epm-invitees.html` | |
 | EPM gallery | `pages/epm-gallery.html`, `epm-gallery-state.html?state=…`, `epm-gallery-district.html?state=…&district=…` | |
-| Admin panel | `pages/admin.html?section=…` | ADMIN accounts only |
+| Admin panel | `pages/admin.html?section=…` | ADMIN accounts only login required | 
 
 ## Login and access rules
 
