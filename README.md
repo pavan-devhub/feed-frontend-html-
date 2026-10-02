@@ -21,7 +21,7 @@ feed-frontend/
 │   ├── images/         Images and favicon
 │   ├── icons/          Icons
 │   ├── videos/         Videos
-│   └── locales/        Translations
+│   └── locales/        Translations (one .js file per language)
 ├── docs/               Developer guide
 └── README.md
 ```
@@ -36,23 +36,20 @@ how to add a page.
 
 ## Running locally
 
-Browsers do not run JavaScript modules from `file://`, so open the site through any static web
-server (double-clicking an `.html` file shows a message explaining this). From this folder:
+**Just open `index.html` in a browser** (double-click it). Every page works straight from disk -
+no web server, no Live Server, no install. The pages link to each other with relative paths, so
+navigation, login and the backend calls all work from `file://` too.
 
-```bash
-npx serve .
-```
-
-```bash
-python -m http.server 5500
-```
-
-or use the VS Code **Live Server** extension, then open the address it prints (for example
-`http://localhost:5500`).
+Serving the folder over http works the same way, if preferred (for example `npx serve .`,
+`python -m http.server 5500` or VS Code's Live Server).
 
 **Backend:** start the Spring Boot backend on port 8080. If it runs on another port, change
-`API_PORT` in `assets/js/core/config.js`. The backend must allow this site's origin (for example
-`http://localhost:5500`) in its CORS configuration.
+`API_PORT` in `assets/js/core/config.js`. The backend's CORS configuration must allow the page's
+origin - `null` for pages opened from disk (already allowed), or e.g. `http://localhost:5500` when
+the folder is served over http.
+
+**Embedded YouTube videos** (How FEED Works) only play on pages served over http(s) - YouTube refuses
+to play embeds on pages opened from disk. There each video shows its thumbnail and opens on YouTube.
 
 ## Deploying
 
@@ -98,6 +95,7 @@ relative, so the site also works from a sub-path (e.g. `https://example.com/feed
 
 ## Third-party code
 
-* **pdf.js** (Apache-2.0) - `assets/js/vendor/pdfjs/`, renders Feed World PDFs in the browser.
+* **pdf.js** (Apache-2.0) - `assets/js/vendor/pdfjs/`, renders Feed World PDFs in the browser
+  (`pdf.min.js` / `pdf.worker.min.js` are the official ES-module builds wrapped as classic scripts).
 * **Lucide icons** (ISC) - the icon shapes in `assets/js/core/icons.js`.
 * Fonts from Google Fonts (Inter, Outfit and others).

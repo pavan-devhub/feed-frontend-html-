@@ -3,32 +3,35 @@
 //
 //   const page = mountPlansPage(containerEl, { onBack });
 //   page.destroy();
-import { html, render, on, toElement } from '../core/dom.js';
-import { icon } from '../core/icons.js';
-import { plans, CURRENT_PLAN_ID, formatINR } from '../data/plans-data.js';
+(function () {
+  'use strict';
 
-const PLAN_ICONS = {
-  basic: 'sprout',
-  gold: 'crown',
-  platinum: 'gem',
-};
+  const { html, render, on, toElement } = FW.require('core/dom');
+  const { icon } = FW.require('core/icons');
+  const { plans, CURRENT_PLAN_ID, formatINR } = FW.require('data/plans-data');
 
-export function mountPlansPage(container, { onBack } = {}) {
-  let upgradingId = null;
-  let requestedId = null;
-  let upgradeTimer = null;
-
-  const ctaContent = (plan) => {
-    const isCurrent = plan.id === CURRENT_PLAN_ID;
-    if (isCurrent) return html`${icon('check-circle-2', { size: 16 })} Current Plan`;
-    if (upgradingId === plan.id) return html`${icon('loader-2', { size: 16, className: 'plan-spin' })} Sending request…`;
-    if (requestedId === plan.id) return html`${icon('check-circle-2', { size: 16 })} Request Sent`;
-    return html`Upgrade to ${plan.name} ${icon('arrow-right', { size: 16 })}`;
+  const PLAN_ICONS = {
+    basic: 'sprout',
+    gold: 'crown',
+    platinum: 'gem',
   };
 
-  const ctaDisabled = (plan) => plan.id === CURRENT_PLAN_ID || upgradingId === plan.id || requestedId === plan.id;
+  function mountPlansPage(container, { onBack } = {}) {
+    let upgradingId = null;
+    let requestedId = null;
+    let upgradeTimer = null;
 
-  const root = toElement(html`
+    const ctaContent = (plan) => {
+      const isCurrent = plan.id === CURRENT_PLAN_ID;
+      if (isCurrent) return html`${icon('check-circle-2', { size: 16 })} Current Plan`;
+      if (upgradingId === plan.id) return html`${icon('loader-2', { size: 16, className: 'plan-spin' })} Sending request…`;
+      if (requestedId === plan.id) return html`${icon('check-circle-2', { size: 16 })} Request Sent`;
+      return html`Upgrade to ${plan.name} ${icon('arrow-right', { size: 16 })}`;
+    };
+
+    const ctaDisabled = (plan) => plan.id === CURRENT_PLAN_ID || upgradingId === plan.id || requestedId === plan.id;
+
+    const root = toElement(html`
     <div class="plans-view">
       <button class="plans-back-btn">${icon('arrow-left', { size: 16 })} Back to Dashboard</button>
 
@@ -42,9 +45,9 @@ export function mountPlansPage(container, { onBack } = {}) {
 
       <div class="plans-grid">
         ${plans.map((plan) => {
-          const isCurrent = plan.id === CURRENT_PLAN_ID;
-          const displayTotal = plan.totalPrice ?? plan.price;
-          return html`
+            const isCurrent = plan.id === CURRENT_PLAN_ID;
+            const displayTotal = plan.totalPrice ?? plan.price;
+            return html`
             <div class="plan-card plan-${plan.id} ${plan.popular ? 'plan-popular' : ''} ${plan.bestChoice ? 'plan-best' : ''} ${isCurrent ? 'plan-current' : ''}">
               ${plan.popular && html`
                 <div class="plan-ribbon">${icon('star', { size: 12, fill: 'currentColor' })} Most Popular</div>`}
@@ -80,7 +83,7 @@ export function mountPlansPage(container, { onBack } = {}) {
 
               <button class="plan-cta-btn" data-plan="${plan.id}" ${ctaDisabled(plan) ? 'disabled' : ''}>${ctaContent(plan)}</button>
             </div>`;
-        })}
+          })}
       </div>
 
       <div class="plans-footer-note">
@@ -88,34 +91,37 @@ export function mountPlansPage(container, { onBack } = {}) {
         <span>Subscriptions are activated after admin approval. You'll receive an in-app notification once your access is activated.</span>
       </div>
     </div>`);
-  container.replaceChildren(root);
+    container.replaceChildren(root);
 
-  // The buttons are updated in place (the cards keep their hover state and transitions).
-  const drawButtons = () => {
-    plans.forEach((plan) => {
-      const button = root.querySelector(`.plan-cta-btn[data-plan="${plan.id}"]`);
-      button.disabled = ctaDisabled(plan);
-      render(button, ctaContent(plan));
-    });
-  };
+    // The buttons are updated in place (the cards keep their hover state and transitions).
+    const drawButtons = () => {
+      plans.forEach((plan) => {
+        const button = root.querySelector(`.plan-cta-btn[data-plan="${plan.id}"]`);
+        button.disabled = ctaDisabled(plan);
+        render(button, ctaContent(plan));
+      });
+    };
 
-  const handleUpgrade = (planId) => {
-    if (upgradingId || requestedId === planId) return;
-    upgradingId = planId;
-    drawButtons();
-    upgradeTimer = setTimeout(() => {
-      upgradingId = null;
-      requestedId = planId;
+    const handleUpgrade = (planId) => {
+      if (upgradingId || requestedId === planId) return;
+      upgradingId = planId;
       drawButtons();
-    }, 900);
-  };
+      upgradeTimer = setTimeout(() => {
+        upgradingId = null;
+        requestedId = planId;
+        drawButtons();
+      }, 900);
+    };
 
-  on(root, 'click', '.plans-back-btn', () => onBack?.());
-  on(root, 'click', '.plan-cta-btn', (_event, button) => handleUpgrade(button.dataset.plan));
+    on(root, 'click', '.plans-back-btn', () => onBack?.());
+    on(root, 'click', '.plan-cta-btn', (_event, button) => handleUpgrade(button.dataset.plan));
 
-  return {
-    destroy() {
-      clearTimeout(upgradeTimer);
-    },
-  };
-}
+    return {
+      destroy() {
+        clearTimeout(upgradeTimer);
+      },
+    };
+  }
+
+  FW.define('components/plans-page', { mountPlansPage });
+})();

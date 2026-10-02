@@ -1,4 +1,5 @@
-﻿{
+// Telugu translations (i18next resource format), loaded on demand by assets/js/core/i18n.js.
+FW.define('locales/te', {
   "translation": {
     "call_us": "ఎప్పుడైనా కాల్ చేయండి",
     "mail_us": "ఈరోజే మాకు మెయిల్ చేయండి",
@@ -24,4 +25,4 @@
       "contact_us": "మమ్మల్ని సంప్రదించండి"
     }
   }
-}
+});

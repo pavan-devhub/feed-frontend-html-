@@ -6,49 +6,52 @@
 //   form.destroy();
 //
 // Inputs are patched in place (never re-rendered) so typing keeps focus and the caret.
-import { html, render, on, toElement } from '../core/dom.js';
-import { icon } from '../core/icons.js';
+(function () {
+  'use strict';
 
-const initialDetails = {
-  name: 'Green Valley Farmers Producer Company',
-  website: '',
-  gstNo: '',
-  pan: '',
-  regCertificate: null,
-  accountHolder: '',
-  accountNumber: '',
-  ifsc: '',
-  bankName: '',
-  logo: null,
-  qrCode: null,
-};
+  const { html, render, on, toElement } = FW.require('core/dom');
+  const { icon } = FW.require('core/icons');
 
-const FIELD_KEYS = ['name', 'website', 'gstNo', 'pan', 'regCertificate', 'accountHolder', 'accountNumber', 'ifsc', 'bankName', 'logo', 'qrCode'];
+  const initialDetails = {
+    name: 'Green Valley Farmers Producer Company',
+    website: '',
+    gstNo: '',
+    pan: '',
+    regCertificate: null,
+    accountHolder: '',
+    accountNumber: '',
+    ifsc: '',
+    bankName: '',
+    logo: null,
+    qrCode: null,
+  };
 
-// How each text field normalises what's typed (default: as typed).
-const FIELD_TRANSFORMS = {
-  gstNo: (v) => v.toUpperCase(),
-  pan: (v) => v.toUpperCase(),
-  accountNumber: (v) => v.replace(/\D/g, ''),
-  ifsc: (v) => v.toUpperCase(),
-};
+  const FIELD_KEYS = ['name', 'website', 'gstNo', 'pan', 'regCertificate', 'accountHolder', 'accountNumber', 'ifsc', 'bankName', 'logo', 'qrCode'];
 
-const completenessOf = (details) => {
-  const filledCount = FIELD_KEYS.filter((key) => {
-    const v = details[key];
-    return v !== null && v !== undefined && v !== '';
-  }).length;
-  return Math.round((filledCount / FIELD_KEYS.length) * 100);
-};
+  // How each text field normalises what's typed (default: as typed).
+  const FIELD_TRANSFORMS = {
+    gstNo: (v) => v.toUpperCase(),
+    pan: (v) => v.toUpperCase(),
+    accountNumber: (v) => v.replace(/\D/g, ''),
+    ifsc: (v) => v.toUpperCase(),
+  };
 
-const completenessText = (completeness) => (completeness < 100 ? 'A few details are missing' : 'All set — looking great!');
+  const completenessOf = (details) => {
+    const filledCount = FIELD_KEYS.filter((key) => {
+      const v = details[key];
+      return v !== null && v !== undefined && v !== '';
+    }).length;
+    return Math.round((filledCount / FIELD_KEYS.length) * 100);
+  };
 
-const logoPreviewHtml = (logo) => (logo
-  ? html`<img src="${logo.url}" alt="Logo" />`
-  : html`${icon('camera', { size: 22 })}<span>Upload Logo</span>`);
+  const completenessText = (completeness) => (completeness < 100 ? 'A few details are missing' : 'All set — looking great!');
 
-const certHtml = (cert) => (cert
-  ? html`
+  const logoPreviewHtml = (logo) => (logo
+    ? html`<img src="${logo.url}" alt="Logo" />`
+    : html`${icon('camera', { size: 22 })}<span>Upload Logo</span>`);
+
+  const certHtml = (cert) => (cert
+    ? html`
     <div class="mdf-file-chip">
       ${icon('file-text', { size: 15 })}
       <span class="mdf-file-chip-name">${cert.name}</span>
@@ -56,21 +59,21 @@ const certHtml = (cert) => (cert
       ${icon('check-circle-2', { size: 15, className: 'mdf-file-chip-check' })}
       <button type="button" class="mdf-file-chip-remove">${icon('x', { size: 13 })}</button>
     </div>`
-  : html`
+    : html`
     <div class="mdf-dropzone">
       ${icon('upload-cloud', { size: 18 })}
       <span>Click to upload PDF or image</span>
     </div>`);
 
-const qrPreviewHtml = (qrCode) => (qrCode
-  ? html`<img src="${qrCode.url}" alt="QR Code" />`
-  : html`${icon('qr-code', { size: 30 })}<span>Upload QR Code</span><small>PNG or JPG, up to 2MB</small>`);
+  const qrPreviewHtml = (qrCode) => (qrCode
+    ? html`<img src="${qrCode.url}" alt="QR Code" />`
+    : html`${icon('qr-code', { size: 30 })}<span>Upload QR Code</span><small>PNG or JPG, up to 2MB</small>`);
 
-export function mountMyDetailsForm(container) {
-  let details = { ...initialDetails };
-  const completeness = completenessOf(details);
+  function mountMyDetailsForm(container) {
+    let details = { ...initialDetails };
+    const completeness = completenessOf(details);
 
-  const form = toElement(html`
+    const form = toElement(html`
     <form class="mdf-wrapper">
       <div class="mdf-header">
         <div>
@@ -199,101 +202,104 @@ export function mountMyDetailsForm(container) {
 
       <div class="mdf-toast ">${icon('check-circle-2', { size: 16 })} Profile updated successfully</div>
     </form>`);
-  container.replaceChildren(form);
+    container.replaceChildren(form);
 
-  const q = (selector) => form.querySelector(selector);
-  const fileInput = (key) => q(`input[data-file="${key}"]`);
-  const ring = q('.mdf-ring');
-  const logoUpload = q('.mdf-logo-upload');
-  const logoBadge = q('.mdf-logo-edit-badge');
-  const certField = fileInput('regCertificate').parentElement;
-  const qrUpload = q('.mdf-qr-upload');
-  const toast = q('.mdf-toast');
+    const q = (selector) => form.querySelector(selector);
+    const fileInput = (key) => q(`input[data-file="${key}"]`);
+    const ring = q('.mdf-ring');
+    const logoUpload = q('.mdf-logo-upload');
+    const logoBadge = q('.mdf-logo-edit-badge');
+    const certField = fileInput('regCertificate').parentElement;
+    const qrUpload = q('.mdf-qr-upload');
+    const toast = q('.mdf-toast');
 
-  // --- drawing (in place) ----------------------------------------------------------------------
+    // --- drawing (in place) ----------------------------------------------------------------------
 
-  const drawCompleteness = () => {
-    const pct = completenessOf(details);
-    ring.style.setProperty('--pct', String(pct));
-    ring.querySelector('span').textContent = `${pct}%`;
-    q('.mdf-completeness-text span').textContent = completenessText(pct);
-  };
+    const drawCompleteness = () => {
+      const pct = completenessOf(details);
+      ring.style.setProperty('--pct', String(pct));
+      ring.querySelector('span').textContent = `${pct}%`;
+      q('.mdf-completeness-text span').textContent = completenessText(pct);
+    };
 
-  const drawLogo = () => {
-    while (logoUpload.firstChild && logoUpload.firstChild !== logoBadge) logoUpload.firstChild.remove();
-    logoBadge.insertAdjacentHTML('beforebegin', String(logoPreviewHtml(details.logo)));
-  };
+    const drawLogo = () => {
+      while (logoUpload.firstChild && logoUpload.firstChild !== logoBadge) logoUpload.firstChild.remove();
+      logoBadge.insertAdjacentHTML('beforebegin', String(logoPreviewHtml(details.logo)));
+    };
 
-  const drawCert = () => {
-    certField.querySelector('.mdf-file-chip, .mdf-dropzone').replaceWith(toElement(certHtml(details.regCertificate)));
-  };
+    const drawCert = () => {
+      certField.querySelector('.mdf-file-chip, .mdf-dropzone').replaceWith(toElement(certHtml(details.regCertificate)));
+    };
 
-  const drawQr = () => render(qrUpload, qrPreviewHtml(details.qrCode));
+    const drawQr = () => render(qrUpload, qrPreviewHtml(details.qrCode));
 
-  const setField = (key, value) => {
-    details = { ...details, [key]: value };
-    drawCompleteness();
-  };
+    const setField = (key, value) => {
+      details = { ...details, [key]: value };
+      drawCompleteness();
+    };
 
-  // --- events ----------------------------------------------------------------------------------
+    // --- events ----------------------------------------------------------------------------------
 
-  on(form, 'input', 'input[data-field]', (_event, input) => {
-    const key = input.dataset.field;
-    const transform = FIELD_TRANSFORMS[key];
-    const value = transform ? transform(input.value) : input.value;
-    if (input.value !== value) input.value = value;
-    setField(key, value);
-  });
-
-  const handleImageSelect = (key, file) => {
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    if (details[key]?.url) URL.revokeObjectURL(details[key].url);
-    setField(key, { name: file.name, url });
-    if (key === 'logo') drawLogo();
-    else drawQr();
-  };
-
-  const handleCertSelect = (file) => {
-    if (!file) return;
-    setField('regCertificate', { name: file.name, size: (file.size / 1024).toFixed(0) + ' KB' });
-    drawCert();
-  };
-
-  on(form, 'change', 'input[data-file]', (_event, input) => {
-    const file = input.files?.[0];
-    if (input.dataset.file === 'regCertificate') handleCertSelect(file);
-    else handleImageSelect(input.dataset.file, file);
-  });
-
-  on(form, 'click', '.mdf-logo-upload', () => fileInput('logo').click());
-  on(form, 'click', '.mdf-dropzone', () => fileInput('regCertificate').click());
-  on(form, 'click', '.mdf-qr-upload', () => fileInput('qrCode').click());
-  on(form, 'click', '.mdf-file-chip-remove', () => {
-    setField('regCertificate', null);
-    drawCert();
-  });
-
-  // Discard: back to the initial values (the file inputs keep their selection, as before).
-  on(form, 'click', '.mdf-btn-ghost', () => {
-    details = { ...initialDetails };
-    form.querySelectorAll('input[data-field]').forEach((input) => {
-      const value = details[input.dataset.field];
+    on(form, 'input', 'input[data-field]', (_event, input) => {
+      const key = input.dataset.field;
+      const transform = FIELD_TRANSFORMS[key];
+      const value = transform ? transform(input.value) : input.value;
       if (input.value !== value) input.value = value;
+      setField(key, value);
     });
-    drawLogo();
-    drawCert();
-    drawQr();
-    drawCompleteness();
-  });
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    toast.className = 'mdf-toast show';
-    setTimeout(() => { toast.className = 'mdf-toast '; }, 2600);
-  });
+    const handleImageSelect = (key, file) => {
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      if (details[key]?.url) URL.revokeObjectURL(details[key].url);
+      setField(key, { name: file.name, url });
+      if (key === 'logo') drawLogo();
+      else drawQr();
+    };
 
-  return {
-    destroy() {},
-  };
-}
+    const handleCertSelect = (file) => {
+      if (!file) return;
+      setField('regCertificate', { name: file.name, size: (file.size / 1024).toFixed(0) + ' KB' });
+      drawCert();
+    };
+
+    on(form, 'change', 'input[data-file]', (_event, input) => {
+      const file = input.files?.[0];
+      if (input.dataset.file === 'regCertificate') handleCertSelect(file);
+      else handleImageSelect(input.dataset.file, file);
+    });
+
+    on(form, 'click', '.mdf-logo-upload', () => fileInput('logo').click());
+    on(form, 'click', '.mdf-dropzone', () => fileInput('regCertificate').click());
+    on(form, 'click', '.mdf-qr-upload', () => fileInput('qrCode').click());
+    on(form, 'click', '.mdf-file-chip-remove', () => {
+      setField('regCertificate', null);
+      drawCert();
+    });
+
+    // Discard: back to the initial values (the file inputs keep their selection, as before).
+    on(form, 'click', '.mdf-btn-ghost', () => {
+      details = { ...initialDetails };
+      form.querySelectorAll('input[data-field]').forEach((input) => {
+        const value = details[input.dataset.field];
+        if (input.value !== value) input.value = value;
+      });
+      drawLogo();
+      drawCert();
+      drawQr();
+      drawCompleteness();
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      toast.className = 'mdf-toast show';
+      setTimeout(() => { toast.className = 'mdf-toast '; }, 2600);
+    });
+
+    return {
+      destroy() {},
+    };
+  }
+
+  FW.define('components/my-details-form', { mountMyDetailsForm });
+})();

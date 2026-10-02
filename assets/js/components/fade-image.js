@@ -3,21 +3,27 @@
 //
 //   html`${fadeImage({ src, alt: 'x', className: 'card-photo', attrs: 'loading="lazy"' })}`
 //   ... then, after the markup is in the page: initFadeImages(container)
-import { html, raw } from '../core/dom.js';
+(function () {
+  'use strict';
 
-export function fadeImage({ src, alt = '', className = '', attrs = '' } = {}) {
-  return html`<img class="fade-img ${className}" src="${src}" alt="${alt}" ${raw(attrs)} />`;
-}
+  const { html, raw } = FW.require('core/dom');
 
-// Marks every .fade-img under root as loaded once it has loaded (or straight away when it was
-// already cached). Safe to call again after re-rendering.
-export function initFadeImages(root = document) {
-  root.querySelectorAll('img.fade-img:not(.is-loaded)').forEach((img) => {
-    if (img.complete && img.naturalWidth > 0) {
-      img.classList.add('is-loaded');
-    } else if (!img.dataset.fadeBound) {
-      img.dataset.fadeBound = '1';
-      img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
-    }
-  });
-}
+  function fadeImage({ src, alt = '', className = '', attrs = '' } = {}) {
+    return html`<img class="fade-img ${className}" src="${src}" alt="${alt}" ${raw(attrs)} />`;
+  }
+
+  // Marks every .fade-img under root as loaded once it has loaded (or straight away when it was
+  // already cached). Safe to call again after re-rendering.
+  function initFadeImages(root = document) {
+    root.querySelectorAll('img.fade-img:not(.is-loaded)').forEach((img) => {
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add('is-loaded');
+      } else if (!img.dataset.fadeBound) {
+        img.dataset.fadeBound = '1';
+        img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+      }
+    });
+  }
+
+  FW.define('components/fade-image', { fadeImage, initFadeImages });
+})();

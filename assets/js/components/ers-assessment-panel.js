@@ -7,47 +7,50 @@
 //
 // Within a phase the existing elements are patched rather than re-rendered, so the progress bar,
 // option highlight, stepper and result gauge transitions animate, and keyboard focus stays put.
-import { html, render, on, toElement, scrollToTop } from '../core/dom.js';
-import { icon } from '../core/icons.js';
-import { authHeaders } from '../core/auth.js';
-import { API_BASE_URL } from '../core/config.js';
-import { sections, scoreSections, computeGaps, getTier, TOTAL_MAX } from '../data/ers-data.js';
+(function () {
+  'use strict';
 
-const SECTION_ICONS = {
-  landmark: 'landmark',
-  award: 'award',
-  package: 'package',
-  sprout: 'sprout',
-  rupee: 'indian-rupee',
-  globe: 'globe',
-  file: 'file-text',
-};
+  const { html, render, on, toElement, scrollToTop } = FW.require('core/dom');
+  const { icon } = FW.require('core/icons');
+  const { authHeaders } = FW.require('core/auth');
+  const { API_BASE_URL } = FW.require('core/config');
+  const { sections, scoreSections, computeGaps, getTier, TOTAL_MAX } = FW.require('data/ers-data');
 
-const apiBase = () => `${API_BASE_URL}/api/ers`;
-
-// Semi-circle gauge geometry.
-const R = 108, CX = 140, CY = 140, STROKE = 18;
-const CIRC = Math.PI * R;
-const DIAL_PATH = `M ${CX - R} ${CY} A ${R} ${R} 0 0 1 ${CX + R} ${CY}`;
-const EASE = 'cubic-bezier(.22,1,.36,1)';
-
-export function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } = {}) {
-  const state = {
-    phase: 'loading', // loading | quiz | results
-    currentSection: 0,
-    answers: {},
-    submitting: false,
-    submitError: '',
-    resultMeta: null,
-    animateIn: false,
+  const SECTION_ICONS = {
+    landmark: 'landmark',
+    award: 'award',
+    package: 'package',
+    sprout: 'sprout',
+    rupee: 'indian-rupee',
+    globe: 'globe',
+    file: 'file-text',
   };
-  let destroyed = false;
-  let animateTimer = null;
-  let shownPhase = null;
-  let shownSection = null;
-  let scrollKey = null;
 
-  const root = toElement(html`
+  const apiBase = () => `${API_BASE_URL}/api/ers`;
+
+  // Semi-circle gauge geometry.
+  const R = 108, CX = 140, CY = 140, STROKE = 18;
+  const CIRC = Math.PI * R;
+  const DIAL_PATH = `M ${CX - R} ${CY} A ${R} ${R} 0 0 1 ${CX + R} ${CY}`;
+  const EASE = 'cubic-bezier(.22,1,.36,1)';
+
+  function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } = {}) {
+    const state = {
+      phase: 'loading', // loading | quiz | results
+      currentSection: 0,
+      answers: {},
+      submitting: false,
+      submitError: '',
+      resultMeta: null,
+      animateIn: false,
+    };
+    let destroyed = false;
+    let animateTimer = null;
+    let shownPhase = null;
+    let shownSection = null;
+    let scrollKey = null;
+
+    const root = toElement(html`
     <div class="ers-view">
       <button class="ers-back-btn" type="button">${icon('arrow-left', { size: 17 })} Back to Dashboard</button>
 
@@ -63,30 +66,30 @@ export function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } =
         </header>
       </div>
     </div>`);
-  container.replaceChildren(root);
-  const header = root.querySelector('.ers-panel-header');
+    container.replaceChildren(root);
+    const header = root.querySelector('.ers-panel-header');
 
-  // --- derived values --------------------------------------------------------------------------
+    // --- derived values --------------------------------------------------------------------------
 
-  const section = () => sections[state.currentSection];
-  const isLastSection = () => state.currentSection === sections.length - 1;
-  const filledInSection = () => section().questions.filter((q) => state.answers[q.id] !== undefined).length;
-  const sectionComplete = (i) => sections[i].questions.every((q) => state.answers[q.id] !== undefined);
-  const overallPct = () => Math.round(
-    ((state.currentSection + (filledInSection() / section().questions.length)) / sections.length) * 100,
-  );
+    const section = () => sections[state.currentSection];
+    const isLastSection = () => state.currentSection === sections.length - 1;
+    const filledInSection = () => section().questions.filter((q) => state.answers[q.id] !== undefined).length;
+    const sectionComplete = (i) => sections[i].questions.every((q) => state.answers[q.id] !== undefined);
+    const overallPct = () => Math.round(
+      ((state.currentSection + (filledInSection() / section().questions.length)) / sections.length) * 100,
+    );
 
-  // --- markup ----------------------------------------------------------------------------------
+    // --- markup ----------------------------------------------------------------------------------
 
-  const loadingHtml = () => html`
+    const loadingHtml = () => html`
     <div class="ers-loading">
       ${icon('loader-2', { size: 22, className: 'ers-spin' })}
       <span>Loading your assessment…</span>
     </div>`;
 
-  const sectionBodyHtml = () => {
-    const s = section();
-    return html`
+    const sectionBodyHtml = () => {
+      const s = section();
+      return html`
       <div class="ers-section-header">
         <div class="ers-section-icon" style="background: ${s.iconBg}; color: ${s.iconColor};">
           ${icon(SECTION_ICONS[s.icon], { size: 20 })}
@@ -106,33 +109,33 @@ export function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } =
           <div class="ers-q-hint">${q.hint}</div>
           <div class="ers-opts">
             ${q.options.map((opt) => {
-              const selected = state.answers[q.id] === opt.value;
-              return html`
+                const selected = state.answers[q.id] === opt.value;
+                return html`
                 <div class="ers-opt ${selected ? 'selected' : ''}" role="radio" aria-checked="${String(selected)}" tabindex="0"
                   data-qid="${q.id}" data-value="${opt.value}">
                   <span class="ers-opt-radio">${selected && html`<span class="ers-opt-radio-dot"></span>`}</span>
                   <span class="ers-opt-text">${opt.text}</span>
                   <span class="ers-opt-pts">${opt.value}</span>
                 </div>`;
-            })}
+              })}
           </div>
         </div>`)}`;
-  };
+    };
 
-  const stepDotClass = (i) => {
-    const done = sectionComplete(i);
-    const active = i === state.currentSection;
-    return `ers-step-dot ${active ? 'active' : ''} ${done && !active ? 'done' : ''}`;
-  };
-  const stepDotContent = (i) => (sectionComplete(i) && i !== state.currentSection ? icon('check', { size: 13 }) : i + 1);
+    const stepDotClass = (i) => {
+      const done = sectionComplete(i);
+      const active = i === state.currentSection;
+      return `ers-step-dot ${active ? 'active' : ''} ${done && !active ? 'done' : ''}`;
+    };
+    const stepDotContent = (i) => (sectionComplete(i) && i !== state.currentSection ? icon('check', { size: 13 }) : i + 1);
 
-  const nextButtonContent = () => {
-    if (state.submitting) return html`${icon('loader-2', { size: 16, className: 'ers-spin' })} Scoring…`;
-    if (isLastSection()) return html`See my score ${icon('arrow-right', { size: 16 })}`;
-    return html`Next ${icon('chevron-right', { size: 16 })}`;
-  };
+    const nextButtonContent = () => {
+      if (state.submitting) return html`${icon('loader-2', { size: 16, className: 'ers-spin' })} Scoring…`;
+      if (isLastSection()) return html`See my score ${icon('arrow-right', { size: 16 })}`;
+      return html`Next ${icon('chevron-right', { size: 16 })}`;
+    };
 
-  const quizHtml = () => html`
+    const quizHtml = () => html`
     <div class="ers-progress-row">
       <div class="ers-progress-track">
         <div class="ers-progress-fill" style="width: ${overallPct()}%;"></div>
@@ -156,16 +159,16 @@ export function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } =
       <button class="ers-btn primary" type="button" data-action="next" ${state.submitting ? 'disabled' : ''}>${nextButtonContent()}</button>
     </footer>`;
 
-  const resultsHtml = () => {
-    const { resultMeta, answers } = state;
-    const dimScores = scoreSections(answers);
-    const gaps = computeGaps(answers);
-    const tier = getTier(resultMeta?.percentage ?? 0);
-    const pct = Math.max(0, Math.min(100, resultMeta?.percentage ?? 0));
-    const dialOffset = state.animateIn ? CIRC * (1 - pct / 100) : CIRC;
-    const needleAngle = state.animateIn ? -90 + (180 * (pct / 100)) : -90;
+    const resultsHtml = () => {
+      const { resultMeta, answers } = state;
+      const dimScores = scoreSections(answers);
+      const gaps = computeGaps(answers);
+      const tier = getTier(resultMeta?.percentage ?? 0);
+      const pct = Math.max(0, Math.min(100, resultMeta?.percentage ?? 0));
+      const dialOffset = state.animateIn ? CIRC * (1 - pct / 100) : CIRC;
+      const needleAngle = state.animateIn ? -90 + (180 * (pct / 100)) : -90;
 
-    return html`
+      return html`
       <div class="ers-body ers-results">
         ${state.submitError && html`
           <div class="ers-error-banner">${icon('alert-triangle', { size: 15 })} ${state.submitError}</div>`}
@@ -192,8 +195,8 @@ export function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } =
           </svg>
 
           <div class="ers-pass-badge ${resultMeta.passed ? 'pass' : 'fail'}">${resultMeta.passed
-            ? html`${icon('circle-check', { size: 15 })} Passed`
-            : html`${icon('circle-x', { size: 15 })} Not Passed`}<span class="ers-pass-sub">· ${resultMeta.totalScore}/${TOTAL_MAX} pts</span></div>
+              ? html`${icon('circle-check', { size: 15 })} Passed`
+              : html`${icon('circle-x', { size: 15 })} Not Passed`}<span class="ers-pass-sub">· ${resultMeta.totalScore}/${TOTAL_MAX} pts</span></div>
           <div class="ers-tier" style="color: ${tier.color};">${tier.tier}</div>
           <div class="ers-tier-desc">${tier.desc}</div>
         </div>
@@ -212,12 +215,12 @@ export function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } =
         <div class="ers-gap-list">
           <div class="ers-gap-title">Priority Gap List</div>
           ${gaps.length === 0
-            ? html`
+              ? html`
               <div class="ers-gap-item minor">
                 <span class="ers-gap-badge minor">Excellent</span>
                 <div class="ers-gap-text">No significant gaps found. You are well-prepared to export.</div>
               </div>`
-            : gaps.map((g) => html`
+              : gaps.map((g) => html`
               <div class="ers-gap-item ${g.severity}">
                 <span class="ers-gap-badge ${g.severity}">${g.severity}</span>
                 <div>
@@ -231,222 +234,225 @@ export function mountErsAssessmentPanel(container, { onBack, onStatusUpdated } =
           <button class="ers-btn primary" type="button" data-action="restart">${icon('rotate-ccw', { size: 16 })} Reassess</button>
         </div>
       </div>`;
-  };
+    };
 
-  // --- drawing ---------------------------------------------------------------------------------
+    // --- drawing ---------------------------------------------------------------------------------
 
-  // Swaps everything under the header for the given phase's markup.
-  const showPhaseContent = (content) => {
-    while (header.nextSibling) header.nextSibling.remove();
-    if (content) header.insertAdjacentHTML('afterend', String(content));
-  };
+    // Swaps everything under the header for the given phase's markup.
+    const showPhaseContent = (content) => {
+      while (header.nextSibling) header.nextSibling.remove();
+      if (content) header.insertAdjacentHTML('afterend', String(content));
+    };
 
-  // Quiz phase, same phase as before: patch the existing elements.
-  function updateQuiz() {
-    const card = root.querySelector('.ers-card');
-    const bodyEl = card.querySelector('.ers-body');
+    // Quiz phase, same phase as before: patch the existing elements.
+    function updateQuiz() {
+      const card = root.querySelector('.ers-card');
+      const bodyEl = card.querySelector('.ers-body');
 
-    if (state.currentSection !== shownSection) {
-      shownSection = state.currentSection;
-      render(bodyEl, sectionBodyHtml());
-    } else {
-      bodyEl.querySelectorAll('.ers-opt').forEach((opt) => {
-        const selected = state.answers[opt.dataset.qid] === Number(opt.dataset.value);
-        if (opt.classList.contains('selected') === selected) return;
-        opt.className = `ers-opt ${selected ? 'selected' : ''}`;
-        opt.setAttribute('aria-checked', String(selected));
-        render(opt.querySelector('.ers-opt-radio'), selected && html`<span class="ers-opt-radio-dot"></span>`);
+      if (state.currentSection !== shownSection) {
+        shownSection = state.currentSection;
+        render(bodyEl, sectionBodyHtml());
+      } else {
+        bodyEl.querySelectorAll('.ers-opt').forEach((opt) => {
+          const selected = state.answers[opt.dataset.qid] === Number(opt.dataset.value);
+          if (opt.classList.contains('selected') === selected) return;
+          opt.className = `ers-opt ${selected ? 'selected' : ''}`;
+          opt.setAttribute('aria-checked', String(selected));
+          render(opt.querySelector('.ers-opt-radio'), selected && html`<span class="ers-opt-radio-dot"></span>`);
+        });
+      }
+
+      const pct = overallPct();
+      card.querySelector('.ers-progress-fill').style.width = `${pct}%`;
+      const [sectionLabel, pctLabel] = card.querySelectorAll('.ers-progress-labels span');
+      sectionLabel.textContent = `Section ${state.currentSection + 1} of ${sections.length}`;
+      pctLabel.textContent = `${pct}% complete`;
+
+      card.querySelectorAll('.ers-step-dot').forEach((dot) => {
+        const i = Number(dot.dataset.index);
+        dot.className = stepDotClass(i);
+        render(dot, stepDotContent(i));
+      });
+
+      card.querySelector('[data-action="prev"]').style.visibility = state.currentSection === 0 ? 'hidden' : 'visible';
+      card.querySelector('.ers-nav-status').textContent = `${filledInSection()}/${section().questions.length} answered`;
+      const next = card.querySelector('[data-action="next"]');
+      next.disabled = state.submitting;
+      render(next, nextButtonContent());
+    }
+
+    // Results: the gauge needle, arc and bars animate from empty once animateIn flips (80ms in).
+    function applyAnimateIn() {
+      const svg = root.querySelector('.ers-dial-svg');
+      if (!svg) return;
+      const pct = Math.max(0, Math.min(100, state.resultMeta?.percentage ?? 0));
+      const dialOffset = state.animateIn ? CIRC * (1 - pct / 100) : CIRC;
+      const needleAngle = state.animateIn ? -90 + (180 * (pct / 100)) : -90;
+      svg.querySelectorAll('path')[1].setAttribute('stroke-dashoffset', String(dialOffset));
+      svg.querySelector('line').style.transform = `rotate(${needleAngle}deg)`;
+      const dimScores = scoreSections(state.answers);
+      root.querySelectorAll('.ers-dim-bar-fill').forEach((bar, i) => {
+        bar.style.width = state.animateIn ? `${dimScores[i].pct}%` : '0%';
       });
     }
 
-    const pct = overallPct();
-    card.querySelector('.ers-progress-fill').style.width = `${pct}%`;
-    const [sectionLabel, pctLabel] = card.querySelectorAll('.ers-progress-labels span');
-    sectionLabel.textContent = `Section ${state.currentSection + 1} of ${sections.length}`;
-    pctLabel.textContent = `${pct}% complete`;
+    function draw() {
+      if (destroyed) return;
+      if (state.phase !== shownPhase) {
+        shownPhase = state.phase;
+        shownSection = state.currentSection;
+        if (state.phase === 'loading') showPhaseContent(loadingHtml());
+        else if (state.phase === 'quiz') showPhaseContent(quizHtml());
+        else showPhaseContent(state.resultMeta && resultsHtml());
+      } else if (state.phase === 'quiz') {
+        updateQuiz();
+      }
 
-    card.querySelectorAll('.ers-step-dot').forEach((dot) => {
-      const i = Number(dot.dataset.index);
-      dot.className = stepDotClass(i);
-      render(dot, stepDotContent(i));
-    });
-
-    card.querySelector('[data-action="prev"]').style.visibility = state.currentSection === 0 ? 'hidden' : 'visible';
-    card.querySelector('.ers-nav-status').textContent = `${filledInSection()}/${section().questions.length} answered`;
-    const next = card.querySelector('[data-action="next"]');
-    next.disabled = state.submitting;
-    render(next, nextButtonContent());
-  }
-
-  // Results: the gauge needle, arc and bars animate from empty once animateIn flips (80ms in).
-  function applyAnimateIn() {
-    const svg = root.querySelector('.ers-dial-svg');
-    if (!svg) return;
-    const pct = Math.max(0, Math.min(100, state.resultMeta?.percentage ?? 0));
-    const dialOffset = state.animateIn ? CIRC * (1 - pct / 100) : CIRC;
-    const needleAngle = state.animateIn ? -90 + (180 * (pct / 100)) : -90;
-    svg.querySelectorAll('path')[1].setAttribute('stroke-dashoffset', String(dialOffset));
-    svg.querySelector('line').style.transform = `rotate(${needleAngle}deg)`;
-    const dimScores = scoreSections(state.answers);
-    root.querySelectorAll('.ers-dim-bar-fill').forEach((bar, i) => {
-      bar.style.width = state.animateIn ? `${dimScores[i].pct}%` : '0%';
-    });
-  }
-
-  function draw() {
-    if (destroyed) return;
-    if (state.phase !== shownPhase) {
-      shownPhase = state.phase;
-      shownSection = state.currentSection;
-      if (state.phase === 'loading') showPhaseContent(loadingHtml());
-      else if (state.phase === 'quiz') showPhaseContent(quizHtml());
-      else showPhaseContent(state.resultMeta && resultsHtml());
-    } else if (state.phase === 'quiz') {
-      updateQuiz();
+      // phase (loading/quiz/results) and currentSection (wizard step) each swap the whole panel
+      // content in place, so each transition should land back at the panel's top.
+      const key = `${state.phase}-${state.currentSection}`;
+      if (key !== scrollKey) {
+        scrollKey = key;
+        scrollToTop();
+      }
     }
 
-    // phase (loading/quiz/results) and currentSection (wizard step) each swap the whole panel
-    // content in place, so each transition should land back at the panel's top.
-    const key = `${state.phase}-${state.currentSection}`;
-    if (key !== scrollKey) {
-      scrollKey = key;
-      scrollToTop();
+    // Entering the results (or getting a new result) replays the gauge animation.
+    function startResultsAnimation() {
+      clearTimeout(animateTimer);
+      state.animateIn = false;
+      if (state.phase !== 'results') return;
+      animateTimer = setTimeout(() => {
+        state.animateIn = true;
+        applyAnimateIn();
+      }, 80);
     }
-  }
 
-  // Entering the results (or getting a new result) replays the gauge animation.
-  function startResultsAnimation() {
-    clearTimeout(animateTimer);
-    state.animateIn = false;
-    if (state.phase !== 'results') return;
-    animateTimer = setTimeout(() => {
-      state.animateIn = true;
-      applyAnimateIn();
-    }, 80);
-  }
+    // --- actions ---------------------------------------------------------------------------------
 
-  // --- actions ---------------------------------------------------------------------------------
+    const selectOption = (qid, value) => {
+      state.answers = { ...state.answers, [qid]: value };
+      draw();
+    };
 
-  const selectOption = (qid, value) => {
-    state.answers = { ...state.answers, [qid]: value };
-    draw();
-  };
+    const goPrev = () => {
+      state.currentSection = Math.max(0, state.currentSection - 1);
+      draw();
+    };
 
-  const goPrev = () => {
-    state.currentSection = Math.max(0, state.currentSection - 1);
-    draw();
-  };
-
-  async function handleSubmit() {
-    state.submitting = true;
-    state.submitError = '';
-    draw();
-    try {
-      const res = await fetch(`${apiBase()}/submit`, {
-        method: 'POST',
-        headers: authHeaders({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify({ answers: state.answers }),
-      });
-      if (!res.ok) throw new Error('Submit failed');
-      const data = await res.json();
-      state.resultMeta = {
-        totalScore: data.totalScore,
-        percentage: data.percentage,
-        passed: data.passed,
-        createdAt: data.createdAt,
-      };
-      state.phase = 'results';
-      onStatusUpdated?.();
-    } catch {
-      state.submitError = "Couldn't save your result to the server — showing a local preview instead. Check your connection and reassess to save it.";
-      const localTotal = Object.entries(state.answers).reduce((sum, [, v]) => sum + (v || 0), 0);
-      const localPct = (localTotal / TOTAL_MAX) * 100;
-      state.resultMeta = { totalScore: localTotal, percentage: localPct, passed: localPct > 70, createdAt: null };
-      state.phase = 'results';
-    } finally {
-      state.submitting = false;
-    }
-    if (destroyed) return;
-    startResultsAnimation();
-    draw();
-  }
-
-  const goNext = () => {
-    if (isLastSection()) {
-      handleSubmit();
-    } else {
-      state.currentSection = Math.min(sections.length - 1, state.currentSection + 1);
+    async function handleSubmit() {
+      state.submitting = true;
+      state.submitError = '';
+      draw();
+      try {
+        const res = await fetch(`${apiBase()}/submit`, {
+          method: 'POST',
+          headers: authHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify({ answers: state.answers }),
+        });
+        if (!res.ok) throw new Error('Submit failed');
+        const data = await res.json();
+        state.resultMeta = {
+          totalScore: data.totalScore,
+          percentage: data.percentage,
+          passed: data.passed,
+          createdAt: data.createdAt,
+        };
+        state.phase = 'results';
+        onStatusUpdated?.();
+      } catch {
+        state.submitError = "Couldn't save your result to the server — showing a local preview instead. Check your connection and reassess to save it.";
+        const localTotal = Object.entries(state.answers).reduce((sum, [, v]) => sum + (v || 0), 0);
+        const localPct = (localTotal / TOTAL_MAX) * 100;
+        state.resultMeta = { totalScore: localTotal, percentage: localPct, passed: localPct > 70, createdAt: null };
+        state.phase = 'results';
+      } finally {
+        state.submitting = false;
+      }
+      if (destroyed) return;
+      startResultsAnimation();
       draw();
     }
-  };
 
-  const handleRestart = () => {
-    state.answers = {};
-    state.currentSection = 0;
-    state.resultMeta = null;
-    state.submitError = '';
-    state.phase = 'quiz';
-    startResultsAnimation();
-    draw();
-  };
+    const goNext = () => {
+      if (isLastSection()) {
+        handleSubmit();
+      } else {
+        state.currentSection = Math.min(sections.length - 1, state.currentSection + 1);
+        draw();
+      }
+    };
 
-  on(root, 'click', '.ers-back-btn', () => onBack?.());
-  on(root, 'click', '.ers-opt', (_event, opt) => selectOption(opt.dataset.qid, Number(opt.dataset.value)));
-  on(root, 'keydown', '.ers-opt', (event, opt) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      selectOption(opt.dataset.qid, Number(opt.dataset.value));
-    }
-  });
-  on(root, 'click', '.ers-step-dot', (_event, dot) => {
-    state.currentSection = Number(dot.dataset.index);
-    draw();
-  });
-  on(root, 'click', '[data-action="prev"]', goPrev);
-  on(root, 'click', '[data-action="next"]', goNext);
-  on(root, 'click', '[data-action="restart"]', handleRestart);
+    const handleRestart = () => {
+      state.answers = {};
+      state.currentSection = 0;
+      state.resultMeta = null;
+      state.submitError = '';
+      state.phase = 'quiz';
+      startResultsAnimation();
+      draw();
+    };
 
-  // Load the user's latest attempt once on mount.
-  (async () => {
-    try {
-      const res = await fetch(`${apiBase()}/status`, { headers: authHeaders() });
-      if (!res.ok) {
+    on(root, 'click', '.ers-back-btn', () => onBack?.());
+    on(root, 'click', '.ers-opt', (_event, opt) => selectOption(opt.dataset.qid, Number(opt.dataset.value)));
+    on(root, 'keydown', '.ers-opt', (event, opt) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectOption(opt.dataset.qid, Number(opt.dataset.value));
+      }
+    });
+    on(root, 'click', '.ers-step-dot', (_event, dot) => {
+      state.currentSection = Number(dot.dataset.index);
+      draw();
+    });
+    on(root, 'click', '[data-action="prev"]', goPrev);
+    on(root, 'click', '[data-action="next"]', goNext);
+    on(root, 'click', '[data-action="restart"]', handleRestart);
+
+    // Load the user's latest attempt once on mount.
+    (async () => {
+      try {
+        const res = await fetch(`${apiBase()}/status`, { headers: authHeaders() });
+        if (!res.ok) {
+          if (!destroyed) {
+            state.phase = 'quiz';
+            draw();
+          }
+          return;
+        }
+        const data = await res.json();
+        if (destroyed) return;
+        if (data.attempted) {
+          state.answers = data.status.answers || {};
+          state.resultMeta = {
+            totalScore: data.status.totalScore,
+            percentage: data.status.percentage,
+            passed: data.status.passed,
+            createdAt: data.status.createdAt,
+          };
+          state.phase = 'results';
+          startResultsAnimation();
+        } else {
+          state.phase = 'quiz';
+        }
+        draw();
+      } catch {
         if (!destroyed) {
           state.phase = 'quiz';
           draw();
         }
-        return;
       }
-      const data = await res.json();
-      if (destroyed) return;
-      if (data.attempted) {
-        state.answers = data.status.answers || {};
-        state.resultMeta = {
-          totalScore: data.status.totalScore,
-          percentage: data.status.percentage,
-          passed: data.status.passed,
-          createdAt: data.status.createdAt,
-        };
-        state.phase = 'results';
-        startResultsAnimation();
-      } else {
-        state.phase = 'quiz';
-      }
-      draw();
-    } catch {
-      if (!destroyed) {
-        state.phase = 'quiz';
-        draw();
-      }
-    }
-  })();
+    })();
 
-  draw();
+    draw();
 
-  return {
-    destroy() {
-      destroyed = true;
-      clearTimeout(animateTimer);
-    },
-  };
-}
+    return {
+      destroy() {
+        destroyed = true;
+        clearTimeout(animateTimer);
+      },
+    };
+  }
+
+  FW.define('components/ers-assessment-panel', { mountErsAssessmentPanel });
+})();

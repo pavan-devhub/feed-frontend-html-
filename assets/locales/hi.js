@@ -1,4 +1,5 @@
-﻿{
+// Hindi translations (i18next resource format), loaded on demand by assets/js/core/i18n.js.
+FW.define('locales/hi', {
   "translation": {
     "call_us": "हमें कभी भी कॉल करें",
     "mail_us": "आज ही हमें मेल करें",
@@ -24,4 +25,4 @@
       "contact_us": "संपर्क करें"
     }
   }
-}
+});

@@ -1,10 +1,14 @@
 // Single EPM event page (placeholder) - shows the event id from ?eventId= and links back to the
 // EPM directory.
-import { initPage } from '../core/page.js';
-import { getParam } from '../core/router.js';
+(function () {
+  'use strict';
 
-const session = initPage({ page: 'epm-event-details' });
+  const { initPage } = FW.require('core/page');
+  const { getParam } = FW.require('core/router');
 
-if (session) {
-  document.getElementById('epm-event-id').textContent = `Details for event ID: ${getParam('eventId') ?? ''}`;
-}
+  const session = initPage({ page: 'epm-event-details' });
+
+  if (session) {
+    document.getElementById('epm-event-id').textContent = `Details for event ID: ${getParam('eventId') ?? ''}`;
+  }
+})();

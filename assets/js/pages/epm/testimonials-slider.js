@@ -3,18 +3,21 @@
 // and the position is quietly jumped forward by one copy (no transition) whenever it drifts into
 // the first copy, so the slider can keep moving forever. epm.css positions the track from the
 // --current-slide custom property.
-import { html, toElement } from '../../core/dom.js';
-import { icon } from '../../core/icons.js';
+(function () {
+  'use strict';
 
-const AUTO_SCROLL_MS = 4000;
-const RESET_DELAY_MS = 600;
-const TRACK_TRANSITION = 'transform 0.5s ease-in-out';
+  const { html, toElement } = FW.require('core/dom');
+  const { icon } = FW.require('core/icons');
 
-const starCount = (rating) => Math.max(0, Math.min(5, rating || 0));
+  const AUTO_SCROLL_MS = 4000;
+  const RESET_DELAY_MS = 600;
+  const TRACK_TRANSITION = 'transform 0.5s ease-in-out';
 
-const testimonialHtml = (testi) => {
-  const { authorName, authorRole } = testi;
-  return html`
+  const starCount = (rating) => Math.max(0, Math.min(5, rating || 0));
+
+  const testimonialHtml = (testi) => {
+    const { authorName, authorRole } = testi;
+    return html`
     <div class="epm-testimonial-content">
       ${icon('quote', { size: 72, fill: 'currentColor', className: 'epm-testimonial-watermark' })}
       <div class="epm-testimonial-stars">
@@ -29,16 +32,16 @@ const testimonialHtml = (testi) => {
         </div>
       </div>
     </div>`;
-};
+  };
 
-// Builds the card (testimonials must be non-empty) and inserts it before `beforeEl`.
-// Returns the card element so the page can attach its scroll reveal.
-export function mountTestimonials(beforeEl, testimonials) {
-  const length = testimonials.length;
-  const state = { index: 0, transition: true };
-  const extended = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
+  // Builds the card (testimonials must be non-empty) and inserts it before `beforeEl`.
+  // Returns the card element so the page can attach its scroll reveal.
+  function mountTestimonials(beforeEl, testimonials) {
+    const length = testimonials.length;
+    const state = { index: 0, transition: true };
+    const extended = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
-  const card = toElement(html`
+    const card = toElement(html`
     <div class="epm-card testimonial-card epm-reveal dir-right">
       <div class="epm-card-header redesign-header">
         <div class="epm-header-left">
@@ -59,41 +62,44 @@ export function mountTestimonials(beforeEl, testimonials) {
         </div>
       </div>
     </div>`);
-  beforeEl.before(card);
-  const track = card.querySelector('.epm-testimonial-slide-track');
+    beforeEl.before(card);
+    const track = card.querySelector('.epm-testimonial-slide-track');
 
-  let resetTimer = null;
+    let resetTimer = null;
 
-  // Re-armed whenever the index changes: in the first copy, jump forward one copy invisibly.
-  function scheduleReset() {
-    clearTimeout(resetTimer);
-    resetTimer = null;
-    if (state.index > length) return;
-    resetTimer = setTimeout(() => set({ transition: false, index: state.index + length }), RESET_DELAY_MS);
+    // Re-armed whenever the index changes: in the first copy, jump forward one copy invisibly.
+    function scheduleReset() {
+      clearTimeout(resetTimer);
+      resetTimer = null;
+      if (state.index > length) return;
+      resetTimer = setTimeout(() => set({ transition: false, index: state.index + length }), RESET_DELAY_MS);
+    }
+
+    function set({ index = state.index, transition = state.transition }) {
+      const indexChanged = index !== state.index;
+      if (!indexChanged && transition === state.transition) return;
+      state.index = index;
+      state.transition = transition;
+      track.style.setProperty('--current-slide', String(state.index));
+      track.style.transition = state.transition ? TRACK_TRANSITION : 'none';
+      if (indexChanged) scheduleReset();
+    }
+
+    // Start in the middle copies, without animating there.
+    set({ transition: false, index: length * 2 });
+
+    setInterval(() => set({ transition: true, index: state.index - 1 }), AUTO_SCROLL_MS);
+
+    card.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-action]');
+      if (!button) return;
+      // "next" moves the track right (index - 1), "prev" moves it left (index + 1).
+      if (button.dataset.action === 'testi-next') set({ transition: true, index: state.index - 1 });
+      if (button.dataset.action === 'testi-prev') set({ transition: true, index: state.index + 1 });
+    });
+
+    return card;
   }
 
-  function set({ index = state.index, transition = state.transition }) {
-    const indexChanged = index !== state.index;
-    if (!indexChanged && transition === state.transition) return;
-    state.index = index;
-    state.transition = transition;
-    track.style.setProperty('--current-slide', String(state.index));
-    track.style.transition = state.transition ? TRACK_TRANSITION : 'none';
-    if (indexChanged) scheduleReset();
-  }
-
-  // Start in the middle copies, without animating there.
-  set({ transition: false, index: length * 2 });
-
-  setInterval(() => set({ transition: true, index: state.index - 1 }), AUTO_SCROLL_MS);
-
-  card.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-action]');
-    if (!button) return;
-    // "next" moves the track right (index - 1), "prev" moves it left (index + 1).
-    if (button.dataset.action === 'testi-next') set({ transition: true, index: state.index - 1 });
-    if (button.dataset.action === 'testi-prev') set({ transition: true, index: state.index + 1 });
-  });
-
-  return card;
-}
+  FW.define('pages/epm/testimonials-slider', { mountTestimonials });
+})();

@@ -1,6 +1,7 @@
 # Feed World Frontend - Developer Guide
 
-Plain HTML + CSS + JavaScript (ES modules). No framework, no build step, no `npm install`.
+Plain HTML + CSS + JavaScript (classic scripts). No framework, no build step, no `npm install`, no web
+server needed - the pages open straight from disk.
 This guide explains how the site is organised and how to add or change a page.
 
 ---
@@ -36,7 +37,7 @@ feed-frontend/
 │   ├── images/                   Photos, illustrations, favicon
 │   ├── icons/                    Service tile icons
 │   ├── videos/                   Hero videos
-│   └── locales/                  Translation files (en.json, hi.json, te.json, ...)
+│   └── locales/                  Translation files (en.js, hi.js, te.js, ...)
 ├── docs/                         This guide
 └── README.md
 ```
@@ -70,8 +71,19 @@ feed-frontend/
   <link rel="stylesheet" href="../assets/css/components/footer.css" />
   <link rel="stylesheet" href="../assets/css/pages/epm.css" />
 
-  <script src="../assets/js/core/file-protocol-check.js"></script>
-  <script type="module" src="../assets/js/pages/epm.js"></script>
+  <!-- scripts: the registry first, then every script the page needs, dependencies first -->
+  <script defer src="../assets/js/core/module-registry.js"></script>
+  <script defer src="../assets/js/core/router.js"></script>
+  <script defer src="../assets/js/core/config.js"></script>
+  <script defer src="../assets/js/core/auth.js"></script>
+  <script defer src="../assets/js/core/dom.js"></script>
+  <script defer src="../assets/js/core/icons.js"></script>
+  <script defer src="../assets/js/components/device-row.js"></script>
+  <script defer src="../assets/js/components/devices-modal.js"></script>
+  <script defer src="../assets/js/components/navbar.js"></script>
+  <script defer src="../assets/js/components/footer.js"></script>
+  <script defer src="../assets/js/core/page.js"></script>
+  <script defer src="../assets/js/pages/epm.js"></script>      <!-- the page's own script, last -->
 </head>
 <body>
   <div class="app-container is-home">
@@ -88,22 +100,54 @@ feed-frontend/
 ```
 
 * Paths are **relative**: `assets/...` from `index.html`, `../assets/...` from `pages/*.html`.
-  Never use root-absolute paths like `/assets/x.avif` - the site must also work from a sub-folder.
-* Module scripts are deferred automatically, so the markup is ready when the script runs.
+  Never use root-absolute paths like `/assets/x.avif` - the site must work from disk and from a
+  sub-folder.
+* `defer` scripts run in the order listed, after the HTML has been parsed, so the markup is ready
+  when the page script runs.
 * The `app-container` / `main-content-bg` wrappers are referenced by `global.css`. Most pages use
   `class="app-container is-home"`; Trade Fairs and the EPM event page use `class="app-container"`;
   login, register, contact, product 360 and the publication reader have no wrapper.
+
+### How the scripts fit together
+
+The pages must also work when opened straight from disk (`file://`), where browsers refuse to load
+ES modules (`<script type="module">`, `import`/`export`). So every script is a **classic script**
+that keeps its code private inside its own function, and shares code through a tiny registry
+(`assets/js/core/module-registry.js`, the first script on every page):
+
+```js
+// assets/js/utils/epm-date.js
+(function () {
+  'use strict';
+
+  const { html } = FW.require('core/dom');        // use another file's exports ("import")
+
+  function formatEventDateLong(isoDate) { ... }
+
+  FW.define('utils/epm-date', { formatEventDateLong });   // this file's exports ("export")
+})();
+```
+
+* A module's name is its path under `assets/js` without `.js`.
+* `FW.require('x')` only finds files whose `<script>` tag comes **earlier** on the page - when a file
+  starts using another one, add that file's tag above it on every page that loads it. (A missing
+  tag fails loudly in the console, naming the file to add.)
+* Never use `import`, `export` or `type="module"`.
 
 ### The page script
 
 ```js
 // assets/js/pages/epm.js
-import { initPage } from '../core/page.js';
+(function () {
+  'use strict';
 
-const session = initPage({ page: 'epm' });   // page id from assets/js/core/router.js
-if (session) {
-  // page code - only runs when the visitor is allowed on this page
-}
+  const { initPage } = FW.require('core/page');
+
+  const session = initPage({ page: 'epm' });   // page id from assets/js/core/router.js
+  if (session) {
+    // page code - only runs when the visitor is allowed on this page
+  }
+})();
 ```
 
 `initPage({ page, access })` - `access` is one of:
@@ -128,7 +172,7 @@ Pages are addressed by **id**, never by hand-written paths. The ids and files li
 `assets/js/core/router.js` (`ROUTES`).
 
 ```js
-import { navigate, pageUrl, getParam, setParams, assetUrl } from '../core/router.js';
+const { navigate, pageUrl, getParam, setParams, assetUrl } = FW.require('core/router');
 
 navigate('epm-details');                                   // go to a page
 navigate('epm-gallery-state', { state: 'andhra-pradesh' }); // with query params
@@ -159,8 +203,8 @@ Static content is written directly in the HTML file. JavaScript only renders wha
 or interaction (API results, tabs, forms, dialogs). Helpers in `assets/js/core/dom.js`:
 
 ```js
-import { html, raw, render, on, cx, qs, qsa, toElement, scrollToTop } from '../core/dom.js';
-import { icon } from '../core/icons.js';
+const { html, raw, render, on, cx, qs, qsa, toElement, scrollToTop } = FW.require('core/dom');
+const { icon } = FW.require('core/icons');
 
 render(listEl, html`
   <ul>
@@ -194,15 +238,19 @@ The full list is in `assets/js/core/icons.js`.
 
 ## 6. Shared modules (`assets/js/`)
 
+Use them with `FW.require('<path without .js>')`, e.g. `FW.require('core/router')`, and include
+their `<script defer>` tag (plus the tags of whatever they require) on the page.
+
 | Module | Exports |
 |---|---|
+| `core/module-registry.js` | `FW.define`, `FW.require`, `FW.has` - first script on every page |
 | `core/config.js` | `API_BASE_URL` (backend on the same host, port 8080) |
 | `core/router.js` | `ROUTES`, `navigate`, `pageUrl`, `assetUrl`, `getParam`, `getParams`, `setParams`, `bindNavLinks` |
 | `core/auth.js` | `getToken`, `isLoggedIn`, `authHeaders`, `isAdmin`, `getCachedUser`, `setCurrentUser`, `onUserChange`, `completeLogin`, `logout`, `clearSession`, `setReturnTo`, `takeReturnTo`, `roleFromStoredToken` |
 | `core/page.js` | `initPage` |
 | `core/dom.js` | `html`, `raw`, `render`, `escapeHtml`, `toElement`, `cx`, `qs`, `qsa`, `on`, `onClickOutside`, `scrollToTop`, `SafeHtml` |
 | `core/icons.js` | `icon`, `iconSvg`, `hydrateIcons`, `hasIcon` |
-| `core/i18n.js` | `initI18n`, `t`, `setLanguage`, `getLanguage`, `applyTranslations` |
+| `core/i18n.js` | `initI18n`, `t`, `setLanguage`, `getLanguage`, `applyTranslations` (languages: `assets/locales/<lang>.js`, loaded on demand) |
 | `api/epm-api.js` | public EPM endpoints (events, stats, categories, gallery, video, reviews, registration, volunteer) |
 | `api/admin-epm-api.js` | admin EPM endpoints |
 | `api/publications-api.js` | Feed World publications (reader + admin) |
@@ -210,7 +258,7 @@ The full list is in `assets/js/core/icons.js`.
 | `components/navbar.js`, `footer.js` | mounted by `initPage` - pages don't call them |
 | `components/device-row.js` | `deviceRowHtml(session, { showLogout, busy })`, `timeAgo` |
 | `components/fade-image.js` | `fadeImage({ src, alt, className, attrs })`, `initFadeImages(root)` |
-| `components/pdf-viewer.js` | `createPdfViewer(container, { fileUrl, downloadUrl, initialPageCount, onPageChange })` → `{ destroy() }` (pdf.js) |
+| `components/pdf-viewer.js` | `createPdfViewer(container, { fileUrl, downloadUrl, initialPageCount, onPageChange })` → `{ destroy() }` - needs `vendor/pdfjs/pdf.min.js` before it |
 | `components/share-dialog.js` | `openShareDialog({ publication, onClose })` → `{ close }` |
 | `components/photo-lightbox.js` | `openPhotoLightbox({ photos, index, title, subtitle, onClose, onIndexChange })` |
 | `pages/admin/admin-ui.js` | `openModal`, `confirmDialog`, `formErrorHtml`, `formActionsHtml`, `createBanner`, `bannerHtml`, `sectionHeaderHtml`, `loadingHtml`, `emptyHtml` |
@@ -224,6 +272,7 @@ The site was converted 1:1 from a React app. Mappings, for reading the old code:
 
 | React | Here |
 |---|---|
+| `import { x } from './y'` / `export` | `const { x } = FW.require('y')` / `FW.define('this/file', { ... })` |
 | `<Navbar/>`, `<Footer/>` | `<div id="site-navbar"></div>`, `<div id="site-footer"></div>` |
 | `onNavigate('page', {a: 1})` | `navigate('page', { a: 1 })` / `data-nav="page"` |
 | `className` / `htmlFor` | `class` / `for` |
@@ -245,16 +294,17 @@ what it needs - if a page uses a class defined in another stylesheet, link that 
 
 ## 8. Running locally
 
-ES modules do not load from `file://`, so serve the folder over HTTP (any static server works):
-
-```bash
-npx serve .
-```
-
-```bash
-python -m http.server 5500
-```
+Open `index.html` (or any page) directly in the browser - no server needed. Serving the folder
+over http (`npx serve .`, `python -m http.server 5500`, VS Code Live Server) works too.
 
 The backend must be running on the same host at port 8080 (change `API_PORT` in
-`assets/js/core/config.js` if it differs) and must allow this site's origin in its CORS settings.
-After changing a `.js` file, hard-refresh (Ctrl+F5) if the browser keeps an old copy cached.
+`assets/js/core/config.js` if it differs) and its CORS settings must allow the page's origin
+(`null` for pages opened from disk). After changing a `.js` file, hard-refresh (Ctrl+F5) if the
+browser keeps an old copy cached.
+
+Things that behave differently on pages opened from disk:
+
+* **YouTube embeds** (How FEED Works) - YouTube refuses to play them without a web address, so each
+  video shows its thumbnail and opens on YouTube; over http(s) the embedded player is used.
+* **PDF rendering** - pdf.js runs its worker on the main thread (`pdf.worker.min.js`) instead of a
+  background worker (`pdf.worker.min.mjs`); slightly slower on very large PDFs, otherwise the same.

@@ -2,31 +2,38 @@
 // grid ("No services found" when nothing matches), beside the My Tools sidebar.
 //
 //   mountMsmeServiceHub(container, { onSelectTool });
-import { html, render, toElement, on } from '../core/dom.js';
-import { icon } from '../core/icons.js';
-import { assetUrl } from '../core/router.js';
-import { myToolsSidebarHtml, bindMyToolsSidebar, syncCardList } from './my-tools-sidebar.js';
+(function () {
+  'use strict';
 
-const MSME_SERVICES = [
-  { title: 'Statutory Registrations', description: 'Register your business and stay compliant with ease.', icon: 'file-check', color: '#3b82f6', bg: '#eff6ff' },
-  { title: 'Business Compliances', description: 'Manage all regulatory compliances in one place.', icon: 'clipboard-check', color: '#16a34a', bg: '#f0fdf4' },
-  { title: 'IT & Digital Marketing', description: 'Boost your online presence and reach more customers.', icon: 'megaphone', color: '#f97316', bg: '#fff7ed' },
-  { title: 'Industry Consultant', description: 'Get expert guidance tailored to your industry.', icon: 'briefcase', color: '#8b5cf6', bg: '#f5f3ff' },
-  { title: 'Document Formats', description: 'Download ready-to-use document templates.', icon: 'file-text', color: '#2563eb', bg: '#eff6ff' },
-  { title: 'Calculators', description: 'Smart calculators for your business needs.', icon: 'calculator', color: '#ec4899', bg: '#fdf2f8' },
-  { title: 'Marketing Services', description: 'Promote your business with result-driven strategies.', icon: 'trending-up', color: '#22c55e', bg: '#f0fdf4' },
-  { title: 'Loan Services', description: 'Explore financing options for your business growth.', icon: 'landmark', color: '#0ea5e9', bg: '#f0f9ff' },
-  { title: 'Insurance Services', description: 'Secure your business with the right insurance plans.', icon: 'shield-check', color: '#a855f7', bg: '#faf5ff' },
-  { title: 'Logistics Services', description: 'Reliable logistics solutions for smooth operations.', icon: 'truck', color: '#f59e0b', bg: '#fffbeb' },
-  { title: 'Legal Services', description: 'Legal support for contracts, agreements & more.', icon: 'scale', color: '#eab308', bg: '#fefce8' },
-  { title: 'Import & Export Services', description: 'Expand your business globally with ease.', icon: 'ship', color: '#14b8a6', bg: '#f0fdfa' },
-];
+  const { html, render, toElement, on } = FW.require('core/dom');
+  const { icon } = FW.require('core/icons');
+  const { assetUrl } = FW.require('core/router');
+  const {
+    myToolsSidebarHtml,
+    bindMyToolsSidebar,
+    syncCardList,
+  } = FW.require('components/my-tools-sidebar');
 
-const ANIMATION_CLASSES = ['msme-slide-left', 'msme-slide-top', 'msme-slide-bottom', 'msme-slide-right'];
+  const MSME_SERVICES = [
+    { title: 'Statutory Registrations', description: 'Register your business and stay compliant with ease.', icon: 'file-check', color: '#3b82f6', bg: '#eff6ff' },
+    { title: 'Business Compliances', description: 'Manage all regulatory compliances in one place.', icon: 'clipboard-check', color: '#16a34a', bg: '#f0fdf4' },
+    { title: 'IT & Digital Marketing', description: 'Boost your online presence and reach more customers.', icon: 'megaphone', color: '#f97316', bg: '#fff7ed' },
+    { title: 'Industry Consultant', description: 'Get expert guidance tailored to your industry.', icon: 'briefcase', color: '#8b5cf6', bg: '#f5f3ff' },
+    { title: 'Document Formats', description: 'Download ready-to-use document templates.', icon: 'file-text', color: '#2563eb', bg: '#eff6ff' },
+    { title: 'Calculators', description: 'Smart calculators for your business needs.', icon: 'calculator', color: '#ec4899', bg: '#fdf2f8' },
+    { title: 'Marketing Services', description: 'Promote your business with result-driven strategies.', icon: 'trending-up', color: '#22c55e', bg: '#f0fdf4' },
+    { title: 'Loan Services', description: 'Explore financing options for your business growth.', icon: 'landmark', color: '#0ea5e9', bg: '#f0f9ff' },
+    { title: 'Insurance Services', description: 'Secure your business with the right insurance plans.', icon: 'shield-check', color: '#a855f7', bg: '#faf5ff' },
+    { title: 'Logistics Services', description: 'Reliable logistics solutions for smooth operations.', icon: 'truck', color: '#f59e0b', bg: '#fffbeb' },
+    { title: 'Legal Services', description: 'Legal support for contracts, agreements & more.', icon: 'scale', color: '#eab308', bg: '#fefce8' },
+    { title: 'Import & Export Services', description: 'Expand your business globally with ease.', icon: 'ship', color: '#14b8a6', bg: '#f0fdfa' },
+  ];
 
-const cardClass = (idx) => `msme-service-card ${ANIMATION_CLASSES[idx % ANIMATION_CLASSES.length]}`;
+  const ANIMATION_CLASSES = ['msme-slide-left', 'msme-slide-top', 'msme-slide-bottom', 'msme-slide-right'];
 
-const cardHtml = (service, idx) => html`
+  const cardClass = (idx) => `msme-service-card ${ANIMATION_CLASSES[idx % ANIMATION_CLASSES.length]}`;
+
+  const cardHtml = (service, idx) => html`
   <div class="${cardClass(idx)}" style="animation-delay: ${idx * 0.05}s;">
     <div class="msme-service-icon-wrap" style="background-color: ${service.bg}; color: ${service.color};">
       ${icon(service.icon, { size: 32, strokeWidth: 2 })}
@@ -40,23 +47,23 @@ const cardHtml = (service, idx) => html`
     </button>
   </div>`;
 
-const noResultsHtml = () => html`
+  const noResultsHtml = () => html`
   <div class="msme-no-results">
     ${icon('search', { size: 48, color: '#94a3b8' })}
     <h3>No services found</h3>
     <p>Try adjusting your search query.</p>
   </div>`;
 
-export function mountMsmeServiceHub(container, { onSelectTool } = {}) {
-  const state = { searchQuery: '' };
+  function mountMsmeServiceHub(container, { onSelectTool } = {}) {
+    const state = { searchQuery: '' };
 
-  const filteredServices = () => {
-    const q = state.searchQuery.toLowerCase();
-    return MSME_SERVICES.filter((service) => service.title.toLowerCase().includes(q)
-      || service.description.toLowerCase().includes(q));
-  };
+    const filteredServices = () => {
+      const q = state.searchQuery.toLowerCase();
+      return MSME_SERVICES.filter((service) => service.title.toLowerCase().includes(q)
+        || service.description.toLowerCase().includes(q));
+    };
 
-  render(container, html`
+    render(container, html`
     <div class="msme-hub-layout">
       ${myToolsSidebarHtml('msme')}
 
@@ -92,46 +99,49 @@ export function mountMsmeServiceHub(container, { onSelectTool } = {}) {
       </div>
     </div>`);
 
-  const root = container.firstElementChild;
-  bindMyToolsSidebar(root.querySelector('.fpo-hub-sidebar'), { onSelectTool });
+    const root = container.firstElementChild;
+    bindMyToolsSidebar(root.querySelector('.fpo-hub-sidebar'), { onSelectTool });
 
-  const section = root.querySelector('.msme-services-section');
-  const cards = new Map();
-  let grid = null;
+    const section = root.querySelector('.msme-services-section');
+    const cards = new Map();
+    let grid = null;
 
-  // The grid element stays while there are results (kept cards don't re-animate); it is swapped
-  // for the "No services found" block when nothing matches.
-  const drawServices = () => {
-    const items = filteredServices();
-    if (items.length === 0) {
-      grid = null;
-      cards.clear();
-      render(section, noResultsHtml());
-      return;
-    }
-    if (!grid) {
-      render(section, html`<div class="msme-services-grid"></div>`);
-      grid = section.firstElementChild;
-    }
-    syncCardList(grid, cards, items, {
-      key: (s) => s.title,
-      build: (s, idx) => toElement(cardHtml(s, idx)),
-      update: (el, s, idx) => {
-        el.className = cardClass(idx);
-        el.style.animationDelay = `${idx * 0.05}s`;
-      },
-    });
-  };
+    // The grid element stays while there are results (kept cards don't re-animate); it is swapped
+    // for the "No services found" block when nothing matches.
+    const drawServices = () => {
+      const items = filteredServices();
+      if (items.length === 0) {
+        grid = null;
+        cards.clear();
+        render(section, noResultsHtml());
+        return;
+      }
+      if (!grid) {
+        render(section, html`<div class="msme-services-grid"></div>`);
+        grid = section.firstElementChild;
+      }
+      syncCardList(grid, cards, items, {
+        key: (s) => s.title,
+        build: (s, idx) => toElement(cardHtml(s, idx)),
+        update: (el, s, idx) => {
+          el.className = cardClass(idx);
+          el.style.animationDelay = `${idx * 0.05}s`;
+        },
+      });
+    };
 
-  drawServices();
-
-  on(root, 'input', '.msme-search-bar input', (event) => {
-    state.searchQuery = event.target.value;
     drawServices();
-  });
 
-  on(root, 'click', '.msme-service-card', (_event, card) => {
-    const title = [...cards].find(([, el]) => el === card)?.[0];
-    console.log('Navigate to:', title);
-  });
-}
+    on(root, 'input', '.msme-search-bar input', (event) => {
+      state.searchQuery = event.target.value;
+      drawServices();
+    });
+
+    on(root, 'click', '.msme-service-card', (_event, card) => {
+      const title = [...cards].find(([, el]) => el === card)?.[0];
+      console.log('Navigate to:', title);
+    });
+  }
+
+  FW.define('components/msme-service-hub', { mountMsmeServiceHub });
+})();

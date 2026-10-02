@@ -1,45 +1,49 @@
 // Business Plan - enquiry form (message character counter) and the two-slide image carousel, which
 // flips every 4 seconds and can also be flipped with the arrows or picked with the dots.
-import { initPage } from '../core/page.js';
-import { on, qsa } from '../core/dom.js';
-import { mountMyBusinessSidebar } from '../components/my-business-layout.js';
+(function () {
+  'use strict';
 
-const session = initPage({ page: 'business-plan' });
+  const { initPage } = FW.require('core/page');
+  const { on, qsa } = FW.require('core/dom');
+  const { mountMyBusinessSidebar } = FW.require('components/my-business-layout');
 
-if (session) {
-  mountMyBusinessSidebar(document.getElementById('mb-sidebar'), { currentTab: 'business-plan' });
+  const session = initPage({ page: 'business-plan' });
 
-  // --- Message counter --------------------------------------------------------------------------
-  const message = document.getElementById('bp-message');
-  const counter = document.getElementById('bp-char-counter');
-  const updateCounter = () => {
-    counter.textContent = `${message.value.length} / 500`;
-  };
-  message.addEventListener('input', updateCounter);
-  // The browser may restore a typed message on back/forward - keep the counter in step with it.
-  updateCounter();
+  if (session) {
+    mountMyBusinessSidebar(document.getElementById('mb-sidebar'), { currentTab: 'business-plan' });
 
-  // --- Carousel ---------------------------------------------------------------------------------
-  const state = { currentSlide: 0 };
-  const track = document.getElementById('bp-slider-track');
-  const dots = qsa('.bp-dot', document.getElementById('bp-carousel-dots'));
+    // --- Message counter --------------------------------------------------------------------------
+    const message = document.getElementById('bp-message');
+    const counter = document.getElementById('bp-char-counter');
+    const updateCounter = () => {
+      counter.textContent = `${message.value.length} / 500`;
+    };
+    message.addEventListener('input', updateCounter);
+    // The browser may restore a typed message on back/forward - keep the counter in step with it.
+    updateCounter();
 
-  const draw = () => {
-    track.style.transform = `translateX(-${state.currentSlide * 100}%)`;
-    dots.forEach((dot) => dot.classList.toggle('active', Number(dot.dataset.slide) === state.currentSlide));
-  };
+    // --- Carousel ---------------------------------------------------------------------------------
+    const state = { currentSlide: 0 };
+    const track = document.getElementById('bp-slider-track');
+    const dots = qsa('.bp-dot', document.getElementById('bp-carousel-dots'));
 
-  const toggleSlide = () => {
-    state.currentSlide = state.currentSlide === 0 ? 1 : 0;
-    draw();
-  };
+    const draw = () => {
+      track.style.transform = `translateX(-${state.currentSlide * 100}%)`;
+      dots.forEach((dot) => dot.classList.toggle('active', Number(dot.dataset.slide) === state.currentSlide));
+    };
 
-  // Change slide every 4 seconds (the timer is not reset by manual navigation, same as before).
-  setInterval(toggleSlide, 4000);
+    const toggleSlide = () => {
+      state.currentSlide = state.currentSlide === 0 ? 1 : 0;
+      draw();
+    };
 
-  on(document, 'click', '[data-action="toggle-slide"]', toggleSlide);
-  on(document.getElementById('bp-carousel-dots'), 'click', '.bp-dot', (_event, dot) => {
-    state.currentSlide = Number(dot.dataset.slide);
-    draw();
-  });
-}
+    // Change slide every 4 seconds (the timer is not reset by manual navigation, same as before).
+    setInterval(toggleSlide, 4000);
+
+    on(document, 'click', '[data-action="toggle-slide"]', toggleSlide);
+    on(document.getElementById('bp-carousel-dots'), 'click', '.bp-dot', (_event, dot) => {
+      state.currentSlide = Number(dot.dataset.slide);
+      draw();
+    });
+  }
+})();

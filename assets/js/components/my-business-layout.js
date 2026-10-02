@@ -10,29 +10,32 @@
 //
 // and calls mountMyBusinessSidebar(document.getElementById('mb-sidebar'), { currentTab }).
 // Pages using the layout must link assets/css/pages/my-business.css.
-import { html, render, on, cx } from '../core/dom.js';
-import { icon } from '../core/icons.js';
-import { navigate } from '../core/router.js';
+(function () {
+  'use strict';
 
-export const NAV_ITEMS = [
-  { name: 'Business Profile', icon: 'user', route: 'business-profile' },
-  { name: 'Business Account', icon: 'wallet', route: 'business-account' },
-  { name: 'Compliances & Registration', icon: 'file-check', route: 'compliances' },
-  { name: 'Agm & Board', icon: 'users', route: 'agm-board' },
-  { name: 'Business Plan', icon: 'target', route: 'business-plan' },
-  { name: 'Loans & Schemes', icon: 'piggy-bank', route: 'loans-schemes' },
-  { name: 'Marketing Support', icon: 'megaphone', route: 'marketing' },
-  { name: 'Reports', icon: 'bar-chart-3', route: 'reports' },
-  { name: 'Business Connect', icon: 'handshake', route: 'connect' },
-];
+  const { html, render, on, cx } = FW.require('core/dom');
+  const { icon } = FW.require('core/icons');
+  const { navigate } = FW.require('core/router');
 
-// Route ids of the modules that share the "under construction" page (pages/coming-soon.html?tab=<id>).
-export const PLACEHOLDER_TABS = ['business-profile', 'compliances', 'loans-schemes', 'marketing', 'reports', 'connect'];
+  const NAV_ITEMS = [
+    { name: 'Business Profile', icon: 'user', route: 'business-profile' },
+    { name: 'Business Account', icon: 'wallet', route: 'business-account' },
+    { name: 'Compliances & Registration', icon: 'file-check', route: 'compliances' },
+    { name: 'Agm & Board', icon: 'users', route: 'agm-board' },
+    { name: 'Business Plan', icon: 'target', route: 'business-plan' },
+    { name: 'Loans & Schemes', icon: 'piggy-bank', route: 'loans-schemes' },
+    { name: 'Marketing Support', icon: 'megaphone', route: 'marketing' },
+    { name: 'Reports', icon: 'bar-chart-3', route: 'reports' },
+    { name: 'Business Connect', icon: 'handshake', route: 'connect' },
+  ];
 
-export function mountMyBusinessSidebar(root, { currentTab } = {}) {
-  if (!root) return;
+  // Route ids of the modules that share the "under construction" page (pages/coming-soon.html?tab=<id>).
+  const PLACEHOLDER_TABS = ['business-profile', 'compliances', 'loans-schemes', 'marketing', 'reports', 'connect'];
 
-  render(root, html`
+  function mountMyBusinessSidebar(root, { currentTab } = {}) {
+    if (!root) return;
+
+    render(root, html`
     <div class="mb-sidebar-top">
       <div class="mb-sidebar-menu">
         <div class="${cx('mb-menu-item-main', currentTab === 'mybusiness' && 'active')}" data-route="mybusiness" style="cursor: pointer;">
@@ -55,10 +58,13 @@ export function mountMyBusinessSidebar(root, { currentTab } = {}) {
       </div>
     </div>`);
 
-  // In the React app, picking the tab that is already open re-rendered the same page (no visible
-  // change), so only a different tab loads a new page here.
-  on(root, 'click', '[data-route]', (_event, item) => {
-    const { route } = item.dataset;
-    if (route !== currentTab) navigate(route);
-  });
-}
+    // In the React app, picking the tab that is already open re-rendered the same page (no visible
+    // change), so only a different tab loads a new page here.
+    on(root, 'click', '[data-route]', (_event, item) => {
+      const { route } = item.dataset;
+      if (route !== currentTab) navigate(route);
+    });
+  }
+
+  FW.define('components/my-business-layout', { NAV_ITEMS, PLACEHOLDER_TABS, mountMyBusinessSidebar });
+})();

@@ -1,171 +1,175 @@
-const states = [
-    {
-        state: "Andhra Pradesh",
-        slug: "Andhra_pradesh",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Andhra_pradesh"
-    },
+(function () {
+  'use strict';
 
-    {
-        state: "Arunachal Pradesh",
-        slug: "Arunachal_pradesh",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Arunachal_pradesh"
-    },
+  const states = [
+      {
+          state: "Andhra Pradesh",
+          slug: "Andhra_pradesh",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Andhra_pradesh"
+      },
 
-    {
-        state: "Assam",
-        slug: "Assam",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Assam"
-    },
+      {
+          state: "Arunachal Pradesh",
+          slug: "Arunachal_pradesh",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Arunachal_pradesh"
+      },
 
-    {
-        state: "Bihar",
-        slug: "Bihar",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Bihar"
-    },
+      {
+          state: "Assam",
+          slug: "Assam",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Assam"
+      },
 
-    {
-        state: "Chhattisgarh",
-        slug: "Chhattisgarh",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Chhattisgarh"
-    },
+      {
+          state: "Bihar",
+          slug: "Bihar",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Bihar"
+      },
 
-    {
-        state: "Goa",
-        slug: "Goa",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Goa"
-    },
+      {
+          state: "Chhattisgarh",
+          slug: "Chhattisgarh",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Chhattisgarh"
+      },
 
-    {
-        state: "Gujarat",
-        slug: "Gujarat",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Gujarat"
-    },
+      {
+          state: "Goa",
+          slug: "Goa",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Goa"
+      },
 
-    {
-        state: "Haryana",
-        slug: "Haryana",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Haryana"
-    },
+      {
+          state: "Gujarat",
+          slug: "Gujarat",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Gujarat"
+      },
 
-    {
-        state: "Himachal Pradesh",
-        slug: "Himachal_pradesh",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Himachal_pradesh"
-    },
+      {
+          state: "Haryana",
+          slug: "Haryana",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Haryana"
+      },
 
-    {
-        state: "Jharkhand",
-        slug: "Jharkhand",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Jharkhand"
-    },
+      {
+          state: "Himachal Pradesh",
+          slug: "Himachal_pradesh",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Himachal_pradesh"
+      },
 
-    {
-        state: "Karnataka",
-        slug: "Karnataka",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Karnataka"
-    },
+      {
+          state: "Jharkhand",
+          slug: "Jharkhand",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Jharkhand"
+      },
 
-    {
-        state: "Kerala",
-        slug: "Kerala",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Kerala"
-    },
+      {
+          state: "Karnataka",
+          slug: "Karnataka",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Karnataka"
+      },
 
-    {
-        state: "Madhya Pradesh",
-        slug: "Madhya_pradesh",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Madhya_pradesh"
-    },
+      {
+          state: "Kerala",
+          slug: "Kerala",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Kerala"
+      },
 
-    {
-        state: "Maharashtra",
-        slug: "Maharashtra",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Maharashtra"
-    },
+      {
+          state: "Madhya Pradesh",
+          slug: "Madhya_pradesh",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Madhya_pradesh"
+      },
 
-    {
-        state: "Manipur",
-        slug: "Manipur",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Manipur"
-    },
+      {
+          state: "Maharashtra",
+          slug: "Maharashtra",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Maharashtra"
+      },
 
-    {
-        state: "Meghalaya",
-        slug: "Meghalaya",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Meghalaya"
-    },
+      {
+          state: "Manipur",
+          slug: "Manipur",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Manipur"
+      },
 
-    {
-        state: "Mizoram",
-        slug: "Mizoram",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Mizoram"
-    },
+      {
+          state: "Meghalaya",
+          slug: "Meghalaya",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Meghalaya"
+      },
 
-    {
-        state: "Nagaland",
-        slug: "Nagaland",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Nagaland"
-    },
+      {
+          state: "Mizoram",
+          slug: "Mizoram",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Mizoram"
+      },
 
-    {
-        state: "Odisha",
-        slug: "Odisha",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Odisha"
-    },
+      {
+          state: "Nagaland",
+          slug: "Nagaland",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Nagaland"
+      },
 
-    {
-        state: "Punjab",
-        slug: "Punjab",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Punjab"
-    },
+      {
+          state: "Odisha",
+          slug: "Odisha",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Odisha"
+      },
 
-    {
-        state: "Rajasthan",
-        slug: "Rajasthan",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Rajasthan"
-    },
+      {
+          state: "Punjab",
+          slug: "Punjab",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Punjab"
+      },
 
-    {
-        state: "Sikkim",
-        slug: "Sikkim",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Sikkim"
-    },
+      {
+          state: "Rajasthan",
+          slug: "Rajasthan",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Rajasthan"
+      },
 
-    {
-        state: "Tamil Nadu",
-        slug: "Tamil_nadu",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Tamil_nadu"
-    },
+      {
+          state: "Sikkim",
+          slug: "Sikkim",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Sikkim"
+      },
 
-    {
-        state: "Telangana",
-        slug: "Telangana",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Telangana"
-    },
+      {
+          state: "Tamil Nadu",
+          slug: "Tamil_nadu",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Tamil_nadu"
+      },
 
-    {
-        state: "Tripura",
-        slug: "Tripura",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Tripura"
-    },
+      {
+          state: "Telangana",
+          slug: "Telangana",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Telangana"
+      },
 
-    {
-        state: "Uttar Pradesh",
-        slug: "Uttar_pradesh",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Uttar_pradesh"
-    },
+      {
+          state: "Tripura",
+          slug: "Tripura",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Tripura"
+      },
 
-    {
-        state: "Uttarakhand",
-        slug: "Uttarakhand",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Uttarakhand"
-    },
+      {
+          state: "Uttar Pradesh",
+          slug: "Uttar_pradesh",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Uttar_pradesh"
+      },
 
-    {
-        state: "West Bengal",
-        slug: "West_bengal",
-        url: "https://www.tradeindia.com/tradeshows/search.html?search_term=West_bengal"
-    }
-];
+      {
+          state: "Uttarakhand",
+          slug: "Uttarakhand",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=Uttarakhand"
+      },
 
-export default states;
+      {
+          state: "West Bengal",
+          slug: "West_bengal",
+          url: "https://www.tradeindia.com/tradeshows/search.html?search_term=West_bengal"
+      }
+  ];
+
+  FW.define('data/states-urls', { default: states });
+})();

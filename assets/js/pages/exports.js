@@ -5,67 +5,71 @@
 //
 // A view is rebuilt from its markup every time it is opened, so its entry animations replay and its
 // state (Country Selection search, Why Exports reveal) starts fresh - as when React remounted it.
-import { initPage } from '../core/page.js';
-import { on, scrollToTop } from '../core/dom.js';
-import { iconSvg, hydrateIcons } from '../core/icons.js';
-import { mountWhyExports } from './exports/why-exports.js';
-import { mountCountrySelection } from './exports/country-selection.js';
+(function () {
+  'use strict';
 
-// Views with behaviour: mount(viewEl) wires it up and may return a cleanup function.
-const VIEW_SETUP = {
-  1: mountWhyExports,
-  10: mountCountrySelection,
-};
+  const { initPage } = FW.require('core/page');
+  const { on, scrollToTop } = FW.require('core/dom');
+  const { iconSvg, hydrateIcons } = FW.require('core/icons');
+  const { mountWhyExports } = FW.require('pages/exports/why-exports');
+  const { mountCountrySelection } = FW.require('pages/exports/country-selection');
 
-const session = initPage({ page: 'exports' });
-
-if (session) {
-  const layout = document.querySelector('.ep-layout');
-  const nav = layout.querySelector('.ep-nav-list');
-  const hubView = layout.querySelector('.ep-main-content');
-  const hubMarkup = hubView.cloneNode(true);
-
-  const state = {
-    activeTab: '0',
-    view: hubView,
-    cleanup: null,
+  // Views with behaviour: mount(viewEl) wires it up and may return a cleanup function.
+  const VIEW_SETUP = {
+    1: mountWhyExports,
+    10: mountCountrySelection,
   };
 
-  const buildView = (tab) => {
-    if (tab === '0') return hubMarkup.cloneNode(true);
-    const tpl = document.getElementById(`ep-view-${tab}`);
-    return tpl ? tpl.content.firstElementChild.cloneNode(true) : null;
-  };
+  const session = initPage({ page: 'exports' });
 
-  const drawNav = () => {
-    nav.querySelectorAll('.ep-nav-item').forEach((item) => {
-      const isActive = item.dataset.tab === state.activeTab;
-      item.classList.toggle('active', isActive);
-      item.querySelector('.ep-nav-arrow')?.remove();
-      if (isActive) item.insertAdjacentHTML('beforeend', iconSvg('chevron-right', { size: 16, className: 'ep-nav-arrow' }));
-    });
-  };
+  if (session) {
+    const layout = document.querySelector('.ep-layout');
+    const nav = layout.querySelector('.ep-nav-list');
+    const hubView = layout.querySelector('.ep-main-content');
+    const hubMarkup = hubView.cloneNode(true);
 
-  const setActiveTab = (tab) => {
-    if (tab === state.activeTab) return;
-    state.cleanup?.();
-    state.cleanup = null;
-    state.view?.remove();
-    state.view = null;
+    const state = {
+      activeTab: '0',
+      view: hubView,
+      cleanup: null,
+    };
 
-    state.activeTab = tab;
-    drawNav();
+    const buildView = (tab) => {
+      if (tab === '0') return hubMarkup.cloneNode(true);
+      const tpl = document.getElementById(`ep-view-${tab}`);
+      return tpl ? tpl.content.firstElementChild.cloneNode(true) : null;
+    };
 
-    const view = buildView(tab);
-    if (view) {
-      layout.appendChild(view);
-      hydrateIcons(view);
-      state.view = view;
-      state.cleanup = VIEW_SETUP[tab]?.(view) || null;
-    }
-    scrollToTop();
-  };
+    const drawNav = () => {
+      nav.querySelectorAll('.ep-nav-item').forEach((item) => {
+        const isActive = item.dataset.tab === state.activeTab;
+        item.classList.toggle('active', isActive);
+        item.querySelector('.ep-nav-arrow')?.remove();
+        if (isActive) item.insertAdjacentHTML('beforeend', iconSvg('chevron-right', { size: 16, className: 'ep-nav-arrow' }));
+      });
+    };
 
-  // Sidebar items and the hub's cards both carry the section they open.
-  on(layout, 'click', '[data-tab]', (_event, el) => setActiveTab(el.dataset.tab));
-}
+    const setActiveTab = (tab) => {
+      if (tab === state.activeTab) return;
+      state.cleanup?.();
+      state.cleanup = null;
+      state.view?.remove();
+      state.view = null;
+
+      state.activeTab = tab;
+      drawNav();
+
+      const view = buildView(tab);
+      if (view) {
+        layout.appendChild(view);
+        hydrateIcons(view);
+        state.view = view;
+        state.cleanup = VIEW_SETUP[tab]?.(view) || null;
+      }
+      scrollToTop();
+    };
+
+    // Sidebar items and the hub's cards both carry the section they open.
+    on(layout, 'click', '[data-tab]', (_event, el) => setActiveTab(el.dataset.tab));
+  }
+})();

@@ -1,52 +1,55 @@
 // Admin panel - Overview: the landing section, with headline numbers for Feed World and EPM and
 // shortcuts into the other sections. mount(container, ctx) renders into <main class="adm-main">
 // and returns a cleanup.
-import { html, render, on } from '../../core/dom.js';
-import { icon } from '../../core/icons.js';
-import { fetchAdminEpmOverview, fetchAdminEvents } from '../../api/admin-epm-api.js';
-import { fetchLatestPublication, fetchPublicationYears } from '../../api/publications-api.js';
-import { emptyHtml, loadingHtml, sectionHeaderHtml } from './admin-ui.js';
-import { formatDate } from './admin-utils.js';
+(function () {
+  'use strict';
 
-export function mount(container, { user, openSection }) {
-  const state = {
-    overview: null,
-    nextEvents: null,
-    feedWorld: null,
-    error: '',
-  };
-  let disposed = false;
+  const { html, render, on } = FW.require('core/dom');
+  const { icon } = FW.require('core/icons');
+  const { fetchAdminEpmOverview, fetchAdminEvents } = FW.require('api/admin-epm-api');
+  const { fetchLatestPublication, fetchPublicationYears } = FW.require('api/publications-api');
+  const { emptyHtml, loadingHtml, sectionHeaderHtml } = FW.require('pages/admin/admin-ui');
+  const { formatDate } = FW.require('pages/admin/admin-utils');
 
-  const statCards = (overview) => (overview ? [
-    { label: 'Upcoming EPMs', value: overview.upcomingEvents, icon: 'calendar-days', section: 'epm-events', tone: 'green' },
-    {
-      label: 'Previous EPMs', value: overview.previousEvents, icon: 'history', section: 'epm-events', tone: 'slate',
-      note: overview.cancelledEvents ? `${overview.cancelledEvents} cancelled` : null,
-    },
-    {
-      label: 'Registrations', value: overview.registrations, icon: 'users', section: 'epm-registrations', tone: 'blue',
-      note: `${overview.registrationsToday} today`,
-    },
-    {
-      label: 'Volunteers', value: overview.volunteers, icon: 'heart-handshake', section: 'epm-volunteers', tone: 'orange',
-      note: `${overview.volunteersToday} today`,
-    },
-    { label: 'Images', value: overview.galleryImages, icon: 'images', section: 'epm-images', tone: 'purple' },
-    { label: 'Reviews', value: overview.reviews, icon: 'quote', section: 'epm-reviews', tone: 'amber' },
-    { label: 'Categories', value: overview.categories, icon: 'tags', section: 'epm-categories', tone: 'teal' },
-    { label: 'Venues', value: overview.venues, icon: 'map-pin', section: 'epm-venues', tone: 'slate' },
-  ] : []);
+  function mount(container, { user, openSection }) {
+    const state = {
+      overview: null,
+      nextEvents: null,
+      feedWorld: null,
+      error: '',
+    };
+    let disposed = false;
 
-  const draw = () => {
-    if (disposed) return;
-    const { overview, nextEvents, feedWorld, error } = state;
-    render(container, html`
+    const statCards = (overview) => (overview ? [
+      { label: 'Upcoming EPMs', value: overview.upcomingEvents, icon: 'calendar-days', section: 'epm-events', tone: 'green' },
+      {
+        label: 'Previous EPMs', value: overview.previousEvents, icon: 'history', section: 'epm-events', tone: 'slate',
+        note: overview.cancelledEvents ? `${overview.cancelledEvents} cancelled` : null,
+      },
+      {
+        label: 'Registrations', value: overview.registrations, icon: 'users', section: 'epm-registrations', tone: 'blue',
+        note: `${overview.registrationsToday} today`,
+      },
+      {
+        label: 'Volunteers', value: overview.volunteers, icon: 'heart-handshake', section: 'epm-volunteers', tone: 'orange',
+        note: `${overview.volunteersToday} today`,
+      },
+      { label: 'Images', value: overview.galleryImages, icon: 'images', section: 'epm-images', tone: 'purple' },
+      { label: 'Reviews', value: overview.reviews, icon: 'quote', section: 'epm-reviews', tone: 'amber' },
+      { label: 'Categories', value: overview.categories, icon: 'tags', section: 'epm-categories', tone: 'teal' },
+      { label: 'Venues', value: overview.venues, icon: 'map-pin', section: 'epm-venues', tone: 'slate' },
+    ] : []);
+
+    const draw = () => {
+      if (disposed) return;
+      const { overview, nextEvents, feedWorld, error } = state;
+      render(container, html`
       ${sectionHeaderHtml({
-        eyebrow: 'ADMIN',
-        icon: 'layout-dashboard',
-        title: `Welcome${user?.firstName ? `, ${user.firstName}` : ''}`,
-        description: 'One place to manage Feed World publications and Export Promotional Meetings.',
-      })}
+          eyebrow: 'ADMIN',
+          icon: 'layout-dashboard',
+          title: `Welcome${user?.firstName ? `, ${user.firstName}` : ''}`,
+          description: 'One place to manage Feed World publications and Export Promotional Meetings.',
+        })}
 
       ${error && html`<div class="admin-pub-banner error">${error}</div>`}
 
@@ -97,51 +100,54 @@ export function mount(container, { user, openSection }) {
               <div><span class="adm-stat-value">${feedWorld.issues}</span><span class="adm-stat-label">issues across ${feedWorld.years} year${feedWorld.years === 1 ? '' : 's'}</span></div>
               <div class="adm-cell-sub">
                 ${feedWorld.latest
-                  ? html`Latest: <strong>${feedWorld.latest.monthName} ${feedWorld.latest.year}</strong> (${feedWorld.latest.language})`
-                  : 'No issues uploaded yet.'}
+                    ? html`Latest: <strong>${feedWorld.latest.monthName} ${feedWorld.latest.year}</strong> (${feedWorld.latest.language})`
+                    : 'No issues uploaded yet.'}
               </div>
             </div>`}
         </section>
       </div>`);
-  };
+    };
 
-  const removeClick = on(container, 'click', '[data-section]', (_event, el) => {
-    const { section, eventId } = el.dataset;
-    openSection(section, eventId !== undefined ? { eventId } : {});
-  });
-
-  fetchAdminEpmOverview()
-    .then((overview) => {
-      state.overview = overview;
-      draw();
-    })
-    .catch((e) => {
-      state.error = e.message;
-      draw();
-    });
-  fetchAdminEvents({ status: 'upcoming' })
-    .then((data) => {
-      state.nextEvents = data.filter((e) => !e.cancelled).slice(0, 5);
-      draw();
-    })
-    .catch(() => {
-      state.nextEvents = [];
-      draw();
-    });
-  Promise.all([fetchPublicationYears().catch(() => []), fetchLatestPublication().catch(() => null)])
-    .then(([years, latest]) => {
-      state.feedWorld = {
-        issues: years.reduce((sum, y) => sum + (y.count || 0), 0),
-        years: years.length,
-        latest,
-      };
-      draw();
+    const removeClick = on(container, 'click', '[data-section]', (_event, el) => {
+      const { section, eventId } = el.dataset;
+      openSection(section, eventId !== undefined ? { eventId } : {});
     });
 
-  draw();
+    fetchAdminEpmOverview()
+      .then((overview) => {
+        state.overview = overview;
+        draw();
+      })
+      .catch((e) => {
+        state.error = e.message;
+        draw();
+      });
+    fetchAdminEvents({ status: 'upcoming' })
+      .then((data) => {
+        state.nextEvents = data.filter((e) => !e.cancelled).slice(0, 5);
+        draw();
+      })
+      .catch(() => {
+        state.nextEvents = [];
+        draw();
+      });
+    Promise.all([fetchPublicationYears().catch(() => []), fetchLatestPublication().catch(() => null)])
+      .then(([years, latest]) => {
+        state.feedWorld = {
+          issues: years.reduce((sum, y) => sum + (y.count || 0), 0),
+          years: years.length,
+          latest,
+        };
+        draw();
+      });
 
-  return () => {
-    disposed = true;
-    removeClick();
-  };
-}
+    draw();
+
+    return () => {
+      disposed = true;
+      removeClick();
+    };
+  }
+
+  FW.define('pages/admin/overview', { mount });
+})();

@@ -1,4 +1,5 @@
-﻿{
+// Assamese translations (i18next resource format), loaded on demand by assets/js/core/i18n.js.
+FW.define('locales/as', {
   "translation": {
     "call_us": "Call us anytime",
     "mail_us": "Mail us today",
@@ -24,4 +25,4 @@
       "contact_us": "Contact Us"
     }
   }
-}
+});
